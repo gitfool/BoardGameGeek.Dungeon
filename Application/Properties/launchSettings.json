@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BoardGameGeek.Dungeon": {
+      "commandName": "Project",
+      "commandLineArgs": "plays <username>"
+    }
+  }
+}
