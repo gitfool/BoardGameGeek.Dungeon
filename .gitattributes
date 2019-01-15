@@ -50,3 +50,11 @@
 #*.props     merge=binary
 #*.filters   merge=binary
 #*.vcxitems  merge=binary
+
+# Custom
+*.sh         text eol=lf
+
+# Linguist
+*.cake       linguist-language=C#
+cake.ps1     linguist-vendored
+cake.sh      linguist-vendored

@@ -1,0 +1,25 @@
+trigger:
+- master
+
+variables:
+- group: Cake
+
+jobs:
+- job: Docker
+  pool:
+    vmImage: ubuntu-16.04
+  container:
+    image: dockfool/cake-docker:1.0.0-pre.4
+  steps:
+  - task: Docker@1
+    displayName: Docker login
+    inputs:
+      command: login
+      containerRegistryType: Container Registry
+      dockerRegistryEndpoint: DockerHub
+
+  - bash: cake --bootstrap && cake --configuration=$(Cake.Configuration) --verbosity=$(Cake.Verbosity)
+    displayName: Cake build
+    env:
+      CAKE_PUBLISH: true
+      TF_BUILD: true
