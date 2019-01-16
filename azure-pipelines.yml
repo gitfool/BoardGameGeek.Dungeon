@@ -10,6 +10,7 @@ jobs:
     vmImage: ubuntu-16.04
   container:
     image: dockfool/cake-docker:1.0.1-pre.1
+    options: --group-add docker
   steps:
   - task: Docker@1
     displayName: Docker login
@@ -17,12 +18,6 @@ jobs:
       command: login
       containerRegistryType: Container Registry
       dockerRegistryEndpoint: DockerHub
-
-  - bash: |
-      set -ex
-      sudo groupadd -g $(stat --format='%g' /var/run/docker.sock) docker
-      sudo usermod -a -G docker $(whoami)
-    displayName: Docker socket
 
   - bash: cake --bootstrap && cake --configuration=$(Cake.Configuration) --verbosity=$(Cake.Verbosity)
     displayName: Cake build
