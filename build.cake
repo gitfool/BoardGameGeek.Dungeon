@@ -20,7 +20,6 @@ Build.SetParameters
 
     buildEmbedAllSources: true,
     buildTreatWarningsAsErrors: true,
-    dockerPushLatest: true,
 
     dockerImages: new[] { new DockerImage { Repository = "dockfool/boardgamegeek-dungeon", Context = "Application" } }
 );
