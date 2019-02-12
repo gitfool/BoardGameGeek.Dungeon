@@ -11,7 +11,7 @@ namespace BoardGameGeek.Dungeon
         static CommandLine()
         {
             // arguments
-            var userNameArgument = new Argument<string> { Name = "username", Description = "Geek user name." };
+            var userNameArgument = new Argument<string> { Name = "userName", Description = "Geek user name." };
 
             // options
             var allOption = new Option(new[] { "-a", "--all" }, "Analyze all override.", new Argument<bool>());
@@ -21,9 +21,9 @@ namespace BoardGameGeek.Dungeon
             Parser = new CommandLineBuilder(new RootCommand("A command line tool for interacting with the BoardGameGeek API")
             {
                 new Command("plays", "Get user plays.", new[] { allOption, yearOption }, userNameArgument,
-                    handler: CommandHandler.Create(typeof(CommandLine).GetMethod(nameof(PlaysAsync)))),
+                    handler: CommandHandler.Create<CommandLine>(nameof(PlaysAsync))),
                 new Command("stats", "Get user stats.", new[] { allOption, yearOption }, userNameArgument,
-                    handler: CommandHandler.Create(typeof(CommandLine).GetMethod(nameof(StatsAsync))))
+                    handler: CommandHandler.Create<CommandLine>(nameof(StatsAsync)))
             })
                 .UseDefaults()
                 .Build();
