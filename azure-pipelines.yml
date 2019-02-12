@@ -9,7 +9,7 @@ jobs:
   pool:
     vmImage: ubuntu-16.04
   container:
-    image: dockfool/cake-docker:1.0.1-pre.2
+    image: dockfool/cake-docker:latest
   steps:
   - task: Docker@1
     displayName: Docker login
@@ -24,12 +24,5 @@ jobs:
       sudo usermod -a -G docker $(whoami)
     displayName: Docker socket
 
-  - bash: |
-      set -ex
-      printenv | sort
-    displayName: Print env
-
   - bash: cake --bootstrap && cake --verbosity=$(Cake.Verbosity) --ispublisher=true
     displayName: Cake build
-    env:
-      TF_BUILD: true
