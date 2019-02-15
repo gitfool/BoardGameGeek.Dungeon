@@ -12,11 +12,11 @@ jobs:
     image: dockfool/cake-docker:latest
   steps:
   - task: Docker@1
-    displayName: Docker login
     inputs:
       command: login
       containerRegistryType: Container Registry
       dockerRegistryEndpoint: DockerHub
+    displayName: Docker login
 
   - bash: |
       set -ex
