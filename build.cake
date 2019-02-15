@@ -1,4 +1,4 @@
-#load nuget:?package=Cake.Dungeon&version=1.0.1-pre.2
+#load nuget:?package=Cake.Dungeon&version=1.0.1-pre.4
 
 Build.SetParameters
 (
@@ -19,7 +19,6 @@ Build.SetParameters
     unitTestProjectPatterns: new[] { "Tests/*.csproj" },
 
     buildEmbedAllSources: true,
-    buildTreatWarningsAsErrors: true,
     dockerPushLatest: true,
 
     dockerImages: new[] { new DockerImage { Repository = "dockfool/boardgamegeek-dungeon", Context = "Application" } }
