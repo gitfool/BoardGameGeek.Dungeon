@@ -21,9 +21,9 @@ namespace BoardGameGeek.Dungeon
             Parser = new CommandLineBuilder(new RootCommand("A command line tool for interacting with the BoardGameGeek API")
             {
                 new Command("plays", "Get user plays.", new[] { allOption, yearOption }, userNameArgument,
-                    handler: CommandHandler.Create<CommandLine>(nameof(PlaysAsync))),
+                    handler: CommandHandler.Create<string, bool, int?>(PlaysAsync)),
                 new Command("stats", "Get user stats.", new[] { allOption, yearOption }, userNameArgument,
-                    handler: CommandHandler.Create<CommandLine>(nameof(StatsAsync)))
+                    handler: CommandHandler.Create<string, bool, int?>(StatsAsync))
             })
                 .UseDefaults()
                 .Build();
