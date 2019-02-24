@@ -15,7 +15,7 @@ namespace BoardGameGeek.Dungeon
 
             // options
             var allOption = new Option(new[] { "-a", "--all" }, "Analyze all override.", new Argument<bool>());
-            var yearOption = new Option(new[] { "-y", "--year" }, "Year to analyze. Defaults to current year.", new Argument<int>(DateTime.Now.Year));
+            var yearOption = new Option(new[] { "-y", "--year" }, "Year to analyze. Defaults to current year.", new Argument<int?>(DateTime.Now.Year));
 
             // parser
             Parser = new CommandLineBuilder(new RootCommand("A command line tool for interacting with the BoardGameGeek API")
