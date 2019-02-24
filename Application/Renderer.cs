@@ -17,10 +17,10 @@ namespace BoardGameGeek.Dungeon
 
             using (var file = new StreamWriter(fileName, false, Encoding.UTF8))
             {
-                await file.WriteLineAsync(@"Date,Location,Quantity,Game,Length,Incomplete,Comments");
+                await file.WriteLineAsync(@"PlayId,Date,Location,Quantity,GameId,GameName,Length,Incomplete,NoWinStats,Comments");
                 foreach (var play in summary.UserPlays)
                 {
-                    await file.WriteLineAsync($@"{play.Date:yyyy-MM-dd},""{play.Location}"",{play.Quantity},""{play.GameName}"",{play.Length},{(play.IsIncomplete ? "Y" : "")},""{play.Comments?.Replace("\n", @"\n")}""");
+                    await file.WriteLineAsync($@"{play.PlayId},{play.Date:yyyy-MM-dd},""{play.Location}"",{play.Quantity},{play.GameId},""{play.GameName}"",{play.Length},{(play.IsIncomplete ? "Y" : "")},{(play.NoWinStats ? "Y" : "")},""{play.Comments?.Replace("\n", @"\n")}""");
                 }
             }
         }

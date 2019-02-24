@@ -153,6 +153,7 @@ namespace BoardGameGeek.Dungeon
                         Length = play.Length,
                         IsIncomplete = play.IsIncomplete,
                         IsSession = IsSession(play.Comments),
+                        NoWinStats = play.NoWinStats,
                         Location = play.Location,
                         Comments = play.Comments,
                     };

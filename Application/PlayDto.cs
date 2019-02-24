@@ -14,6 +14,7 @@ namespace BoardGameGeek.Dungeon
         public int Length { get; set; }
         public bool IsIncomplete { get; set; }
         public bool IsSession { get; set; }
+        public bool NoWinStats { get; set; }
         public string Location { get; set; }
         public string Comments { get; set; }
 
