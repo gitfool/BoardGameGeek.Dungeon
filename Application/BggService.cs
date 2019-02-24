@@ -1,4 +1,7 @@
+using Flurl.Http;
 using Pocket;
+using Polly;
+using Polly.Retry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,75 +23,76 @@ namespace BoardGameGeek.Dungeon
 
     public sealed class BggService : IBggService
     {
+        public BggService()
+        {
+            FlurlClient = new FlurlClient("https://boardgamegeek.com/xmlapi2")
+            {
+                Settings = { BeforeCall = call => { Log.Trace($"{call.Request.Method} {call.Request.RequestUri}"); } }
+            };
+            RetryPolicy = Policy.Handle<FlurlHttpException>(ex => ex.Call.Response.StatusCode == HttpStatusCode.TooManyRequests)
+                .OrResult<HttpResponseMessage>(response => response.StatusCode == HttpStatusCode.Accepted)
+                .WaitAndRetryAsync(EnumerateDelay(), (response, _) =>
+                {
+                    if (response.Exception is FlurlHttpException ex)
+                    {
+                        Log.Warning($"{ex.Call.HttpStatus:D} {ex.Call.HttpStatus}");
+                    }
+                    else
+                    {
+                        Log.Warning($"{response.Result.StatusCode:D} {response.Result.StatusCode}");
+                    }
+                });
+        }
+
         public async Task<ThingItems> DownloadThingsAsync(IEnumerable<int> ids)
         {
-            var query = $"id={string.Join(",", ids)}";
-            var uri = new Uri($"https://boardgamegeek.com/xmlapi2/thing?{query}");
-            Log.Info($"    {uri}");
-            return await DownloadAsync<ThingItems>(uri);
+            var request = FlurlClient.Request("thing")
+                .SetQueryParams(new
+                {
+                    id = string.Join(",", ids)
+                });
+            var response = await RetryPolicy.ExecuteAsync(() => request.GetAsync());
+            return await response.Content.ReadAsAsync<ThingItems>(XmlFormatterCollection);
         }
 
         public async Task<CollectionItems> DownloadUserCollectionAsync(string userName)
         {
-            var query = $"username={userName}&subtype=boardgame&minplays=1";
-            var uri = new Uri($"https://boardgamegeek.com/xmlapi2/collection?{query}");
-            Log.Info($"    {uri}");
-            await Task.Delay(TimeSpan.FromSeconds(5));
-            var response = await HttpClient.GetAsync(uri);
-            response.EnsureSuccessStatusCode();
-            if (response.StatusCode == HttpStatusCode.Accepted || response.StatusCode == HttpStatusCode.TooManyRequests)
-            {
-                // collection requests are queued; http://boardgamegeek.com/wiki/page/BGG_XML_API2#toc11
-                using (var delay = EnumerateDelay().GetEnumerator())
+            var request = FlurlClient.Request("collection")
+                .SetQueryParams(new
                 {
-                    do
-                    {
-                        delay.MoveNext();
-                        await Task.Delay(delay.Current);
-                        response = await HttpClient.GetAsync(uri);
-                        response.EnsureSuccessStatusCode();
-                    }
-                    while (response.StatusCode == HttpStatusCode.Accepted || response.StatusCode == HttpStatusCode.TooManyRequests);
-                }
-            }
+                    username = userName,
+                    subtype = "boardgame",
+                    minplays = 1
+                });
+            var response = await RetryPolicy.ExecuteAsync(() => request.GetAsync());
             return await response.Content.ReadAsAsync<CollectionItems>(XmlFormatterCollection);
         }
 
         public async Task<UserPlays> DownloadUserPlaysAsync(string userName, int? year = null, int? id = null, int? page = null)
         {
-            var query = $"username={userName}&subtype=boardgame";
-            if (id != null)
-            {
-                query += $"&id={id}";
-            }
-            if (year != null)
-            {
-                query += $"&mindate={year}-01-01&maxdate={year}-12-31";
-            }
-            if (page != null)
-            {
-                query += $"&page={page}";
-            }
-            var uri = new Uri($"https://boardgamegeek.com/xmlapi2/plays?{query}");
-            Log.Info($"    {uri}");
-            return await DownloadAsync<UserPlays>(uri);
-        }
-
-        private async Task<T> DownloadAsync<T>(Uri uri)
-        {
-            await Task.Delay(TimeSpan.FromSeconds(5));
-            var response = await HttpClient.GetAsync(uri);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsAsync<T>(XmlFormatterCollection);
+            var request = FlurlClient.Request("plays")
+                .SetQueryParams(new
+                {
+                    username = userName,
+                    subtype = "boardgame",
+                    id,
+                    mindate = year != null ? $"{year:D4}-01-01" : null,
+                    maxdate = year != null ? $"{year:D4}-12-31" : null,
+                    page
+                });
+            var response = await RetryPolicy.ExecuteAsync(() => request.GetAsync());
+            return await response.Content.ReadAsAsync<UserPlays>(XmlFormatterCollection);
         }
 
         private static IEnumerable<TimeSpan> EnumerateDelay()
         {
-            return Enumerable.Range(3, 5).Select(seconds => TimeSpan.FromSeconds(Math.Pow(2, seconds)))
+            return Enumerable.Range(2, 5).Select(seconds => TimeSpan.FromSeconds(Math.Pow(2, seconds)))
                 .Concat(Enumerable.Repeat(TimeSpan.FromMinutes(1), int.MaxValue));
         }
 
-        private static readonly HttpClient HttpClient = new HttpClient();
+        private IFlurlClient FlurlClient { get; }
+        private AsyncRetryPolicy<HttpResponseMessage> RetryPolicy { get; }
+
         private static readonly XmlMediaTypeFormatter XmlFormatter = new XmlMediaTypeFormatter { UseXmlSerializer = true };
         private static readonly MediaTypeFormatterCollection XmlFormatterCollection = new MediaTypeFormatterCollection(new MediaTypeFormatter[] { XmlFormatter });
     }
