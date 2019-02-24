@@ -98,15 +98,15 @@ namespace BoardGameGeek.Dungeon
                 var gameCollection = userCollection.Where(collection => collection.GameId == game.Id).ToArray();
                 if (gameCollection.Length == 0) // not really a problem since we only want comments for metadata
                 {
-                    //Log.Warning("*** Failed to find game in user collection:");
-                    //Log.Warning($"    {game.Name}");
-                    //Log.Warning($"    boardgamegeek.com/{(game.IsExpansion ? "boardgameexpansion" : "boardgame")}/{game.Id}");
+                    //Log.Warning("** Failed to find game in user collection:");
+                    //Log.Warning(game.Name);
+                    //Log.Warning($"boardgamegeek.com/{(game.IsExpansion ? "boardgameexpansion" : "boardgame")}/{game.Id}");
                 }
                 else if (gameCollection.Length > 1)
                 {
-                    Log.Warning("*** Found multiple games in user collection:");
-                    Log.Warning($"    {game.Name}");
-                    Log.Warning($"    boardgamegeek.com/{(game.IsExpansion ? "boardgameexpansion" : "boardgame")}/{game.Id}");
+                    Log.Warning("** Found multiple games in user collection:");
+                    Log.Warning(game.Name);
+                    Log.Warning($"boardgamegeek.com/{(game.IsExpansion ? "boardgameexpansion" : "boardgame")}/{game.Id}");
                 }
                 var gameComments = string.Join(@"\n", gameCollection.Select(collection => collection.Comments?.Replace("\n", @"\n")));
 
@@ -183,13 +183,13 @@ namespace BoardGameGeek.Dungeon
             // check plays
             foreach (var play in plays.Where(play => play.IsSession && play.Quantity != 1))
             {
-                Log.Warning("*** Found multi-play session with unexpected quantity:");
-                Log.Warning($"    {play.Date:yyyy-MM-dd} {play.GameName}");
-                Log.Warning($"    boardgamegeek.com/plays/bydate/user/{userName}/subtype/boardgame/start/{play.Date.AddDays(-14):yyyy-MM-dd}/end/{play.Date.AddDays(14):yyyy-MM-dd}");
-                Log.Warning($"    boardgamegeek.com/{(play.IsExpansion ? "boardgameexpansion" : "boardgame")}/{play.GameId}");
-                Log.Trace($">>> {play.Quantity}");
+                Log.Warning("** Found multi-play session with unexpected quantity:");
+                Log.Warning($"{play.Date:yyyy-MM-dd} {play.GameName}");
+                Log.Warning($"boardgamegeek.com/plays/bydate/user/{userName}/subtype/boardgame/start/{play.Date.AddDays(-14):yyyy-MM-dd}/end/{play.Date.AddDays(14):yyyy-MM-dd}");
+                Log.Warning($"boardgamegeek.com/{(play.IsExpansion ? "boardgameexpansion" : "boardgame")}/{play.GameId}");
+                Log.Trace($">> {play.Quantity}");
                 play.Quantity = 1;
-                Log.Trace("<<< Selected 1");
+                Log.Trace("<< Selected 1");
             }
 
             // correlate expansion plays with parent plays on same day to determine parent game
@@ -217,47 +217,47 @@ namespace BoardGameGeek.Dungeon
 
                 if (playedParentIds.Length == 0)
                 {
-                    Log.Warning("*** Failed to find parent play for expansion play:");
-                    Log.Warning($"    {expansionPlay.Date:yyyy-MM-dd} {expansionPlay.GameName}");
-                    Log.Warning($"    boardgamegeek.com/plays/bydate/user/{userName}/subtype/boardgame/start/{expansionPlay.Date.AddDays(-14):yyyy-MM-dd}/end/{expansionPlay.Date.AddDays(14):yyyy-MM-dd}");
-                    Log.Warning($"    boardgamegeek.com/boardgameexpansion/{expansionPlay.GameId}");
+                    Log.Warning("** Failed to find parent play for expansion play:");
+                    Log.Warning($"{expansionPlay.Date:yyyy-MM-dd} {expansionPlay.GameName}");
+                    Log.Warning($"boardgamegeek.com/plays/bydate/user/{userName}/subtype/boardgame/start/{expansionPlay.Date.AddDays(-14):yyyy-MM-dd}/end/{expansionPlay.Date.AddDays(14):yyyy-MM-dd}");
+                    Log.Warning($"boardgamegeek.com/boardgameexpansion/{expansionPlay.GameId}");
                     if (parentIds.Length > 1)
                     {
-                        Log.Trace(">>> Found multiple linked parent games:");
+                        Log.Trace(">> Found multiple linked parent games:");
                         foreach (var parentId in parentIds)
                         {
                             var parent = expansion.Links.Single(link => link.Id == parentId);
-                            Log.Trace($"    {parent.Value}");
-                            Log.Trace($"    boardgamegeek.com/boardgame/{parent.Id}");
+                            Log.Trace(parent.Value);
+                            Log.Trace($"boardgamegeek.com/boardgame/{parent.Id}");
                         }
                         expansionPlay.ParentGameId = parentIds.First();
-                        Log.Trace($"<<< Selected {expansionPlay.ParentGameId}");
+                        Log.Trace($"<< Selected {expansionPlay.ParentGameId}");
                     }
                     else
                     {
                         var parent = expansion.Links.Single(link => link.Id == parentIds.Single());
-                        Log.Trace(">>> Found single parent game:");
-                        Log.Trace($"    {parent.Value}");
-                        Log.Trace($"    boardgamegeek.com/boardgame/{parent.Id}");
+                        Log.Trace(">> Found single parent game:");
+                        Log.Trace(parent.Value);
+                        Log.Trace($"boardgamegeek.com/boardgame/{parent.Id}");
                         expansionPlay.ParentGameId = parent.Id;
-                        Log.Trace($"<<< Selected {expansionPlay.ParentGameId}");
+                        Log.Trace($"<< Selected {expansionPlay.ParentGameId}");
                     }
                 }
                 else if (playedParentIds.Length > 1)
                 {
-                    Log.Warning("*** Found multiple parent plays for expansion play:");
-                    Log.Warning($"    {expansionPlay.Date:yyyy-MM-dd} {expansionPlay.GameName}");
-                    Log.Warning($"    boardgamegeek.com/plays/bydate/user/{userName}/subtype/boardgame/start/{expansionPlay.Date.AddDays(-14):yyyy-MM-dd}/end/{expansionPlay.Date.AddDays(14):yyyy-MM-dd}");
-                    Log.Warning($"    boardgamegeek.com/boardgameexpansion/{expansionPlay.GameId}");
-                    Log.Trace(">>> Using multiple linked parent games:");
+                    Log.Warning("** Found multiple parent plays for expansion play:");
+                    Log.Warning($"{expansionPlay.Date:yyyy-MM-dd} {expansionPlay.GameName}");
+                    Log.Warning($"boardgamegeek.com/plays/bydate/user/{userName}/subtype/boardgame/start/{expansionPlay.Date.AddDays(-14):yyyy-MM-dd}/end/{expansionPlay.Date.AddDays(14):yyyy-MM-dd}");
+                    Log.Warning($"boardgamegeek.com/boardgameexpansion/{expansionPlay.GameId}");
+                    Log.Trace(">> Using multiple linked parent games:");
                     foreach (var parentId in playedParentIds)
                     {
                         var parent = expansion.Links.Single(link => link.Id == parentId);
-                        Log.Trace($"    {parent.Value}");
-                        Log.Trace($"    boardgamegeek.com/boardgame/{parent.Id}");
+                        Log.Trace(parent.Value);
+                        Log.Trace($"boardgamegeek.com/boardgame/{parent.Id}");
                     }
                     expansionPlay.ParentGameId = playedParentIds.First();
-                    Log.Trace($"<<< Selected {expansionPlay.ParentGameId}");
+                    Log.Trace($"<< Selected {expansionPlay.ParentGameId}");
                 }
                 else
                 {
