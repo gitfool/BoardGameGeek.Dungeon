@@ -63,6 +63,10 @@ namespace BoardGameGeek.Dungeon
         [XmlElement("item")]
         public PlayItem[] Items { get; set; }
 
+        [XmlArray("players")]
+        [XmlArrayItem("player", typeof(PlayPlayer))]
+        public PlayPlayer[] Players { get; set; }
+
         public override string ToString()
         {
             return $"{Date:yyyy-MM-dd}: {Quantity}x {Items.Single().Name}";
@@ -95,5 +99,40 @@ namespace BoardGameGeek.Dungeon
     {
         [XmlAttribute("value")]
         public string Value { get; set; }
+    }
+
+    public class PlayPlayer
+    {
+        [XmlAttribute("username")]
+        public string UserName { get; set; }
+
+        [XmlAttribute("userid")]
+        public int UserId { get; set; }
+
+        [XmlAttribute("name")]
+        public string Name { get; set; }
+
+        [XmlAttribute("startposition")]
+        public string StartPosition { get; set; }
+
+        [XmlAttribute("color")]
+        public string Color { get; set; }
+
+        [XmlAttribute("score")]
+        public string Score { get; set; }
+
+        [XmlAttribute("new")]
+        public bool New { get; set; }
+
+        [XmlAttribute("rating")]
+        public string Rating { get; set; }
+
+        [XmlAttribute("win")]
+        public bool Win { get; set; }
+
+        public override string ToString()
+        {
+            return $"Name = {Name}, Score = {Score}";
+        }
     }
 }

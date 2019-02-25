@@ -156,6 +156,18 @@ namespace BoardGameGeek.Dungeon
                         NoWinStats = play.NoWinStats,
                         Location = play.Location,
                         Comments = play.Comments,
+                        Players = play.Players?.Select(player => new PlayPlayerDto
+                        {
+                            UserId = player.UserId,
+                            UserName = player.UserName,
+                            Name = player.Name,
+                            StartPosition = player.StartPosition,
+                            Color = player.Color,
+                            Score = player.Score,
+                            New = player.New,
+                            Rating = player.Rating,
+                            Win = player.Win
+                        }).ToArray()
                     };
                 }
                 if (page++ < totalPages)

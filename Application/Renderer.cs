@@ -1,4 +1,5 @@
 using Pocket;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,10 +18,10 @@ namespace BoardGameGeek.Dungeon
 
             using (var file = new StreamWriter(fileName, false, Encoding.UTF8))
             {
-                await file.WriteLineAsync(@"PlayId,Date,Location,Quantity,GameId,GameName,Length,Incomplete,NoWinStats,Comments");
+                await file.WriteLineAsync(@"PlayId,Date,Location,Quantity,GameId,GameName,Length,Incomplete,NoWinStats,Comments,Players");
                 foreach (var play in summary.UserPlays)
                 {
-                    await file.WriteLineAsync($@"{play.PlayId},{play.Date:yyyy-MM-dd},""{play.Location}"",{play.Quantity},{play.GameId},""{play.GameName}"",{play.Length},{(play.IsIncomplete ? "Y" : "")},{(play.NoWinStats ? "Y" : "")},""{play.Comments?.Replace("\n", @"\n")}""");
+                    await file.WriteLineAsync($@"{play.PlayId},{play.Date:yyyy-MM-dd},""{play.Location}"",{play.Quantity},{play.GameId},""{play.GameName}"",{play.Length},{(play.IsIncomplete ? "Y" : "")},{(play.NoWinStats ? "Y" : "")},""{play.Comments?.Replace("\n", @"\n")}"",""{Players(play.Players)}""");
                 }
             }
         }
@@ -67,6 +68,11 @@ namespace BoardGameGeek.Dungeon
                 }
                 await file.WriteLineAsync();
             }
+        }
+
+        private static string Players(IEnumerable<PlayPlayerDto> players)
+        {
+            return players != null ? string.Join(",", players.OrderByDescending(player => player.Score).Select(player => player.Name)) : string.Empty;
         }
 
         private static string Highlight(string text, bool isHighlight = true)

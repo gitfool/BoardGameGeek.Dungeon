@@ -17,10 +17,29 @@ namespace BoardGameGeek.Dungeon
         public bool NoWinStats { get; set; }
         public string Location { get; set; }
         public string Comments { get; set; }
+        public PlayPlayerDto[] Players { get; set; }
 
         public override string ToString()
         {
             return $"{Date:yyyy-MM-dd}: {Quantity}x {GameName}";
+        }
+    }
+
+    public class PlayPlayerDto
+    {
+        public int UserId { get; set; }
+        public string UserName { get; set; }
+        public string Name { get; set; }
+        public string StartPosition { get; set; }
+        public string Color { get; set; }
+        public string Score { get; set; }
+        public bool New { get; set; }
+        public string Rating { get; set; }
+        public bool Win { get; set; }
+
+        public override string ToString()
+        {
+            return $"Name = {Name}, Score = {Score}";
         }
     }
 }
