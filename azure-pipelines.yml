@@ -18,11 +18,5 @@ jobs:
       dockerRegistryEndpoint: DockerHub
     displayName: Docker login
 
-  - bash: |
-      set -ex
-      sudo groupadd -g $(stat --format='%g' /var/run/docker.sock) docker
-      sudo usermod -a -G docker $(whoami)
-    displayName: Docker socket
-
   - bash: cake --bootstrap && cake --verbosity=$(Cake.Verbosity) --ispublisher=true
     displayName: Cake build
