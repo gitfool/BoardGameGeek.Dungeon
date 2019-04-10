@@ -15,7 +15,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="PocketLogger.Subscribe" Version="0.6.1" />
     <PackageReference Include="Polly" Version="7.1.0" />
-    <PackageReference Include="System.CommandLine.Experimental" Version="0.1.0-alpha-63904-01" />
+    <PackageReference Include="System.CommandLine.Experimental" Version="0.2.0-alpha.19174.3" />
     <PackageReference Include="System.Interactive" Version="3.2.0" />
   </ItemGroup>
 </Project>
