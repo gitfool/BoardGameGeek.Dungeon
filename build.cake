@@ -1,4 +1,4 @@
-#load nuget:?package=Cake.Dungeon&version=1.0.1
+#load nuget:?package=Cake.Dungeon&prerelease
 
 Build.SetParameters
 (
