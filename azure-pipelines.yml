@@ -8,14 +8,12 @@ jobs:
 - job: Docker
   pool:
     vmImage: ubuntu-16.04
-  container:
-    image: dockfool/cake-docker:latest
+  container: dockfool/cake-docker:latest
   steps:
-  - task: Docker@1
+  - task: Docker@2
     inputs:
       command: login
-      containerRegistryType: Container Registry
-      dockerRegistryEndpoint: DockerHub
+      containerRegistry: DockerHub
     displayName: Docker login
 
   - bash: cake --bootstrap && cake --verbosity=$(Cake.Verbosity) --ispublisher=true
