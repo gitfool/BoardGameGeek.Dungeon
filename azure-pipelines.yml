@@ -1,9 +1,6 @@
 trigger:
 - master
 
-variables:
-- group: Cake
-
 jobs:
 - job: Docker
   pool:
@@ -16,5 +13,5 @@ jobs:
       containerRegistry: DockerHub
     displayName: Docker login
 
-  - bash: cake --bootstrap && cake --verbosity=$(Cake.Verbosity) --ispublisher=true
+  - bash: cake --bootstrap && cake --verbosity=verbose --ispublisher=true
     displayName: Cake build
