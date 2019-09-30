@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   Docker:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-16.04
     container: dockfool/cake-docker:latest
     steps:
     - name: Checkout source
@@ -16,4 +16,4 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Cake build
-      run: cake --bootstrap && cake --verbosity=verbose --ispublisher=true
+      run: cake --bootstrap && cake --verbosity=verbose
