@@ -1,6 +1,9 @@
 trigger:
 - master
 
+variables:
+  NUGET_PACKAGES: $(Pipeline.Workspace)/.nuget/packages
+
 jobs:
 - job: Docker
   pool:
@@ -15,6 +18,14 @@ jobs:
       command: login
       containerRegistry: DockerHub
     displayName: Docker login
+
+  - task: Cache@2
+    inputs:
+      path: $(NUGET_PACKAGES)
+      key: $(Agent.OS)|nuget|**/packages.lock.json
+      restoreKeys: |
+        $(Agent.OS)|nuget
+    displayName: Cache packages
 
   - bash: cake --bootstrap && cake --verbosity=verbose --ispublisher=true
     displayName: Cake build
