@@ -443,12 +443,13 @@
           "System.Threading": "4.3.0"
         }
       },
-      "System.CommandLine.Experimental": {
+      "System.CommandLine": {
         "type": "Transitive",
-        "resolved": "0.2.0-alpha.19174.3",
-        "contentHash": "PTJCVcj0rkIYPZzKZbU4uLdEvosmnX2CQR98rY6+efIn96zRtbljl74sPFRFZlLxeLprt42FeZNsYH+QdxCHPA==",
+        "resolved": "0.3.0-alpha.20054.1",
+        "contentHash": "mI6PoT3VJqo3nnmFjJGL2ZDVolNzfFBP/Js2sgne2J0bP1Ub+4YdOE/oGK7L0KC/fCRyy3ch82Q3/9odI8QiSw==",
         "dependencies": {
-          "Microsoft.CSharp": "4.4.1"
+          "Microsoft.CSharp": "4.4.1",
+          "system.memory": "4.5.3"
         }
       },
       "System.ComponentModel": {
@@ -730,6 +731,11 @@
           "System.Runtime.Extensions": "4.3.0",
           "System.Threading": "4.3.0"
         }
+      },
+      "System.Memory": {
+        "type": "Transitive",
+        "resolved": "4.5.3",
+        "contentHash": "3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA=="
       },
       "System.Net.Http": {
         "type": "Transitive",
@@ -1307,7 +1313,7 @@
           "Newtonsoft.Json": "12.0.3",
           "PocketLogger.Subscribe": "0.6.1",
           "Polly": "7.2.0",
-          "System.CommandLine.Experimental": "0.2.0-alpha.19174.3",
+          "System.CommandLine": "0.3.0-alpha.20054.1",
           "System.Interactive": "4.0.0"
         }
       }
