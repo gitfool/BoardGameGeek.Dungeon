@@ -4,18 +4,18 @@
     ".NETCoreApp,Version=v3.1": {
       "FakeItEasy": {
         "type": "Direct",
-        "requested": "[5.5.0, )",
-        "resolved": "5.5.0",
-        "contentHash": "5N0IJyWbicdpyWBQ6yr2fXNvUG/PawDIU/qM1/BdZ9RnYWizFhXPCvsphRcN7U9PopqC6zH9I4JipMR1GN+nzg==",
+        "requested": "[6.0.0, )",
+        "resolved": "6.0.0",
+        "contentHash": "4nu0fkgw1OteCbggk9BlTS0GU2JPVosen22YJ8eODbLbyuTusUzBw/EC0mpHBDzr4YFE/tB8JGazJE+O95+Rgg==",
         "dependencies": {
           "Castle.Core": "4.3.1"
         }
       },
       "FluentAssertions": {
         "type": "Direct",
-        "requested": "[5.9.0, )",
-        "resolved": "5.9.0",
-        "contentHash": "JZxb5DuspmuH4A5p9bfj060evQnwIUkxxfFMG9F/pa7gl1Ry2r2nuQbu5G4UWGQQTtpTxPpVowqNDdBkA0G2Mw==",
+        "requested": "[5.10.0, )",
+        "resolved": "5.10.0",
+        "contentHash": "SdLCaJmnJhqaPcggMIfV33q8uOIcYjDKozkBM6kyAe9LF1Usa4c3IO/vkBsm0VjizO4+62ccFIJYK2nktBcMCQ==",
         "dependencies": {
           "System.Configuration.ConfigurationManager": "4.4.0"
         }
