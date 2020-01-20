@@ -7,7 +7,7 @@ Build.SetParameters
 
     defaultLog: true,
 
-    runBuild: true,
+    runBuildSolutions: true,
     runBuildPublish: true,
     runUnitTests: true,
     runDockerBuild: true,
@@ -21,7 +21,15 @@ Build.SetParameters
     buildEmbedAllSources: true,
     dockerPushLatest: true,
 
-    dockerImages: new[] { new DockerImage { Repository = "dockfool/boardgamegeek-dungeon", Context = "Application" } }
+    dockerImages: new[]
+    {
+        new DockerImage
+        {
+            Repository = "dockfool/boardgamegeek-dungeon",
+            Context = "Application",
+            Args = new[] { "configuration={{ Build.Parameters.Configuration }}" }
+        }
+    }
 );
 
 Build.Run();

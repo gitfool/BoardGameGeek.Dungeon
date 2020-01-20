@@ -1,31 +1,33 @@
 trigger:
-- master
+  - "**"
+pr:
+  - master
 
 variables:
   NUGET_PACKAGES: $(Pipeline.Workspace)/.nuget/packages
 
 jobs:
-- job: Docker
-  pool:
-    vmImage: ubuntu-latest
-  container: dockfool/cake-docker:latest
-  steps:
-  - checkout: self
-    displayName: Checkout source
+  - job: Docker
+    pool:
+      vmImage: ubuntu-latest
+    container: dockfool/cake-docker:latest
+    steps:
+      - checkout: self
+        displayName: Checkout source
 
-  - task: Docker@2
-    inputs:
-      command: login
-      containerRegistry: DockerHub
-    displayName: Docker login
+      - task: Docker@2
+        inputs:
+          command: login
+          containerRegistry: DockerHub
+        displayName: Docker login
 
-  - task: Cache@2
-    inputs:
-      path: $(NUGET_PACKAGES)
-      key: $(Agent.OS)|nuget|**/packages.lock.json
-      restoreKeys: |
-        $(Agent.OS)|nuget
-    displayName: Cache packages
+      - task: Cache@2
+        inputs:
+          path: $(NUGET_PACKAGES)
+          key: $(Agent.OS)|nuget|**/packages.lock.json
+          restoreKeys: |
+            $(Agent.OS)|nuget
+        displayName: Cache packages
 
-  - bash: cake --bootstrap && cake --verbosity=verbose --ispublisher=true
-    displayName: Cake build
+      - bash: dotnet tool restore && dotnet cake --bootstrap && dotnet cake --verbosity=verbose --target=build --publish=true
+        displayName: Cake build
