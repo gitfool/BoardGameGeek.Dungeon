@@ -1,7 +1,7 @@
-using Pocket;
 using System;
 using System.CommandLine.Invocation;
 using System.Threading.Tasks;
+using Pocket;
 
 namespace BoardGameGeek.Dungeon
 {

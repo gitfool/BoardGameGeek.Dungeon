@@ -1,9 +1,9 @@
-using Pocket;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Pocket;
 using static Pocket.Logger<BoardGameGeek.Dungeon.Renderer>;
 // ReSharper disable StringLiteralTypo
 

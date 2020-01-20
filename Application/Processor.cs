@@ -1,9 +1,9 @@
-using Pocket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Pocket;
 using static Pocket.Logger<BoardGameGeek.Dungeon.Processor>;
 // ReSharper disable CommentTypo
 // ReSharper disable StringLiteralTypo

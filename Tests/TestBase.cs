@@ -1,5 +1,5 @@
-using Pocket;
 using System;
+using Pocket;
 using Xunit.Abstractions;
 
 namespace BoardGameGeek.Dungeon

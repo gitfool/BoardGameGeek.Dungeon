@@ -9,6 +9,3 @@ insert_final_newline = true
 
 [*.{config,csproj,json,props,xml,yml}]
 indent_size = 2
-
-[*.cs]
-dotnet_sort_system_directives_first = false
