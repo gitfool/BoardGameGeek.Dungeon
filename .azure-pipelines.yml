@@ -25,8 +25,7 @@ jobs:
         inputs:
           path: $(NUGET_PACKAGES)
           key: $(Agent.OS)|nuget|**/packages.lock.json
-          restoreKeys: |
-            $(Agent.OS)|nuget
+          restoreKeys: $(Agent.OS)|nuget
         displayName: Cache packages
 
       - bash: dotnet tool restore && dotnet cake --bootstrap && dotnet cake --verbosity=verbose --target=build --publish=true
