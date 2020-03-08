@@ -3,8 +3,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BoardGameGeek.Dungeon.Models;
 using Pocket;
 using static Pocket.Logger<BoardGameGeek.Dungeon.Renderer>;
+
 // ReSharper disable StringLiteralTypo
 
 namespace BoardGameGeek.Dungeon
@@ -18,8 +20,8 @@ namespace BoardGameGeek.Dungeon
 
             using (var file = new StreamWriter(fileName, false, Encoding.UTF8))
             {
-                await file.WriteLineAsync(@"PlayId,Date,Location,Quantity,GameId,GameName,Length,Incomplete,NoWinStats,Comments,Players");
-                foreach (var play in summary.UserPlays)
+                await file.WriteLineAsync(@"PlayId,Date,Location,Quantity,GameId,GameName,Length,Incomplete,NoWinStats,Comments,Players"); //TODO save players as json using csv helper
+                foreach (var play in summary.Plays)
                 {
                     await file.WriteLineAsync($@"{play.PlayId},{play.Date:yyyy-MM-dd},""{play.Location}"",{play.Quantity},{play.GameId},""{play.GameName}"",{play.Length},{(play.IsIncomplete ? "Y" : "")},{(play.NoWinStats ? "Y" : "")},""{play.Comments?.Replace("\n", @"\n")}"",""{Players(play.Players)}""");
                 }
@@ -52,13 +54,13 @@ namespace BoardGameGeek.Dungeon
                 await file.WriteLineAsync();
 
                 // write base games and expansions
-                foreach (var baseGame in summary.UserGames
+                foreach (var baseGame in summary.Games
                     .Where(game => !game.IsExpansion)
                     .OrderByDescending(game => game.Plays)
                     .ThenBy(game => game.Name))
                 {
                     await file.WriteLineAsync($"[color=gray]{baseGame.Plays}x[/color] [thing={baseGame.Id}]{Highlight(baseGame.Name, baseGame.IsHighlight)}[/thing] {Suffix(baseGame)}");
-                    foreach (var expansion in summary.UserGames
+                    foreach (var expansion in summary.Games
                         .Where(game => game.IsExpansion && game.ParentId == baseGame.Id)
                         .OrderByDescending(game => game.Plays)
                         .ThenBy(game => game.Name))
@@ -70,7 +72,7 @@ namespace BoardGameGeek.Dungeon
             }
         }
 
-        private static string Players(IEnumerable<PlayPlayerDto> players)
+        private static string Players(IEnumerable<Player> players)
         {
             return players != null ? string.Join(",", players.OrderByDescending(player => player.Score).Select(player => player.Name)) : string.Empty;
         }
@@ -90,7 +92,7 @@ namespace BoardGameGeek.Dungeon
             return count >= 100 ? ":star:" : count >= 10 ? ":halfstar:" : ":nostar:";
         }
 
-        private static string Suffix(GameDto game)
+        private static string Suffix(Game game)
         {
             var builder = new StringBuilder();
 

@@ -2,10 +2,11 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Xml.Serialization;
+
 // ReSharper disable StringLiteralTypo
 // ReSharper disable UnusedMember.Global
 
-namespace BoardGameGeek.Dungeon
+namespace BoardGameGeek.Dungeon.Services
 {
     [XmlRoot("plays")]
     public class UserPlays
@@ -28,10 +29,7 @@ namespace BoardGameGeek.Dungeon
         [XmlElement("play")]
         public PlayItems[] Plays { get; set; }
 
-        public override string ToString()
-        {
-            return $"UserName = {UserName}, Total = {Total}, Page = {Page}";
-        }
+        public override string ToString() => $"UserName = {UserName}, Total = {Total}, Page = {Page}";
     }
 
     public class PlayItems
@@ -49,7 +47,7 @@ namespace BoardGameGeek.Dungeon
         public int Length { get; set; }
 
         [XmlAttribute("incomplete")]
-        public bool IsIncomplete { get; set; }
+        public bool Incomplete { get; set; }
 
         [XmlAttribute("nowinstats")]
         public bool NoWinStats { get; set; }
@@ -67,10 +65,7 @@ namespace BoardGameGeek.Dungeon
         [XmlArrayItem("player", typeof(PlayPlayer))]
         public PlayPlayer[] Players { get; set; }
 
-        public override string ToString()
-        {
-            return $"{Date:yyyy-MM-dd}: {Quantity}x {Items.Single().Name}";
-        }
+        public override string ToString() => $"{Date:yyyy-MM-dd}: {Quantity}x {Items.Single().Name}";
     }
 
     public class PlayItem
@@ -86,12 +81,9 @@ namespace BoardGameGeek.Dungeon
 
         [XmlArray("subtypes")]
         [XmlArrayItem("subtype", typeof(PlayItemStringValue))]
-        public PlayItemStringValue[] SubTypes { get; set; }
+        public PlayItemStringValue[] Subtypes { get; set; }
 
-        public override string ToString()
-        {
-            return $"Name = {Name}";
-        }
+        public override string ToString() => $"Name = {Name}";
     }
 
     [DebuggerDisplay("{" + nameof(Value) + "}")]
@@ -130,9 +122,6 @@ namespace BoardGameGeek.Dungeon
         [XmlAttribute("win")]
         public bool Win { get; set; }
 
-        public override string ToString()
-        {
-            return $"Name = {Name}, Score = {Score}";
-        }
+        public override string ToString() => $"Name = {Name}, Score = {Score}";
     }
 }

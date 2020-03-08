@@ -1,9 +1,10 @@
 using System.Text;
 using System.Xml.Serialization;
+
 // ReSharper disable StringLiteralTypo
 // ReSharper disable UnusedMember.Global
 
-namespace BoardGameGeek.Dungeon
+namespace BoardGameGeek.Dungeon.Services
 {
     [XmlRoot("items")]
     public class CollectionItems
@@ -30,7 +31,7 @@ namespace BoardGameGeek.Dungeon
         public int ObjectId { get; set; }
 
         [XmlAttribute("subtype")]
-        public string SubType { get; set; }
+        public string Subtype { get; set; }
 
         [XmlElement("name")]
         public string Name { get; set; }
@@ -45,7 +46,7 @@ namespace BoardGameGeek.Dungeon
         public string Thumbnail { get; set; }
 
         [XmlElement("numplays")]
-        public int TotalPlays { get; set; }
+        public int NumPlays { get; set; }
 
         [XmlElement("comment")]
         public string Comments { get; set; }
@@ -53,10 +54,7 @@ namespace BoardGameGeek.Dungeon
         [XmlElement("status")]
         public CollectionItemStatus Status { get; set; }
 
-        public override string ToString()
-        {
-            return $"Name = {Name}, TotalPlays = {TotalPlays}";
-        }
+        public override string ToString() => $"Name = {Name}, NumPlays = {NumPlays}";
     }
 
     public class CollectionItemStatus

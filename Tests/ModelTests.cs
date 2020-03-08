@@ -1,13 +1,14 @@
-using FakeItEasy;
+using BoardGameGeek.Dungeon.Models;
 using FluentAssertions;
 using Xunit;
+
 // ReSharper disable ConvertToConstant.Local
 
 namespace BoardGameGeek.Dungeon
 {
-    public class ProcessorTests
+    public class ModelTests
     {
-        public class IsHighlightMethod
+        public class IsHighlightMatchMethod
         {
             [Theory]
             [InlineData(null)]
@@ -21,9 +22,7 @@ namespace BoardGameGeek.Dungeon
             [InlineData(@"Highlight: 2014.\nHighlight: 2018.")]
             public void Should_ReturnFalse_WhenHighlightYear_IsNotInComments(string comments)
             {
-                var processor = new Processor(A.Fake<IBggService>());
-
-                var isHighlight = processor.IsHighlight(comments, 2016);
+                var isHighlight = Game.IsHighlightMatch(comments, 2016);
 
                 isHighlight.Should().BeFalse();
             }
@@ -39,15 +38,13 @@ namespace BoardGameGeek.Dungeon
             [InlineData(@"Highlights: 2010, 2012.\nHighlights: 2014, 2016, 2018.")]
             public void Should_ReturnTrue_WhenHighlightYear_IsInComments(string comments)
             {
-                var processor = new Processor(A.Fake<IBggService>());
-
-                var isHighlight = processor.IsHighlight(comments, 2016);
+                var isHighlight = Game.IsHighlightMatch(comments, 2016);
 
                 isHighlight.Should().BeTrue();
             }
         }
 
-        public class IsSessionMethod
+        public class IsSessionMatchMethod
         {
             [Theory]
             [InlineData(null)]
@@ -57,7 +54,7 @@ namespace BoardGameGeek.Dungeon
             [InlineData("Session: ?/?.")]
             public void Should_ReturnFalse_WhenSessionStats_AreNotInComments(string comments)
             {
-                var session = Processor.IsSession(comments);
+                var session = Play.IsSessionMatch(comments);
 
                 session.Should().BeFalse();
             }
@@ -71,7 +68,7 @@ namespace BoardGameGeek.Dungeon
             [InlineData("Session: 2/2.")]
             public void Should_ReturnTrue_WhenSessionStats_AreInComments(string comments)
             {
-                var session = Processor.IsSession(comments);
+                var session = Play.IsSessionMatch(comments);
 
                 session.Should().BeTrue();
             }

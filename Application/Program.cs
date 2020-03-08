@@ -15,7 +15,7 @@ namespace BoardGameGeek.Dungeon
                 Console.WriteLine($"{entry.TimestampUtc.ToLocalTime():HH:mm:ss} {message}");
             });
 
-            return CommandLine.Parser.InvokeAsync(args);
+            return CommandLine.Bootstrap.Parser.InvokeAsync(args);
         }
     }
 }

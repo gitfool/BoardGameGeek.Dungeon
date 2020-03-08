@@ -1,19 +1,19 @@
 using System;
 
-namespace BoardGameGeek.Dungeon
+namespace BoardGameGeek.Dungeon.Models
 {
     public class Summary
     {
         public Summary()
         {
-            UserPlays = Array.Empty<PlayDto>();
-            UserGames = Array.Empty<GameDto>();
+            Plays = Array.Empty<Play>();
+            Games = Array.Empty<Game>();
             BaseGame = new Stats();
             Expansion = new Stats();
         }
 
-        public PlayDto[] UserPlays { get; set; }
-        public GameDto[] UserGames { get; set; }
+        public Play[] Plays { get; set; }
+        public Game[] Games { get; set; }
 
         public Stats BaseGame { get; set; }
         public Stats Expansion { get; set; }

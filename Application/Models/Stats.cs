@@ -1,4 +1,4 @@
-namespace BoardGameGeek.Dungeon
+namespace BoardGameGeek.Dungeon.Models
 {
     public class Stats
     {

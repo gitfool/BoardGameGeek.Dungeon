@@ -623,6 +623,14 @@
         "resolved": "4.0.0",
         "contentHash": "wZY3/hV80Sa4UI59RTFqcohfzZ8P+Ny9jdlm2tXVssdqiKvC1FmCQANq3QP+sOXsDvOH0Ci3/vcFlbh/tz9JZg=="
       },
+      "System.Interactive.Async": {
+        "type": "Transitive",
+        "resolved": "4.0.0",
+        "contentHash": "tYEzSDQ3rn0G7sGgjcNB91C3dDRJc8m8Lavvu88dwt8FEwKPGZdp/tFs+lQTdqHDV9UItkGIwI8Aa6gGTvzLoQ==",
+        "dependencies": {
+          "System.Linq.Async": "4.0.0"
+        }
+      },
       "System.IO": {
         "type": "Transitive",
         "resolved": "4.3.0",
@@ -707,6 +715,11 @@
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0"
         }
+      },
+      "System.Linq.Async": {
+        "type": "Transitive",
+        "resolved": "4.0.0",
+        "contentHash": "WbiYEedFZeM+psmMyoCt1AKbZppAZg8Eq1ZTQ+521fGNeXqlgJj0tZYV5n1LsKRO5osQuitYxGNuzPTy3213sg=="
       },
       "System.Linq.Expressions": {
         "type": "Transitive",
@@ -1314,7 +1327,8 @@
           "PocketLogger.Subscribe": "0.6.1",
           "Polly": "7.2.0",
           "System.CommandLine": "2.0.0-beta1.20104.2",
-          "System.Interactive": "4.0.0"
+          "System.Interactive": "4.0.0",
+          "System.Interactive.Async": "4.0.0"
         }
       }
     }

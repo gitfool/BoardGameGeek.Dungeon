@@ -1,6 +1,6 @@
-﻿namespace BoardGameGeek.Dungeon
+namespace BoardGameGeek.Dungeon.Models
 {
-    public class CollectionDto
+    public class Collection
     {
         public int GameId { get; set; }
         public string GameName { get; set; }
@@ -9,9 +9,6 @@
         public int TotalPlays { get; set; }
         public string Comments { get; set; }
 
-        public override string ToString()
-        {
-            return $"{GameName} (\u03a3 {TotalPlays}x)";
-        }
+        public override string ToString() => $"{GameName} (\u03a3 {TotalPlays}x)";
     }
 }

@@ -1,10 +1,11 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Xml.Serialization;
+
 // ReSharper disable StringLiteralTypo
 // ReSharper disable UnusedMember.Global
 
-namespace BoardGameGeek.Dungeon
+namespace BoardGameGeek.Dungeon.Services
 {
     [XmlRoot("items")]
     public class ThingItems
@@ -60,10 +61,7 @@ namespace BoardGameGeek.Dungeon
         [XmlElement("link")]
         public ThingItemLink[] Links { get; set; }
 
-        public override string ToString()
-        {
-            return $"Type = {Type}, Name = {Names.First().Value}";
-        }
+        public override string ToString() => $"Type = {Type}, Name = {Names.First().Value}";
     }
 
     public class ThingItemName
@@ -77,10 +75,7 @@ namespace BoardGameGeek.Dungeon
         [XmlAttribute("value")]
         public string Value { get; set; }
 
-        public override string ToString()
-        {
-            return $"Type = {Type}, Value = {Value}";
-        }
+        public override string ToString() => $"Type = {Type}, Value = {Value}";
     }
 
     public class ThingItemLink
@@ -95,12 +90,9 @@ namespace BoardGameGeek.Dungeon
         public string Value { get; set; }
 
         [XmlAttribute("inbound")]
-        public bool IsInbound { get; set; }
+        public bool Inbound { get; set; }
 
-        public override string ToString()
-        {
-            return $"Type = {Type}, Value = {Value}";
-        }
+        public override string ToString() => $"Type = {Type}, Value = {Value}";
     }
 
     [DebuggerDisplay("{" + nameof(Value) + "}")]
