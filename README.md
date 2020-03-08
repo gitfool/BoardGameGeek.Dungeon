@@ -6,4 +6,4 @@
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=gitfool/BoardGameGeek.Dungeon)](https://dependabot.com)
 [![Docker Pulls](https://img.shields.io/docker/pulls/dockfool/boardgamegeek-dungeon.svg?logo=docker)](https://hub.docker.com/r/dockfool/boardgamegeek-dungeon/tags)
 
-`BoardGameGeek.Dungeon` is a playground for BoardGameGeek tools. See [boardgamegeek.com](https://boardgamegeek.com).
+`BoardGameGeek.Dungeon` is a playground for BoardGameGeek (BGG) tools. See [boardgamegeek.com](https://boardgamegeek.com).
