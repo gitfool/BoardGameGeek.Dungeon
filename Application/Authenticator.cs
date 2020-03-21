@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using BoardGameGeek.Dungeon.Services;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Pocket;
 using static Pocket.Logger<BoardGameGeek.Dungeon.Authenticator>;
 
@@ -26,25 +25,37 @@ namespace BoardGameGeek.Dungeon
             {
                 Log.Info("Authenticating user");
                 var cookies = await BggService.LoginUserAsync(userName, password);
-                var json = JsonConvert.SerializeObject(cookies, new JsonSerializerSettings
+                var json = JsonSerializer.Serialize(cookies, new JsonSerializerOptions
                 {
-                    ContractResolver = new CookieContractResolver(),
-                    DefaultValueHandling = DefaultValueHandling.Ignore,
-                    Formatting = Formatting.Indented
+                    Converters = { new CookieConverter() },
+                    WriteIndented = true
                 });
                 await File.WriteAllTextAsync(fileName, json);
             }
             else
             {
-                var cookies = JsonConvert.DeserializeObject<IDictionary<string, Cookie>>(await File.ReadAllTextAsync(fileName));
+                var json = await File.ReadAllTextAsync(fileName);
+                var cookies = JsonSerializer.Deserialize<IDictionary<string, Cookie>>(json);
                 BggService.LoginUser(cookies);
             }
         }
 
-        private class CookieContractResolver : DefaultContractResolver
+        private class CookieConverter : JsonConverter<Cookie>
         {
-            protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization) => // filter properties so cookies roundtrip serialization
-                base.CreateProperties(type, memberSerialization).Where(property => property.PropertyName != "Comment" && property.PropertyName != "Port").ToList();
+            public override Cookie Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) => throw new NotImplementedException();
+
+            public override void Write(Utf8JsonWriter writer, Cookie value, JsonSerializerOptions options)
+            {
+                // select minimal properties for roundtrip
+                writer.WriteStartObject();
+                writer.WriteString("Domain", value.Domain);
+                writer.WriteString("Expires", value.Expires);
+                writer.WriteString("Name", value.Name);
+                writer.WriteString("Path", value.Path);
+                writer.WriteString("TimeStamp", value.TimeStamp);
+                writer.WriteString("Value", value.Value);
+                writer.WriteEndObject();
+            }
         }
 
         private IBggService BggService { get; }
