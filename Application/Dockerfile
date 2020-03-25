@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/runtime:3.1.2-bionic
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1.3-bionic
 
 ARG configuration=Debug
 
