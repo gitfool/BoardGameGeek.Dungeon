@@ -13,9 +13,9 @@
       },
       "FluentAssertions": {
         "type": "Direct",
-        "requested": "[5.10.2, )",
-        "resolved": "5.10.2",
-        "contentHash": "h+StwMRam3UiPBo7XddKcMGlyC0uDBN5Eg4ajn+h9J9fO3Z22pYQLDzSGEnYTjX/uY4+CjIWqqFxM054poQkYw==",
+        "requested": "[5.10.3, )",
+        "resolved": "5.10.3",
+        "contentHash": "gVPEVp1hLVqcv+7Q2wiDf7kqCNn7+bQcQ0jbJ2mcRT6CeRoZl1tNkqvzSIhvekyldDptk77j1b03MXTTRIqqpg==",
         "dependencies": {
           "System.Configuration.ConfigurationManager": "4.4.0"
         }
