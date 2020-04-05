@@ -1,2 +1,5 @@
 *
 !bin/
+bin/**/Properties/
+bin/**/publish/
+bin/**/*.runtimeconfig.dev.json

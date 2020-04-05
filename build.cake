@@ -8,14 +8,12 @@ Build.SetParameters
     defaultLog: true,
 
     runBuildSolutions: true,
-    runBuildPublish: true,
-    runUnitTests: true,
     runDockerBuild: true,
+    runUnitTests: true,
     runPublishToDocker: true,
 
     sourceDirectory: Build.Directories.Root,
 
-    buildPublishProjectPatterns: new[] { "Application/*.csproj" },
     unitTestProjectPatterns: new[] { "Tests/*.csproj" },
 
     buildEmbedAllSources: true,
