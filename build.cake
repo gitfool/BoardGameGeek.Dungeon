@@ -3,7 +3,6 @@
 Build.SetParameters
 (
     title: "BoardGameGeek.Dungeon",
-    configuration: "Release",
 
     defaultLog: true,
 

@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/core/runtime:3.1.3-bionic
 
-ARG configuration=Debug
+ARG configuration=Release
 
 WORKDIR /app
 COPY bin/$configuration/ .
