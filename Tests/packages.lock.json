@@ -4,9 +4,9 @@
     ".NETCoreApp,Version=v3.1": {
       "FakeItEasy": {
         "type": "Direct",
-        "requested": "[6.0.0, )",
-        "resolved": "6.0.0",
-        "contentHash": "4nu0fkgw1OteCbggk9BlTS0GU2JPVosen22YJ8eODbLbyuTusUzBw/EC0mpHBDzr4YFE/tB8JGazJE+O95+Rgg==",
+        "requested": "[6.0.1, )",
+        "resolved": "6.0.1",
+        "contentHash": "J1uzFg3y6+T8LLgsQkL0NdAbs4jvtoWd5u8RM8miGbKaDRV81WI51C5igck4TC6Vzft9eJE5BoqrnUS22HU/9A==",
         "dependencies": {
           "Castle.Core": "4.3.1"
         }
@@ -445,8 +445,8 @@
       },
       "System.CommandLine": {
         "type": "Transitive",
-        "resolved": "2.0.0-beta1.20158.1",
-        "contentHash": "kFwEhvsl6QGn7cMipzOcMJwnst3+zdS7tdI+LLt9d2CADQirbrTR+Kdexp0Li/iaeLe3MP9zrFFvpJgmPOxS0Q==",
+        "resolved": "2.0.0-beta1.20214.1",
+        "contentHash": "Hs/3ghb1nRw6Z3hiZO9mLH05JngTq15e1Dnf8g63KWv+EDBDNVx3G6zArorpSNae9wJjJ2JXJazaJn9q+HiCRg==",
         "dependencies": {
           "Microsoft.CSharp": "4.4.1",
           "system.memory": "4.5.3"
@@ -1325,7 +1325,7 @@
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
           "PocketLogger.Subscribe": "0.6.1",
           "Polly": "7.2.0",
-          "System.CommandLine": "2.0.0-beta1.20158.1",
+          "System.CommandLine": "2.0.0-beta1.20214.1",
           "System.Interactive": "4.1.1",
           "System.Interactive.Async": "4.1.1"
         }
