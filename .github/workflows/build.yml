@@ -1,9 +1,12 @@
 name: Build
 on:
   push:
-    branches: [ "**" ]
+    branches:
+      - "**"
+      - "!dependabot/**"
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
 
 env:
   NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
