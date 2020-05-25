@@ -22,9 +22,6 @@ jobs:
       - name: Fetch unshallow
         run: git fetch --prune --tags --unshallow
 
-      - name: Touch dotnet
-        run: touch "$HOME/.dotnet/$(dotnet --version).dotnetFirstUseSentinel"
-
       - name: Cache packages
         uses: actions/cache@v1
         with:

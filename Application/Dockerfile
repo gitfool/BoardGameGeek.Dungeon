@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/runtime:3.1.4-bionic
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1.4-focal
 
 ARG configuration=Release
 

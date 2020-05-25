@@ -21,9 +21,6 @@ jobs:
       - checkout: self
         displayName: Checkout source
 
-      - bash: touch "$HOME/.dotnet/$(dotnet --version).dotnetFirstUseSentinel"
-        displayName: Touch dotnet
-
       - task: Cache@2
         inputs:
           path: $(NUGET_PACKAGES)
