@@ -52,15 +52,15 @@
       },
       "Polly": {
         "type": "Direct",
-        "requested": "[7.2.0, )",
-        "resolved": "7.2.0",
-        "contentHash": "fbtSRyqVSd5AS7O4Pm2Mnw7zKKJk7Z3rOfNnKSTfPkTxM8Z1JJFZzzjqLAOTG6AyUkormSWMO2AhdlygF/384Q=="
+        "requested": "[7.2.1, )",
+        "resolved": "7.2.1",
+        "contentHash": "Od8SnPlpQr+PuAS0YzY3jgtzaDNknlIuAaldN2VEIyTvm/wCg22C5nUkUV1BEG8rIsub5RFMoV/NEQ0tM/+7Uw=="
       },
       "System.CommandLine": {
         "type": "Direct",
-        "requested": "[2.0.0-beta1.20214.1, )",
-        "resolved": "2.0.0-beta1.20214.1",
-        "contentHash": "Hs/3ghb1nRw6Z3hiZO9mLH05JngTq15e1Dnf8g63KWv+EDBDNVx3G6zArorpSNae9wJjJ2JXJazaJn9q+HiCRg==",
+        "requested": "[2.0.0-beta1.20253.1, )",
+        "resolved": "2.0.0-beta1.20253.1",
+        "contentHash": "Ig+OUi1IXF3OX+S3e1+mjqK9J6ro0eoUokYRUbTjBGpL0lrgXxsBic66THXHD8K2Fb9c0Gk85ESzPgZ9Cz9Wvg==",
         "dependencies": {
           "Microsoft.CSharp": "4.4.1",
           "system.memory": "4.5.3"
