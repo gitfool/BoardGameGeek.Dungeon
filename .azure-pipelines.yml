@@ -24,7 +24,7 @@ jobs:
       - task: Cache@2
         inputs:
           path: $(NUGET_PACKAGES)
-          key: $(Agent.OS)|nuget|**/packages.lock.json
+          key: $(Agent.OS)|nuget|.config/dotnet-tools.json,**/packages.lock.json
           restoreKeys: $(Agent.OS)|nuget
         displayName: Cache packages
 
