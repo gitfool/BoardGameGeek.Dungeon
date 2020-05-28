@@ -34,5 +34,5 @@ jobs:
           containerRegistry: DockerHub
         displayName: Docker login
 
-      - bash: dotnet tool restore && dotnet cake --bootstrap && dotnet cake --verbosity=verbose --target=build --publish=true
+      - bash: dotnet tool restore && dotnet cake --bootstrap && dotnet cake --verbosity=verbose --target=build
         displayName: Cake build
