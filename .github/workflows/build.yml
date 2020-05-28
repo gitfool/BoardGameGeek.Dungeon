@@ -18,9 +18,8 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
-
-      - name: Fetch unshallow
-        run: git fetch --prune --tags --unshallow
+        with:
+          fetch-depth: 0
 
       - name: Cache packages
         uses: actions/cache@v1
