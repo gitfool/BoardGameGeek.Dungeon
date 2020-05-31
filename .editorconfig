@@ -9,3 +9,6 @@ insert_final_newline = true
 
 [*.{config,csproj,json,props,xml,yml}]
 indent_size = 2
+
+[{dotnet-tools.json,packages.lock.json}]
+insert_final_newline = false
