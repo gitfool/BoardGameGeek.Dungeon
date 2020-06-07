@@ -56,5 +56,3 @@
 
 # Linguist
 *.cake       linguist-language=C#
-cake.ps1     linguist-vendored
-cake.sh      linguist-vendored
