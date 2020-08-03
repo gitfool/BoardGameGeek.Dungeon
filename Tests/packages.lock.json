@@ -4,9 +4,9 @@
     ".NETCoreApp,Version=v3.1": {
       "FakeItEasy": {
         "type": "Direct",
-        "requested": "[6.0.1, )",
-        "resolved": "6.0.1",
-        "contentHash": "J1uzFg3y6+T8LLgsQkL0NdAbs4jvtoWd5u8RM8miGbKaDRV81WI51C5igck4TC6Vzft9eJE5BoqrnUS22HU/9A==",
+        "requested": "[6.2.0, )",
+        "resolved": "6.2.0",
+        "contentHash": "EqCiPBP2dhyaN+9H71dlWAK1ar70HeMxKBrMVtugJE4/MM1KerA/e7ETQcxl47mFFnrx2SerwbBiS++EunD+Ew==",
         "dependencies": {
           "Castle.Core": "4.3.1"
         }
@@ -53,12 +53,9 @@
       },
       "xunit.runner.visualstudio": {
         "type": "Direct",
-        "requested": "[2.4.1, )",
-        "resolved": "2.4.1",
-        "contentHash": "mBXd1lp1TQr4to2nFv+c4Tf+RnPoQPKglzwLdbdirOUxRaJsCUNDUx2y7E6j9ajgISlTTp1CydFBZCRCUIrwDg==",
-        "dependencies": {
-          "Microsoft.NET.Test.Sdk": "15.0.0"
-        }
+        "requested": "[2.4.2, )",
+        "resolved": "2.4.2",
+        "contentHash": "Trt9multph2KE3U0p9oBt0k4Fq6lUv4btUcONaQEeuFnMCak2k/b7PAArbLtMFW7HO1jxlBHUgIPKEqci3Y1dg=="
       },
       "Castle.Core": {
         "type": "Transitive",
@@ -445,11 +442,11 @@
       },
       "System.CommandLine": {
         "type": "Transitive",
-        "resolved": "2.0.0-beta1.20253.1",
-        "contentHash": "Ig+OUi1IXF3OX+S3e1+mjqK9J6ro0eoUokYRUbTjBGpL0lrgXxsBic66THXHD8K2Fb9c0Gk85ESzPgZ9Cz9Wvg==",
+        "resolved": "2.0.0-beta1.20371.2",
+        "contentHash": "L6cnw4QgaLAOpUPSW1TjYGJGKsUvyDYvdQ/Gqv0/EnOSzByEf+IlAK1sRu+bcAhBrdws+eNPcOarg1Qj33oNDA==",
         "dependencies": {
           "Microsoft.CSharp": "4.4.1",
-          "system.memory": "4.5.3"
+          "system.memory": "4.5.4"
         }
       },
       "System.ComponentModel": {
@@ -747,8 +744,8 @@
       },
       "System.Memory": {
         "type": "Transitive",
-        "resolved": "4.5.3",
-        "contentHash": "3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA=="
+        "resolved": "4.5.4",
+        "contentHash": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw=="
       },
       "System.Net.Http": {
         "type": "Transitive",
@@ -1325,7 +1322,7 @@
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
           "PocketLogger.Subscribe": "0.6.1",
           "Polly": "7.2.1",
-          "System.CommandLine": "2.0.0-beta1.20253.1",
+          "System.CommandLine": "2.0.0-beta1.20371.2",
           "System.Interactive": "4.1.1",
           "System.Interactive.Async": "4.1.1"
         }

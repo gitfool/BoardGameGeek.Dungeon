@@ -58,12 +58,12 @@
       },
       "System.CommandLine": {
         "type": "Direct",
-        "requested": "[2.0.0-beta1.20253.1, )",
-        "resolved": "2.0.0-beta1.20253.1",
-        "contentHash": "Ig+OUi1IXF3OX+S3e1+mjqK9J6ro0eoUokYRUbTjBGpL0lrgXxsBic66THXHD8K2Fb9c0Gk85ESzPgZ9Cz9Wvg==",
+        "requested": "[2.0.0-beta1.20371.2, )",
+        "resolved": "2.0.0-beta1.20371.2",
+        "contentHash": "L6cnw4QgaLAOpUPSW1TjYGJGKsUvyDYvdQ/Gqv0/EnOSzByEf+IlAK1sRu+bcAhBrdws+eNPcOarg1Qj33oNDA==",
         "dependencies": {
           "Microsoft.CSharp": "4.4.1",
-          "system.memory": "4.5.3"
+          "system.memory": "4.5.4"
         }
       },
       "System.Interactive": {
@@ -551,8 +551,8 @@
       },
       "System.Memory": {
         "type": "Transitive",
-        "resolved": "4.5.3",
-        "contentHash": "3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA=="
+        "resolved": "4.5.4",
+        "contentHash": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw=="
       },
       "System.Net.Http": {
         "type": "Transitive",
