@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/runtime:3.1.6-focal
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1.7-focal
 
 ARG configuration=Release
 
