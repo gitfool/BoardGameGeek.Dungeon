@@ -9,11 +9,13 @@ Build.SetParameters
     runBuildSolutions: true,
     runDockerBuild: true,
     runUnitTests: true,
+    runTestCoverageReports: true,
     runPublishToDocker: true,
 
     sourceDirectory: Build.Directories.Root,
 
     unitTestProjectPatterns: new[] { "Tests/*.csproj" },
+    unitTestLoggers: new[] { "console;verbosity=detailed", "trx;logfilename=TestResults.trx" },
 
     buildEmbedAllSources: true,
     dockerPushLatest: true,

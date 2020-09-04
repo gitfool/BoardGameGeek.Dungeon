@@ -1,4 +1,11 @@
 <Project>
+  <!-- Coverlet workaround for deterministic builds -->
+  <Target Name="CoverletGetPathMap" DependsOnTargets="InitializeSourceRootMappedPaths" Returns="@(_LocalTopLevelSourceRoot)" Condition="'$(DeterministicSourcePaths)' == 'true'">
+    <ItemGroup>
+      <_LocalTopLevelSourceRoot Include="@(SourceRoot)" Condition="'%(SourceRoot.NestedRoot)' == ''"/>
+    </ItemGroup>
+  </Target>
+
   <!-- https://github.com/dotnet/sdk/issues/1458#issuecomment-420456386 -->
   <Target Name="_ResolveCopyLocalNuGetPackagePdbsAndXml" Condition="$(CopyLocalLockFileAssemblies) == true" AfterTargets="ResolveReferences">
     <ItemGroup>
