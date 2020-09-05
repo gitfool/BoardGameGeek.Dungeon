@@ -34,3 +34,12 @@ jobs:
 
       - name: Cake build
         run: dotnet tool restore && dotnet cake --bootstrap --verbosity=verbose && dotnet cake --verbosity=verbose --target=build --publish=true
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Tests
+          path: |
+            Artifacts/Tests/*.txt
+            Artifacts/Tests/*/*.trx
+            Artifacts/Tests/*/*/coverage.*.xml

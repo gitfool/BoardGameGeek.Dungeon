@@ -36,3 +36,15 @@ jobs:
 
       - bash: dotnet tool restore && dotnet cake --bootstrap && dotnet cake --verbosity=verbose --target=build
         displayName: Cake build
+
+      - task: PublishTestResults@2
+        inputs:
+          testRunner: VSTest
+          testResultsFiles: "Artifacts/Tests/*/*.trx"
+        displayName: Upload test artifacts
+
+      - task: PublishCodeCoverageResults@1
+        inputs:
+          codeCoverageTool: cobertura
+          summaryFileLocation: "Artifacts/Tests/*/*/coverage.*.xml"
+        displayName: Upload coverage artifacts
