@@ -1,0 +1,23 @@
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH && $CI_COMMIT_BRANCH !~ /^dependabot/'
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
+    - when: never
+
+variables:
+  GIT_DEPTH: 0
+  NUGET_PACKAGES: $CI_PROJECT_DIR/.nuget/packages
+
+stages: [ Build ]
+
+Docker:
+  stage: Build
+  tags: [ shared, linux, docker ]
+  image: dockfool/cake-docker:latest
+  cache:
+    paths: [ $NUGET_PACKAGES ]
+    key:
+      prefix: linux-nuget
+      files: [ packages.lock.json ]
+  script:
+    - dotnet tool restore && dotnet cake --bootstrap --verbosity=verbose && dotnet cake --verbosity=verbose --target=build
