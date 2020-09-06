@@ -5,8 +5,12 @@ workflow:
     - when: never
 
 variables:
+  DOCKER_HOST: tcp://docker:2375
   GIT_DEPTH: 0
   NUGET_PACKAGES: $CI_PROJECT_DIR/.nuget/packages
+
+services:
+  - docker:dind
 
 stages: [ Build ]
 
