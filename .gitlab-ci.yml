@@ -25,3 +25,9 @@ Docker:
       files: [ packages.lock.json ]
   script:
     - dotnet tool restore && dotnet cake --bootstrap --verbosity=verbose && dotnet cake --verbosity=verbose --target=build
+    - dotnet tool install trx2junit --tool-path /usr/local/bin && trx2junit Artifacts/Tests/*/*.trx
+  coverage: /\s*Line coverage:\s*(\d+(?:\.\d+)?)%/
+  artifacts:
+    reports:
+      junit: Artifacts/Tests/*/*.xml
+      cobertura: Artifacts/Tests/*/*/coverage.*.xml
