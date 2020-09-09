@@ -7,6 +7,9 @@ update_configs:
       - match:
           dependency_type: "all"
           update_type: "all"
+    ignored_updates:
+      - match:
+          dependency_name: "coverlet.*"
   - package_manager: docker
     directory: /Application
     update_schedule: daily
