@@ -22,29 +22,29 @@ jobs:
         displayName: Checkout source
 
       - task: Cache@2
+        displayName: Cache packages
         inputs:
           path: $(NUGET_PACKAGES)
           key: $(Agent.OS)|nuget|.config/dotnet-tools.json,**/packages.lock.json
           restoreKeys: $(Agent.OS)|nuget
-        displayName: Cache packages
 
       - task: Docker@2
+        displayName: Docker login
         inputs:
           command: login
           containerRegistry: DockerHub
-        displayName: Docker login
 
       - bash: dotnet tool restore && dotnet cake --bootstrap && dotnet cake --verbosity=verbose --target=build
         displayName: Cake build
 
       - task: PublishTestResults@2
+        displayName: Upload test artifacts
         inputs:
           testRunner: VSTest
           testResultsFiles: "Artifacts/Tests/*/*.trx"
-        displayName: Upload test artifacts
 
       - task: PublishCodeCoverageResults@1
+        displayName: Upload coverage artifacts
         inputs:
           codeCoverageTool: cobertura
           summaryFileLocation: "Artifacts/Tests/*/*/coverage.*.xml"
-        displayName: Upload coverage artifacts
