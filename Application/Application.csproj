@@ -7,6 +7,17 @@
     <AssemblyName>BoardGameGeek.Dungeon</AssemblyName>
     <RootNamespace>BoardGameGeek.Dungeon</RootNamespace>
     <NoWarn>$(NoWarn),SYSLIB0005</NoWarn>
+
+    <DebugType>embedded</DebugType>
+    <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+    <EnableUnsafeUTF7Encoding>false</EnableUnsafeUTF7Encoding>
+    <HttpActivityPropagationSupport>false</HttpActivityPropagationSupport>
+    <!-- <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract> -->
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>true</PublishTrimmed>
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+    <!-- <TrimMode>link</TrimMode> -->
   </PropertyGroup>
 
   <ItemGroup>

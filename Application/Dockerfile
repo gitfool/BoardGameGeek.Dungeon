@@ -1,8 +1,8 @@
-FROM mcr.microsoft.com/dotnet/runtime:5.0.0-rc.1-focal
+FROM mcr.microsoft.com/dotnet/runtime-deps:5.0.0-rc.1-focal
 
 ARG configuration=Release
 
 WORKDIR /app
-COPY bin/$configuration/ .
+COPY bin/$configuration/linux-x64/publish/ .
 
-ENTRYPOINT [ "dotnet", "BoardGameGeek.Dungeon.dll" ]
+ENTRYPOINT [ "./BoardGameGeek.Dungeon" ]
