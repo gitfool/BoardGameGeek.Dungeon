@@ -28,12 +28,6 @@ jobs:
           key: $(Agent.OS)|nuget|.config/dotnet-tools.json,**/packages.lock.json
           restoreKeys: $(Agent.OS)|nuget
 
-      - task: Docker@2
-        displayName: Docker login
-        inputs:
-          command: login
-          containerRegistry: DockerHub
-
       - bash: dotnet tool restore && dotnet cake --bootstrap && dotnet cake --verbosity=verbose --target=build
         displayName: Cake build
 
