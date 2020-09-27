@@ -2,8 +2,7 @@ name: Build
 on:
   push:
     branches:
-      - "**"
-      - "!dependabot/**"
+      - master
   pull_request:
     branches:
       - master
