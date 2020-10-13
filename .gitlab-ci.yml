@@ -2,7 +2,6 @@ workflow:
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
     - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
-    - when: never
 
 variables:
   DOCKER_HOST: tcp://docker:2375
