@@ -6,7 +6,6 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AssemblyName>BoardGameGeek.Dungeon</AssemblyName>
     <RootNamespace>BoardGameGeek.Dungeon</RootNamespace>
-    <NoWarn>$(NoWarn),SYSLIB0005</NoWarn>
 
     <DebugType>embedded</DebugType>
     <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
