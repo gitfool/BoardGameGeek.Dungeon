@@ -238,13 +238,13 @@
       },
       "Pocket.TypeDiscovery": {
         "type": "Transitive",
-        "resolved": "0.4.0",
-        "contentHash": "duxUmw9PtWkO8ZS7nNCzecInDHTEc8vSvGaCwx7QSaw+swCdEaaHOJtjSFB+VdMnMGkpQcEK9s3eFdBjXUnq0w=="
+        "resolved": "0.5.0",
+        "contentHash": "verRp0PyBBXrUV3eBFinH1HmgtZ02Sdh2v61PO5WBLnQjXuOnBeT3YSC+h2/3bAKuI4dDeVb41lZ19Imeepddw=="
       },
       "PocketLogger": {
         "type": "Transitive",
-        "resolved": "0.3.0",
-        "contentHash": "qQm5e9s5OSsEusfpyLeKQTpM9uvVS5lZCQxRFDzDPECk4SOpmwtsk2kuzVeVcqSueVXvUc7hJlXVPxb5qhaXdA==",
+        "resolved": "0.4.0",
+        "contentHash": "YoZzplgb9JTcXNm5JtCibozTcvkpo+9qaztyD1j58mjwfUDywUQ6wkxsiQWXz/Hg86Erq+U7O1ZbQzmudInSBg==",
         "dependencies": {
           "System.Diagnostics.DiagnosticSource": "4.4.0",
           "System.ValueTuple": "4.3.1"
@@ -252,12 +252,12 @@
       },
       "PocketLogger.Subscribe": {
         "type": "Transitive",
-        "resolved": "0.6.1",
-        "contentHash": "uCgsIRUpTaGSe+o8QAdkEVzvgJcStA8nPi9QbvdWnAZE/bUvz0525HVp/L3Dw4X58j5T5G2UvcH2MuucZytCwA==",
+        "resolved": "0.7.0",
+        "contentHash": "0FpiNf09xJkawWwrFV3mEhrqEo+TIQjO62FKhjbwFp2Wl3tBfTxaLdAPHBGQ7CHNe7IuKzmgXflCT5+jfZoFyA==",
         "dependencies": {
           "Pocket.Disposable": "[1.0.4, 2.0.0)",
-          "Pocket.TypeDiscovery": "0.4.0",
-          "PocketLogger": "[0.3.0, 0.4.0)"
+          "Pocket.TypeDiscovery": "0.5.0",
+          "PocketLogger": "[0.4.0, 0.5.0)"
         }
       },
       "Polly": {
@@ -1326,7 +1326,7 @@
           "Flurl": "2.8.2",
           "Flurl.Http": "2.4.2",
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
-          "PocketLogger.Subscribe": "0.6.1",
+          "PocketLogger.Subscribe": "0.7.0",
           "Polly": "7.2.1",
           "System.CommandLine": "2.0.0-beta1.20427.1",
           "System.Interactive": "4.1.1",
