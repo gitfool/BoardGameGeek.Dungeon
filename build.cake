@@ -21,6 +21,7 @@ Build.SetParameters
 
     buildEmbedAllSources: true,
     dockerPushLatest: true,
+    dockerPushSkipDuplicate: true,
 
     dockerImages: new[]
     {

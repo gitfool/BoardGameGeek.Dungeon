@@ -26,7 +26,7 @@ jobs:
           key: $(Agent.OS)|nuget|.config/dotnet-tools.json,**/packages.lock.json
           restoreKeys: $(Agent.OS)|nuget
 
-      - bash: dotnet tool restore && dotnet cake --bootstrap && dotnet cake --verbosity=verbose --target=build
+      - bash: dotnet tool restore && dotnet cake --verbosity=verbose --target=build
         displayName: Cake build
 
       - task: PublishTestResults@2
