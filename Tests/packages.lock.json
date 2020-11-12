@@ -28,12 +28,12 @@
       },
       "Microsoft.NET.Test.Sdk": {
         "type": "Direct",
-        "requested": "[16.7.1, )",
-        "resolved": "16.7.1",
-        "contentHash": "7T3XYuLT2CRMZXwlp8p4cEEf6y7VifxTdKwYNzCYp31CN4iyrcDKneIJvNTo0YVnTxJn+CSlGVlUnZHUlAwt9A==",
+        "requested": "[16.8.0, )",
+        "resolved": "16.8.0",
+        "contentHash": "fc8VoTlD9+en13XWT9SW86M9jn4Y0Vns/uHRUJ2B6fevnuYmkilBLL+bIXC9yMELGYrerXIZm+B6Caux8lopfQ==",
         "dependencies": {
-          "Microsoft.CodeCoverage": "16.7.1",
-          "Microsoft.TestPlatform.TestHost": "16.7.1"
+          "Microsoft.CodeCoverage": "16.8.0",
+          "Microsoft.TestPlatform.TestHost": "16.8.0"
         }
       },
       "Microsoft.SourceLink.GitHub": {
@@ -82,8 +82,8 @@
       },
       "Flurl": {
         "type": "Transitive",
-        "resolved": "2.8.2",
-        "contentHash": "3VEYAqkGTGHgla4xuyEB4d8XGLeMX2k05C4WfI7YmKQHsL7RhoGu3L6h1xsKKTPFWjEL13p09XOIGwD1pQ86dg=="
+        "resolved": "3.0.0",
+        "contentHash": "ChxU0nz82zTbMX25+B0HpvmYp63VsYWjYGI0N3ovsN6rzyxSwp3UMKm69dL1JA/sNCSCrTo70R9ZSiQCE6+Rqw=="
       },
       "Flurl.Http": {
         "type": "Transitive",
@@ -111,8 +111,8 @@
       },
       "Microsoft.CodeCoverage": {
         "type": "Transitive",
-        "resolved": "16.7.1",
-        "contentHash": "PhSppbk+kvAyD9yGJIcBRJ/XYwY+21YK88l22PGTtixaxNdjnx1idVKh88LCGwKaTL8HhlnQ41VmBiBdZJzIQw=="
+        "resolved": "16.8.0",
+        "contentHash": "fR7HsWO+jTRhfBPWVl6QJbJSEU98siIKcQIDIo2tOH6nlogcOdScquWzVABR0UUpQlfWwt13vyryOltvLfsHnw=="
       },
       "Microsoft.CSharp": {
         "type": "Transitive",
@@ -136,18 +136,18 @@
       },
       "Microsoft.TestPlatform.ObjectModel": {
         "type": "Transitive",
-        "resolved": "16.7.1",
-        "contentHash": "FL+VpAC/nCCzj80MwX6L8gJD06u2m1SKcQQLAymDLFqNtgtI9h3J5n0mVN+s18qcMzybsmO9GK7rMuHYx11KMg==",
+        "resolved": "16.8.0",
+        "contentHash": "Y60IDgwinOqwECwmvXyFqk2lnQAvcS6EKevc3DyKUJoJaNJ9bUGsUS8H2nlgBHloSQ/Zqj27CjRuLhBsCUO58w==",
         "dependencies": {
           "NuGet.Frameworks": "5.0.0"
         }
       },
       "Microsoft.TestPlatform.TestHost": {
         "type": "Transitive",
-        "resolved": "16.7.1",
-        "contentHash": "mv7MnBDtqwQAjoH+AphE+Tu0dsF6x/c7Zs8umkb2McbvNALJdfBuWJQbiXGWqhNq7k8eMmnkNO6klJz4pkgekw==",
+        "resolved": "16.8.0",
+        "contentHash": "CVXKGIWakPq7UboAlJ7ukcngBFF2UaHwS9pAN3nLyOpOR3yUYbinpd+eVvz6Fm/qRBP4uiwx0lWEZlHOHG1c0w==",
         "dependencies": {
-          "Microsoft.TestPlatform.ObjectModel": "16.7.1",
+          "Microsoft.TestPlatform.ObjectModel": "16.8.0",
           "Newtonsoft.Json": "9.0.1"
         }
       },
@@ -623,15 +623,15 @@
       },
       "System.Interactive": {
         "type": "Transitive",
-        "resolved": "4.1.1",
-        "contentHash": "pL6aZm6Im/KSpQADvJMr3sK5d/Q/iQbC4TQ2zQfiDZ+qzAskuMgrtgnCheAwLX1vC5YDTXpXnVjeMzfxUZzfjQ=="
+        "resolved": "5.0.0",
+        "contentHash": "ePZVkHmihIDChuXwghL5+ywHlbbLOLeDQsITXvHvugMv3sVZe9KUN1MK/VlfVLiFlLTi6QDc2xgZSFX/66i/jQ=="
       },
       "System.Interactive.Async": {
         "type": "Transitive",
-        "resolved": "4.1.1",
-        "contentHash": "oxXHl45NI2WzeAEzIhf8EtcHRjI7Pj8LpvFlegNXLab73dC6Ssd8SSOpw8cxjghWZhU8PM5b7AIZVE9E3DsJPA==",
+        "resolved": "5.0.0",
+        "contentHash": "QaqhQVDiULcu4vm6o89+iP329HcK44cETHOYgy/jfEjtzeFy0ZxmuM7nel9ocjnKxEM4yh1mli7hgh8Q9o+/Iw==",
         "dependencies": {
-          "System.Linq.Async": "4.1.1"
+          "System.Linq.Async": "5.0.0"
         }
       },
       "System.IO": {
@@ -721,8 +721,8 @@
       },
       "System.Linq.Async": {
         "type": "Transitive",
-        "resolved": "4.1.1",
-        "contentHash": "+MYrr8Jz8ayKhOJrqh+9EH4y2qcKYUehxKXE3j4IG5to4FlXz6HF0CgBUtYqrcbW5uOaCEUoZ+SVnp4dEIAi6Q=="
+        "resolved": "5.0.0",
+        "contentHash": "cPtIuuH8TIjVHSi2ewwReWGW1PfChPE0LxPIDlfwVcLuTM9GANFTXiMB7k3aC4sk3f0cQU25LNKzx+jZMxijqw=="
       },
       "System.Linq.Expressions": {
         "type": "Transitive",
@@ -1323,14 +1323,14 @@
       "BoardGameGeek.Dungeon": {
         "type": "Project",
         "dependencies": {
-          "Flurl": "2.8.2",
+          "Flurl": "3.0.0",
           "Flurl.Http": "2.4.2",
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
           "PocketLogger.Subscribe": "0.7.0",
           "Polly": "7.2.1",
           "System.CommandLine": "2.0.0-beta1.20427.1",
-          "System.Interactive": "4.1.1",
-          "System.Interactive.Async": "4.1.1"
+          "System.Interactive": "5.0.0",
+          "System.Interactive.Async": "5.0.0"
         }
       }
     }
