@@ -13,8 +13,8 @@ namespace BoardGameGeek.Dungeon.CommandLine
     {
         static Bootstrap()
         {
-            var userNameArgument = new Argument<string>{ Name = "username", Description = "Geek username." };
-            var passwordArgument = new Argument<string>{ Name = "password", Description = "Geek password." };
+            var userNameArgument = new Argument<string> { Name = "username", Description = "Geek username." };
+            var passwordArgument = new Argument<string> { Name = "password", Description = "Geek password." };
 
             var passwordOption = new Option<string>(new[] { "--password", "-p" }, "Geek password. Defaults to last specified.");
 

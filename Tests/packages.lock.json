@@ -87,10 +87,10 @@
       },
       "Flurl.Http": {
         "type": "Transitive",
-        "resolved": "2.4.2",
-        "contentHash": "VfSJ0DKzh6kf2IOZGG1/JpHajhtqzGp1t+M1QSyFGse7c4Gg1DpH80LTveYea2hV1BEtvPPEp6A4iZ78D8bxGQ==",
+        "resolved": "3.0.0",
+        "contentHash": "20y0rStrI5WH7YvB1bUrc9OYyiP3XRK4ikk8gCTL4sn0yPIlCNdEtHCnJtPY5GlcUvWfIoCbJjgoBnmRs1r11w==",
         "dependencies": {
-          "Flurl": "2.8.2",
+          "Flurl": "3.0.0",
           "Newtonsoft.Json": "12.0.2",
           "System.Text.Encoding.CodePages": "4.5.1"
         }
@@ -1324,7 +1324,7 @@
         "type": "Project",
         "dependencies": {
           "Flurl": "3.0.0",
-          "Flurl.Http": "2.4.2",
+          "Flurl.Http": "3.0.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
           "PocketLogger.Subscribe": "0.7.0",
           "Polly": "7.2.1",

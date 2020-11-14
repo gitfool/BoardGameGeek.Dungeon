@@ -10,11 +10,11 @@
       },
       "Flurl.Http": {
         "type": "Direct",
-        "requested": "[2.4.2, )",
-        "resolved": "2.4.2",
-        "contentHash": "VfSJ0DKzh6kf2IOZGG1/JpHajhtqzGp1t+M1QSyFGse7c4Gg1DpH80LTveYea2hV1BEtvPPEp6A4iZ78D8bxGQ==",
+        "requested": "[3.0.0, )",
+        "resolved": "3.0.0",
+        "contentHash": "20y0rStrI5WH7YvB1bUrc9OYyiP3XRK4ikk8gCTL4sn0yPIlCNdEtHCnJtPY5GlcUvWfIoCbJjgoBnmRs1r11w==",
         "dependencies": {
-          "Flurl": "2.8.2",
+          "Flurl": "3.0.0",
           "Newtonsoft.Json": "12.0.2",
           "System.Text.Encoding.CodePages": "4.5.1"
         }

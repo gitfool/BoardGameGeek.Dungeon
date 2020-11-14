@@ -20,8 +20,8 @@ namespace BoardGameGeek.Dungeon.Services
         IAsyncEnumerable<Thing> GetThingsAsync(IEnumerable<int> ids);
         IAsyncEnumerable<Collection> GetUserCollectionAsync(string userName);
         IAsyncEnumerable<Play> GetUserPlaysAsync(string userName, int? year = null, int? id = null);
-        void LoginUser(IDictionary<string, Cookie> cookies);
-        Task<IDictionary<string, Cookie>> LoginUserAsync(string userName, string password);
+        void LoginUser(IEnumerable<FlurlCookie> cookies);
+        Task<IEnumerable<FlurlCookie>> LoginUserAsync(string userName, string password);
         Task<Play> LogUserPlayAsync(Play play);
     }
 
@@ -39,19 +39,19 @@ namespace BoardGameGeek.Dungeon.Services
         {
             FlurlClient = new FlurlClient("https://boardgamegeek.com")
             {
-                Settings = { BeforeCall = call => { Logger<BggService>.Log.Trace($"{call.Request.Method} {call.Request.RequestUri}"); } }
+                Settings = { BeforeCall = call => { Logger<BggService>.Log.Trace($"{call.Request.Verb} {call.Request.Url}"); } }
             };
-            RetryPolicy = Policy.Handle<FlurlHttpException>(ex => ex.Call.Response.StatusCode == HttpStatusCode.TooManyRequests)
-                .OrResult<HttpResponseMessage>(response => response.StatusCode == HttpStatusCode.Accepted)
+            RetryPolicy = Policy.Handle<FlurlHttpException>(ex => ex.Call.HttpResponseMessage.StatusCode == HttpStatusCode.TooManyRequests)
+                .OrResult<IFlurlResponse>(response => response.ResponseMessage.StatusCode == HttpStatusCode.Accepted)
                 .WaitAndRetryAsync(EnumerateDelay(), (response, _) =>
                 {
                     if (response.Exception is FlurlHttpException ex) //TODO once throttled, introduce delay for all subsequent calls
                     {
-                        Logger<BggService>.Log.Warning($"{ex.Call.HttpStatus:D} {ex.Call.HttpStatus}");
+                        Logger<BggService>.Log.Warning($"{ex.Call.HttpResponseMessage.StatusCode:D} {ex.Call.HttpResponseMessage.StatusCode}");
                     }
                     else
                     {
-                        Logger<BggService>.Log.Warning($"{response.Result.StatusCode:D} {response.Result.StatusCode}");
+                        Logger<BggService>.Log.Warning($"{response.Result.ResponseMessage.StatusCode:D} {response.Result.ResponseMessage.StatusCode}");
                     }
                 });
         }
@@ -66,7 +66,7 @@ namespace BoardGameGeek.Dungeon.Services
                         id = string.Join(",", ids)
                     });
                 var response = await RetryPolicy.ExecuteAsync(() => request.GetAsync());
-                return await response.Content.ReadAsAsync<ThingItems>(XmlFormatterCollection);
+                return await response.ResponseMessage.Content.ReadAsAsync<ThingItems>(XmlFormatterCollection);
             }
 
             var thingCollections = ids.Distinct()
@@ -111,7 +111,7 @@ namespace BoardGameGeek.Dungeon.Services
                         minplays = 1
                     });
                 var response = await RetryPolicy.ExecuteAsync(() => request.GetAsync());
-                return await response.Content.ReadAsAsync<CollectionItems>(XmlFormatterCollection);
+                return await response.ResponseMessage.Content.ReadAsAsync<CollectionItems>(XmlFormatterCollection);
             }
 
             var userCollection = await GetUserCollectionAsync(userName);
@@ -144,7 +144,7 @@ namespace BoardGameGeek.Dungeon.Services
                         page
                     });
                 var response = await RetryPolicy.ExecuteAsync(() => request.GetAsync());
-                return await response.Content.ReadAsAsync<UserPlays>(XmlFormatterCollection);
+                return await response.ResponseMessage.Content.ReadAsAsync<UserPlays>(XmlFormatterCollection);
             }
 
             var userPlays = await GetUserPlaysAsync(userName, year, id);
@@ -190,30 +190,33 @@ namespace BoardGameGeek.Dungeon.Services
             }
         }
 
-        public void LoginUser(IDictionary<string, Cookie> cookies)
+        public void LoginUser(IEnumerable<FlurlCookie> cookies)
         {
+            Cookies = new CookieJar();
             foreach (var cookie in cookies)
             {
-                FlurlClient.WithCookie(cookie.Value);
+                Cookies.AddOrReplace(cookie);
             }
         }
 
-        public async Task<IDictionary<string, Cookie>> LoginUserAsync(string userName, string password)
+        public async Task<IEnumerable<FlurlCookie>> LoginUserAsync(string userName, string password)
         {
-            var request = FlurlClient.Request("login").EnableCookies();
+            var request = FlurlClient.Request("login");
+            var cookies = new CookieJar();
             var body = new
             {
                 username = userName,
                 password
             };
-            await RetryPolicy.ExecuteAsync(() => request.PostUrlEncodedAsync(body));
-            return FlurlClient.Cookies.Where(cookie => cookie.Key.StartsWith("bgg", StringComparison.OrdinalIgnoreCase))
-                .ToDictionary(cookie => cookie.Key, cookie => cookie.Value);
+            await RetryPolicy.ExecuteAsync(() => request.WithCookies(out cookies).PostUrlEncodedAsync(body));
+            Cookies = cookies.Remove(cookie => !cookie.Name.StartsWith("bgg", StringComparison.OrdinalIgnoreCase));
+            return Cookies;
         }
 
         public async Task<Play> LogUserPlayAsync(Play play)
         {
-            var request = FlurlClient.Request("geekplay.php");
+            var request = FlurlClient.Request("geekplay.php")
+                .WithCookies(Cookies);
             var body = new
             {
                 version = 2,
@@ -242,7 +245,8 @@ namespace BoardGameGeek.Dungeon.Services
         }
 
         private IFlurlClient FlurlClient { get; }
-        private AsyncRetryPolicy<HttpResponseMessage> RetryPolicy { get; }
+        private CookieJar Cookies { get; set; }
+        private AsyncRetryPolicy<IFlurlResponse> RetryPolicy { get; }
 
         private static readonly XmlMediaTypeFormatter XmlFormatter = new XmlMediaTypeFormatter { UseXmlSerializer = true };
         private static readonly MediaTypeFormatterCollection XmlFormatterCollection = new MediaTypeFormatterCollection(new MediaTypeFormatter[] { XmlFormatter });

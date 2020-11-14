@@ -77,20 +77,11 @@ namespace BoardGameGeek.Dungeon
             return players != null ? string.Join(",", players.OrderByDescending(player => player.Score).Select(player => player.Name)) : string.Empty;
         }
 
-        private static string Highlight(string text, bool isHighlight = true)
-        {
-            return isHighlight ? $"[bgcolor=gold]{text}[/bgcolor]" : text;
-        }
+        private static string Highlight(string text, bool isHighlight = true) => isHighlight ? $"[bgcolor=gold]{text}[/bgcolor]" : text;
 
-        private static string Pluralize(int count)
-        {
-            return count != 1 ? "s" : string.Empty;
-        }
+        private static string Pluralize(int count) => count != 1 ? "s" : string.Empty;
 
-        private static string Star(int count)
-        {
-            return count >= 100 ? ":star:" : count >= 10 ? ":halfstar:" : ":nostar:";
-        }
+        private static string Star(int count) => count >= 100 ? ":star:" : count >= 10 ? ":halfstar:" : ":nostar:";
 
         private static string Suffix(Game game)
         {

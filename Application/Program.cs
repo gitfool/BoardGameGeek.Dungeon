@@ -1,11 +1,12 @@
 using System;
 using System.CommandLine.Parsing;
 using System.Threading.Tasks;
+using BoardGameGeek.Dungeon.CommandLine;
 using Pocket;
 
 namespace BoardGameGeek.Dungeon
 {
-    public class Program
+    public static class Program
     {
         private static Task<int> Main(string[] args)
         {
@@ -15,7 +16,7 @@ namespace BoardGameGeek.Dungeon
                 Console.WriteLine($"{entry.TimestampUtc.ToLocalTime():HH:mm:ss} {message}");
             });
 
-            return CommandLine.Bootstrap.Parser.InvokeAsync(args);
+            return Bootstrap.Parser.InvokeAsync(args);
         }
     }
 }
