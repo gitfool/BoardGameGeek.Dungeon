@@ -4,9 +4,9 @@
     ".NETCoreApp,Version=v5.0": {
       "coverlet.collector": {
         "type": "Direct",
-        "requested": "[1.3.1-preview.26.g521f3d306e, )",
-        "resolved": "1.3.1-preview.26.g521f3d306e",
-        "contentHash": "hyMQuiFUFGCqs5prJNw6tAnVXxu0waGK/O0o1obhKT9FIzjS5RA2navEyPJoQ/b0tLI7ITBO9C5WMDPc1Q63DQ=="
+        "requested": "[3.0.0-preview.18.g183cbed8a6, )",
+        "resolved": "3.0.0-preview.18.g183cbed8a6",
+        "contentHash": "ZJdhQdIcbBYPLdaM/Sy/YI/UvPCEzp9TArqyJYkZA0WEjto34XK2M4z84uC+EUGISp5rmmCPAVXi+iP3c7YLdg=="
       },
       "FakeItEasy": {
         "type": "Direct",
