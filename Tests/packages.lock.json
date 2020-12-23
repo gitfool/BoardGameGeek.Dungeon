@@ -28,12 +28,12 @@
       },
       "Microsoft.NET.Test.Sdk": {
         "type": "Direct",
-        "requested": "[16.8.0, )",
-        "resolved": "16.8.0",
-        "contentHash": "fc8VoTlD9+en13XWT9SW86M9jn4Y0Vns/uHRUJ2B6fevnuYmkilBLL+bIXC9yMELGYrerXIZm+B6Caux8lopfQ==",
+        "requested": "[16.8.3, )",
+        "resolved": "16.8.3",
+        "contentHash": "E2hDEEHIUmDpGm0LIjVenWhXWWd5lWylzuujz0iPwwxPYUA2Ua6jrxfMNdoKombDSk9hpDDA0M3xnFz6TLh/KQ==",
         "dependencies": {
-          "Microsoft.CodeCoverage": "16.8.0",
-          "Microsoft.TestPlatform.TestHost": "16.8.0"
+          "Microsoft.CodeCoverage": "16.8.3",
+          "Microsoft.TestPlatform.TestHost": "16.8.3"
         }
       },
       "Microsoft.SourceLink.GitHub": {
@@ -82,15 +82,15 @@
       },
       "Flurl": {
         "type": "Transitive",
-        "resolved": "3.0.0",
-        "contentHash": "ChxU0nz82zTbMX25+B0HpvmYp63VsYWjYGI0N3ovsN6rzyxSwp3UMKm69dL1JA/sNCSCrTo70R9ZSiQCE6+Rqw=="
+        "resolved": "3.0.1",
+        "contentHash": "i7CuPSikVroBaWG8sPvO707Ex9C6BP5+r4JufKNU1FGMmiFgLJvNo1ttUg6ZiXIzUNknvIb1VUTIO9iEDucibg=="
       },
       "Flurl.Http": {
         "type": "Transitive",
-        "resolved": "3.0.0",
-        "contentHash": "20y0rStrI5WH7YvB1bUrc9OYyiP3XRK4ikk8gCTL4sn0yPIlCNdEtHCnJtPY5GlcUvWfIoCbJjgoBnmRs1r11w==",
+        "resolved": "3.0.1",
+        "contentHash": "wt4RrmYOPWu8v0sjuuSfhYBFzjfrCz4nJP48Kw2HFGssq0U6pMBPFHcL3zbsBFALJipAjgRET5mf+0Xz4ZnZpQ==",
         "dependencies": {
-          "Flurl": "3.0.0",
+          "Flurl": "3.0.1",
           "Newtonsoft.Json": "12.0.2",
           "System.Text.Encoding.CodePages": "4.5.1"
         }
@@ -111,8 +111,8 @@
       },
       "Microsoft.CodeCoverage": {
         "type": "Transitive",
-        "resolved": "16.8.0",
-        "contentHash": "fR7HsWO+jTRhfBPWVl6QJbJSEU98siIKcQIDIo2tOH6nlogcOdScquWzVABR0UUpQlfWwt13vyryOltvLfsHnw=="
+        "resolved": "16.8.3",
+        "contentHash": "pFZAEvmIEkEIKl6WD1wCZ2qkc3f6PLdc2kAjCsUJfaMxVtgq3qxcQd4eZq+ZMt9eSX12VfxtFav2vPy1yiu8bw=="
       },
       "Microsoft.CSharp": {
         "type": "Transitive",
@@ -136,18 +136,20 @@
       },
       "Microsoft.TestPlatform.ObjectModel": {
         "type": "Transitive",
-        "resolved": "16.8.0",
-        "contentHash": "Y60IDgwinOqwECwmvXyFqk2lnQAvcS6EKevc3DyKUJoJaNJ9bUGsUS8H2nlgBHloSQ/Zqj27CjRuLhBsCUO58w==",
+        "resolved": "16.8.3",
+        "contentHash": "dqHiRggyAbkjQO9926SzM11Pn0nKjH1wwM6ee3E9//y1WZsUgTSVCMS14qvlQlk9iUZJyj+iz3/1zplE4Ll+hw==",
         "dependencies": {
-          "NuGet.Frameworks": "5.0.0"
+          "NuGet.Frameworks": "5.0.0",
+          "System.Reflection.Metadata": "1.6.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.0.0"
         }
       },
       "Microsoft.TestPlatform.TestHost": {
         "type": "Transitive",
-        "resolved": "16.8.0",
-        "contentHash": "CVXKGIWakPq7UboAlJ7ukcngBFF2UaHwS9pAN3nLyOpOR3yUYbinpd+eVvz6Fm/qRBP4uiwx0lWEZlHOHG1c0w==",
+        "resolved": "16.8.3",
+        "contentHash": "lF3QPoq7NYs7Xr/j5a44jJvHakRQq5lKyjG9adGNqeN28JmhD2qEogzGOL4GVkofqX1FmmbyUali2jlSVval8A==",
         "dependencies": {
-          "Microsoft.TestPlatform.ObjectModel": "16.8.0",
+          "Microsoft.TestPlatform.ObjectModel": "16.8.3",
           "Newtonsoft.Json": "9.0.1"
         }
       },
@@ -878,6 +880,11 @@
           "System.Runtime": "4.3.0"
         }
       },
+      "System.Reflection.Metadata": {
+        "type": "Transitive",
+        "resolved": "1.6.0",
+        "contentHash": "COC1aiAJjCoA5GBF+QKL2uLqEBew4JsCkQmoHKbN3TlOZKa2fKLz5CpiRQKDz0RsAOEGsVKqOD5bomsXq/4STQ=="
+      },
       "System.Reflection.Primitives": {
         "type": "Transitive",
         "resolved": "4.3.0",
@@ -1323,8 +1330,8 @@
       "BoardGameGeek.Dungeon": {
         "type": "Project",
         "dependencies": {
-          "Flurl": "3.0.0",
-          "Flurl.Http": "3.0.0",
+          "Flurl": "3.0.1",
+          "Flurl.Http": "3.0.1",
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
           "PocketLogger.Subscribe": "0.7.0",
           "Polly": "7.2.1",
