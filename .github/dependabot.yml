@@ -1,0 +1,16 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "23:00"
+    timezone: Pacific/Auckland
+  open-pull-requests-limit: 10
+- package-ecosystem: docker
+  directory: "/Application"
+  schedule:
+    interval: daily
+    time: "23:00"
+    timezone: Pacific/Auckland
+  open-pull-requests-limit: 10
