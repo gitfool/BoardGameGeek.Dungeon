@@ -35,7 +35,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Cake build
-        run: dotnet tool restore && dotnet cake --verbosity=verbose --target=build --publish=true
+        run: dotnet tool restore && dotnet cake --verbosity=verbose --publish=true
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
