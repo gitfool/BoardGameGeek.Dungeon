@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/runtime-deps:5.0.4-focal
+FROM mcr.microsoft.com/dotnet/runtime-deps:5.0.5-focal
 
 ARG configuration=Release
 
