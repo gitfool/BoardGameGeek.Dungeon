@@ -4,19 +4,21 @@
     <TargetFramework>net5.0</TargetFramework>
 
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <AssemblyName>BoardGameGeek.Dungeon</AssemblyName>
-    <RootNamespace>BoardGameGeek.Dungeon</RootNamespace>
+    <AssemblyName>bgg</AssemblyName>
+  </PropertyGroup>
 
-    <DebugType>embedded</DebugType>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebuggerSupport>false</DebuggerSupport>
     <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
     <EnableUnsafeUTF7Encoding>false</EnableUnsafeUTF7Encoding>
+    <EventSourceSupport>false</EventSourceSupport>
     <HttpActivityPropagationSupport>false</HttpActivityPropagationSupport>
-    <!-- <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract> -->
-    <InvariantGlobalization>false</InvariantGlobalization>
+    <IncludeNativeLibrariesForSelfExtract>false</IncludeNativeLibrariesForSelfExtract>
+    <InvariantGlobalization>true</InvariantGlobalization>
     <PublishSingleFile>true</PublishSingleFile>
     <PublishTrimmed>true</PublishTrimmed>
     <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
-    <!-- <TrimMode>link</TrimMode> -->
+    <TrimMode>Link</TrimMode>
   </PropertyGroup>
 
   <ItemGroup>
