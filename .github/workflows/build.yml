@@ -39,7 +39,7 @@ jobs:
         run: dotnet tool restore && dotnet cake --verbosity=verbose --publish=true
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: Tests
           path: |
