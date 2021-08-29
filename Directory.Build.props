@@ -2,10 +2,10 @@
   <PropertyGroup>
     <Authors>Sean Fausett</Authors>
     <Copyright>Copyright © $([System.DateTime]::Now.Year)</Copyright>
-    <Description>A playground for BoardGameGeek tools.</Description>
+    <Description>A playground for BoardGameGeek (BGG) tools.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <PackageTags>BoardGameGeek;Tools</PackageTags>
+    <PackageTags>BoardGameGeek;BGG;Tools</PackageTags>
 
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
