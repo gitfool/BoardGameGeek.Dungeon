@@ -7,7 +7,6 @@ Build.SetParameters
     defaultLog: true,
 
     runBuildSolutions: true,
-    runBuildPublish: true,
     runDockerBuild: true,
     runUnitTests: true,
     runTestCoverageReports: true,
@@ -15,7 +14,6 @@ Build.SetParameters
 
     sourceDirectory: Build.Directories.Root,
 
-    buildPublishProjectPatterns: new[] { "Application/*.csproj" },
     unitTestProjectPatterns: new[] { "Tests/*.csproj" },
     unitTestLoggers: new[] { "console;verbosity=detailed", "trx;logfilename=TestResults.trx" },
 

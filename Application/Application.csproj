@@ -5,6 +5,7 @@
 
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AssemblyName>bgg</AssemblyName>
+    <PublishOnBuild>true</PublishOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
