@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/runtime-deps:5.0.9-focal
+FROM mcr.microsoft.com/dotnet/runtime-deps:5.0.10-focal
 
 # Add non-root user
 RUN groupadd --gid 1000 user \
