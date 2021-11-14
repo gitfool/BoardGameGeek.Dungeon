@@ -7,7 +7,7 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[*.{config,csproj,json,props,xml,yml}]
+[*.{config,csproj,json,props,toml,xaml,xml,yaml,yml}]
 indent_size = 2
 
 [{dotnet-tools.json,packages.lock.json}]

@@ -1,23 +1,22 @@
 trigger:
   branches:
-    include:
-      - master
+    include: [ master ]
 pr:
   branches:
-    include:
-      - master
+    include: [ master ]
 
 variables:
   NUGET_PACKAGES: $(Pipeline.Workspace)/.nuget/packages
 
 jobs:
-  - job: Docker
+  - job: Build
     pool:
       vmImage: ubuntu-latest
     container: dockfool/cake-docker:latest
     steps:
       - checkout: self
         displayName: Checkout source
+        submodules: true
 
       - task: Cache@2
         displayName: Cache packages
