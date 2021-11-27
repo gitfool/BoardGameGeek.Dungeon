@@ -27,7 +27,7 @@ Build.SetParameters
         {
             Repository = "dockfool/boardgamegeek-dungeon",
             Context = "Application",
-            Args = new[] { "configuration={{ Build.Parameters.Configuration }}" }
+            Args = new[] { $"configuration={Build.Parameters.Configuration}" }
         }
     }
 );
