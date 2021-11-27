@@ -26,8 +26,7 @@ Build.SetParameters
         new DockerImage
         {
             Repository = "dockfool/boardgamegeek-dungeon",
-            Context = "Application",
-            Args = new[] { $"configuration={Build.Parameters.Configuration}" }
+            Context = "Application"
         }
     }
 );
