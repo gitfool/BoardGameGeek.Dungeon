@@ -9,7 +9,7 @@ variables:
   NUGET_PACKAGES: $(Pipeline.Workspace)/.nuget/packages
 
 jobs:
-  - job: Build
+  - job: build
     pool:
       vmImage: ubuntu-latest
     container: dockfool/cake-docker:latest

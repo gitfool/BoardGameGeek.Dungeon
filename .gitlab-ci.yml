@@ -13,10 +13,10 @@ variables:
 services:
   - docker:dind
 
-stages: [ Build ]
+stages: [ build ]
 
-Docker:
-  stage: Build
+docker:
+  stage: build
   tags: [ shared, linux, docker ]
   image: dockfool/cake-docker:latest
   cache:
