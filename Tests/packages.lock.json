@@ -26,6 +26,12 @@
           "System.Configuration.ConfigurationManager": "4.4.0"
         }
       },
+      "JunitXml.TestLogger": {
+        "type": "Direct",
+        "requested": "[3.0.110, )",
+        "resolved": "3.0.110",
+        "contentHash": "D0Kl9mNnbSZgEa8ZgsEAJskPvyrC9k+5BsEWUqvNr++BZJbYIb08fwe0ohvb6WEzJlMPmeLJMmvQuw5yIq3gjA=="
+      },
       "Microsoft.NET.Test.Sdk": {
         "type": "Direct",
         "requested": "[17.0.0, )",

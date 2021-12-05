@@ -15,7 +15,7 @@ Build.SetParameters
     sourceDirectory: Build.Directories.Root,
 
     unitTestProjectPatterns: new[] { "Tests/*.csproj" },
-    unitTestLoggers: new[] { "console;verbosity=detailed", "trx;logfilename=TestResults.trx" },
+    unitTestLoggers: new[] { "console;verbosity=detailed", "junit", "trx;logfilename=TestResults.trx" },
 
     buildEmbedAllSources: true,
     dockerPushLatest: true,

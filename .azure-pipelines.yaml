@@ -29,13 +29,13 @@ jobs:
         displayName: Cake build
 
       - task: PublishTestResults@2
-        displayName: Upload test artifacts
+        displayName: Tests report
         inputs:
           testRunner: VSTest
-          testResultsFiles: "Artifacts/Tests/*/*.trx"
+          testResultsFiles: "Artifacts/Tests/*/TestResults.trx"
 
       - task: PublishCodeCoverageResults@1
-        displayName: Upload coverage artifacts
+        displayName: Code coverage report
         inputs:
           codeCoverageTool: cobertura
           summaryFileLocation: "Artifacts/Tests/*/*/coverage.*.xml"
