@@ -1,9 +1,9 @@
 trigger:
   branches:
-    include: [ master ]
+    include: [ main ]
 pr:
   branches:
-    include: [ master ]
+    include: [ main ]
 
 variables:
   NUGET_PACKAGES: $(Pipeline.Workspace)/.nuget/packages
