@@ -55,4 +55,5 @@ jobs:
           show_class_names: true
           show_line: true
           show_branch: true
+          skip_covered: false
           path: Artifacts/Tests/Coverage/Cobertura.xml
