@@ -16,6 +16,7 @@ Build.SetParameters
 
     unitTestProjectPatterns: new[] { "Tests/*.csproj" },
     unitTestLoggers: new[] { "console;verbosity=detailed", "junit", "trx;logfilename=TestResults.trx" },
+    testCoverageReportTypes: new[] { "Cobertura", "HtmlInline_AzurePipelines_Dark", "TextSummary" },
 
     buildEmbedAllSources: true,
     dockerPushLatest: true,

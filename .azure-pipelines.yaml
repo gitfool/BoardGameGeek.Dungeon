@@ -6,6 +6,7 @@ pr:
     include: [ main ]
 
 variables:
+  Disable.Coverage.AutoGenerate: true
   NUGET_PACKAGES: $(Pipeline.Workspace)/.nuget/packages
 
 jobs:
@@ -35,7 +36,8 @@ jobs:
           testResultsFiles: "Artifacts/Tests/*/TestResults.trx"
 
       - task: PublishCodeCoverageResults@1
-        displayName: Code coverage report
+        displayName: Coverage report
         inputs:
-          codeCoverageTool: cobertura
-          summaryFileLocation: "Artifacts/Tests/*/*/coverage.*.xml"
+          codeCoverageTool: Cobertura
+          reportDirectory: Artifacts/Tests/Coverage
+          summaryFileLocation: Artifacts/Tests/Coverage/Cobertura.xml

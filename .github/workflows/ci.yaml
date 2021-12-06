@@ -45,3 +45,14 @@ jobs:
           fail_on_failure: true
           require_tests: true
           report_paths: "Artifacts/Tests/*/TestResults.xml"
+
+      - name: Coverage report
+        uses: 5monkeys/cobertura-action@v12
+        with:
+          minimum_coverage: 80
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          report_name: coverage
+          show_class_names: true
+          show_line: true
+          show_branch: true
+          path: Artifacts/Tests/Coverage/Cobertura.xml
