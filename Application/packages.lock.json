@@ -68,17 +68,17 @@
       },
       "System.Interactive": {
         "type": "Direct",
-        "requested": "[5.0.0, )",
-        "resolved": "5.0.0",
-        "contentHash": "ePZVkHmihIDChuXwghL5+ywHlbbLOLeDQsITXvHvugMv3sVZe9KUN1MK/VlfVLiFlLTi6QDc2xgZSFX/66i/jQ=="
+        "requested": "[5.1.0, )",
+        "resolved": "5.1.0",
+        "contentHash": "V/ClZj5zzS0H8MaKv0qqpIMDz2x/+V0kqTeczW0ATqfVJrg3TeNgO+Z+tw93rbMc8MF+zrS6fU1UTYTEqzK8xg=="
       },
       "System.Interactive.Async": {
         "type": "Direct",
-        "requested": "[5.0.0, )",
-        "resolved": "5.0.0",
-        "contentHash": "QaqhQVDiULcu4vm6o89+iP329HcK44cETHOYgy/jfEjtzeFy0ZxmuM7nel9ocjnKxEM4yh1mli7hgh8Q9o+/Iw==",
+        "requested": "[5.1.0, )",
+        "resolved": "5.1.0",
+        "contentHash": "PGAWrPUd4m0o3djNXpJWzp8RbzFtc5CfMZZsAhkAvrpkoCOO8ltfLdtxDX8RwY1hGGrSZASXCta3Hy5ZZQF4fg==",
         "dependencies": {
-          "System.Linq.Async": "5.0.0"
+          "System.Linq.Async": "5.1.0"
         }
       },
       "Microsoft.Build.Tasks.Git": {
@@ -522,8 +522,8 @@
       },
       "System.Linq.Async": {
         "type": "Transitive",
-        "resolved": "5.0.0",
-        "contentHash": "cPtIuuH8TIjVHSi2ewwReWGW1PfChPE0LxPIDlfwVcLuTM9GANFTXiMB7k3aC4sk3f0cQU25LNKzx+jZMxijqw=="
+        "resolved": "5.1.0",
+        "contentHash": "TkDTElj3vvizUnhS4mj0oZW8kX6KOBcsUkj79w/q6IUI7nsW+bXmWZfixknClug/IA+8vTWcArXSjIxn9hIWxQ=="
       },
       "System.Linq.Expressions": {
         "type": "Transitive",
