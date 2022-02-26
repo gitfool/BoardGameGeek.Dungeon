@@ -1,5 +1,7 @@
 FROM mcr.microsoft.com/dotnet/runtime-deps:6.0.1-focal
 
+LABEL org.opencontainers.image.source=https://github.com/gitfool/BoardGameGeek.Dungeon
+
 # Add non-root user
 RUN groupadd --gid 1000 user \
     && useradd --uid 1000 --gid 1000 --shell /bin/bash -m user
