@@ -17,7 +17,7 @@ jobs:
     steps:
       - checkout: self
         displayName: Checkout source
-        submodules: true
+        submodules: recursive
 
       - task: Cache@2
         displayName: Cache packages
