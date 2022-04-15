@@ -27,7 +27,7 @@ Build.SetParameters
         new DockerImage
         {
             Repository = "dockfool/boardgamegeek-dungeon",
-            Context = "Application"
+            Context = "Cli"
         }
     }
 );
