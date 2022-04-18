@@ -959,8 +959,8 @@
       },
       "System.Interactive": {
         "type": "Transitive",
-        "resolved": "5.1.0",
-        "contentHash": "V/ClZj5zzS0H8MaKv0qqpIMDz2x/+V0kqTeczW0ATqfVJrg3TeNgO+Z+tw93rbMc8MF+zrS6fU1UTYTEqzK8xg=="
+        "resolved": "6.0.1",
+        "contentHash": "q2E+Rkj35aGIPdZFKoBfI46LU1hGLHrhg9diif3psaRFeiMwSYom0VI0XHIQFYtGHzq2g1+3awHvK+7YntfNIQ=="
       },
       "System.Interactive.Async": {
         "type": "Transitive",
@@ -1704,7 +1704,7 @@
           "Serilog.Settings.Configuration": "3.3.0",
           "Serilog.Sinks.Console": "4.0.1",
           "Spectre.Console": "0.44.0",
-          "System.Interactive": "5.1.0",
+          "System.Interactive": "6.0.1",
           "System.Interactive.Async": "5.1.0"
         }
       },

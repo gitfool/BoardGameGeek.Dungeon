@@ -151,9 +151,9 @@
       },
       "System.Interactive": {
         "type": "Direct",
-        "requested": "[5.1.0, )",
-        "resolved": "5.1.0",
-        "contentHash": "V/ClZj5zzS0H8MaKv0qqpIMDz2x/+V0kqTeczW0ATqfVJrg3TeNgO+Z+tw93rbMc8MF+zrS6fU1UTYTEqzK8xg=="
+        "requested": "[6.0.1, )",
+        "resolved": "6.0.1",
+        "contentHash": "q2E+Rkj35aGIPdZFKoBfI46LU1hGLHrhg9diif3psaRFeiMwSYom0VI0XHIQFYtGHzq2g1+3awHvK+7YntfNIQ=="
       },
       "System.Interactive.Async": {
         "type": "Direct",
