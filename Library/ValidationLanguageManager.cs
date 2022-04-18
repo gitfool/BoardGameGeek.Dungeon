@@ -1,5 +1,3 @@
-using FluentValidation.Resources;
-
 namespace BoardGameGeek.Dungeon;
 
 public sealed class ValidationLanguageManager : LanguageManager

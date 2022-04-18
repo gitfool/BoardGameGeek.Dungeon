@@ -1,12 +1,3 @@
-using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
-using System.Threading.Tasks;
-using BoardGameGeek.Dungeon.Converters;
-using BoardGameGeek.Dungeon.Services;
-using Flurl.Http;
-using Microsoft.Extensions.Logging;
-
 namespace BoardGameGeek.Dungeon;
 
 public sealed class Authenticator

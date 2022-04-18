@@ -1,8 +1,3 @@
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Spectre.Console.Cli;
-
 namespace BoardGameGeek.Dungeon;
 
 public sealed partial class LogPlayCommand : AsyncCommandBase<LogPlayCommand.Settings>

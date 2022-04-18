@@ -1,6 +1,3 @@
-using System.Text;
-using System.Xml.Serialization;
-
 namespace BoardGameGeek.Dungeon.Services;
 
 [XmlRoot("items")]

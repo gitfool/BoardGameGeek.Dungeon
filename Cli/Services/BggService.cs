@@ -1,16 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Formatting;
-using System.Threading.Tasks;
-using BoardGameGeek.Dungeon.Models;
-using Flurl.Http;
-using Microsoft.Extensions.Logging;
-using Polly;
-using Polly.Retry;
-
 namespace BoardGameGeek.Dungeon.Services;
 
 public interface IBggService

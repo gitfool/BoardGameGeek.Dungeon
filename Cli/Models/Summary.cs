@@ -1,5 +1,3 @@
-using System;
-
 namespace BoardGameGeek.Dungeon.Models;
 
 public sealed record Summary
