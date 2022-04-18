@@ -1,22 +1,17 @@
-using System;
-using System.CommandLine.Parsing;
 using System.Threading.Tasks;
-using BoardGameGeek.Dungeon.CommandLine;
-using Pocket;
+using Microsoft.Extensions.Hosting;
 
 namespace BoardGameGeek.Dungeon
 {
     public static class Program
     {
-        private static Task<int> Main(string[] args)
-        {
-            LogEvents.Subscribe(entry =>
-            {
-                var (message, _) = entry.Evaluate();
-                Console.WriteLine($"{entry.TimestampUtc.ToLocalTime():HH:mm:ss} {message}");
-            });
+        public static Task<int> Main(string[] args) =>
+            CreateHostBuilder(args).RunCommandAsync(args);
 
-            return Bootstrap.Parser.InvokeAsync(args);
-        }
+        private static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration(args)
+                .ConfigureServices()
+                .UseSerilog();
     }
 }

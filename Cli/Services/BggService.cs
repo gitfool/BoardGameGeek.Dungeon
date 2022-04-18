@@ -7,11 +7,9 @@ using System.Net.Http.Formatting;
 using System.Threading.Tasks;
 using BoardGameGeek.Dungeon.Models;
 using Flurl.Http;
-using Pocket;
+using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Retry;
-
-// ReSharper disable StringLiteralTypo
 
 namespace BoardGameGeek.Dungeon.Services
 {
@@ -27,19 +25,20 @@ namespace BoardGameGeek.Dungeon.Services
 
     public sealed class BggService : IBggService
     {
-        public class PlayResponse
+        public sealed record PlayResponse
         {
             public int PlayId { get; set; }
             public int NumPlays { get; set; }
-            public string Html { get; set; }
-            public string Error { get; set; }
+            public string? Html { get; set; }
+            public string? Error { get; set; }
         }
 
-        public BggService()
+        public BggService(ILogger<BggService> logger)
         {
+            Logger = logger;
             FlurlClient = new FlurlClient("https://boardgamegeek.com")
             {
-                Settings = { BeforeCall = call => { Logger<BggService>.Log.Trace($"{call.Request.Verb} {call.Request.Url}"); } }
+                Settings = { BeforeCall = call => { Logger.LogDebug($"{call.Request.Verb} {call.Request.Url}"); } }
             };
             RetryPolicy = Policy.Handle<FlurlHttpException>(ex => ex.Call.HttpResponseMessage.StatusCode == HttpStatusCode.TooManyRequests)
                 .OrResult<IFlurlResponse>(response => response.ResponseMessage.StatusCode == HttpStatusCode.Accepted)
@@ -47,23 +46,23 @@ namespace BoardGameGeek.Dungeon.Services
                 {
                     if (response.Exception is FlurlHttpException ex) //TODO once throttled, introduce delay for all subsequent calls
                     {
-                        Logger<BggService>.Log.Warning($"{ex.Call.HttpResponseMessage.StatusCode:D} {ex.Call.HttpResponseMessage.StatusCode}");
+                        Logger.LogWarning($"{ex.Call.HttpResponseMessage.StatusCode:D} {ex.Call.HttpResponseMessage.StatusCode}");
                     }
                     else
                     {
-                        Logger<BggService>.Log.Warning($"{response.Result.ResponseMessage.StatusCode:D} {response.Result.ResponseMessage.StatusCode}");
+                        Logger.LogWarning($"{response.Result.ResponseMessage.StatusCode:D} {response.Result.ResponseMessage.StatusCode}");
                     }
                 });
         }
 
         public async IAsyncEnumerable<Thing> GetThingsAsync(IEnumerable<int> ids)
         {
-            async ValueTask<ThingItems> GetThingCollectionAsync(IList<int> ids)
+            async ValueTask<ThingItems> GetThingAsync(IList<int> id)
             {
                 var request = FlurlClient.Request("xmlapi2", "thing")
                     .SetQueryParams(new
                     {
-                        id = string.Join(",", ids)
+                        id = string.Join(",", id)
                     });
                 var response = await RetryPolicy.ExecuteAsync(() => request.GetAsync());
                 return await response.ResponseMessage.Content.ReadAsAsync<ThingItems>(XmlFormatterCollection);
@@ -73,7 +72,7 @@ namespace BoardGameGeek.Dungeon.Services
                 .OrderBy(id => id)
                 .Buffer(100)
                 .ToAsyncEnumerable()
-                .SelectAwait(GetThingCollectionAsync);
+                .SelectAwait(GetThingAsync);
 
             await foreach (var thingCollection in thingCollections)
             {
@@ -101,7 +100,7 @@ namespace BoardGameGeek.Dungeon.Services
 
         public async IAsyncEnumerable<Collection> GetUserCollectionAsync(string userName)
         {
-            async Task<CollectionItems> GetUserCollectionAsync(string userName)
+            async Task<CollectionItems> GetCollectionAsync()
             {
                 var request = FlurlClient.Request("xmlapi2", "collection")
                     .SetQueryParams(new
@@ -114,7 +113,7 @@ namespace BoardGameGeek.Dungeon.Services
                 return await response.ResponseMessage.Content.ReadAsAsync<CollectionItems>(XmlFormatterCollection);
             }
 
-            var userCollection = await GetUserCollectionAsync(userName);
+            var userCollection = await GetCollectionAsync();
             foreach (var item in userCollection.Items)
             {
                 yield return new Collection
@@ -131,7 +130,7 @@ namespace BoardGameGeek.Dungeon.Services
 
         public async IAsyncEnumerable<Play> GetUserPlaysAsync(string userName, int? year = null, int? id = null)
         {
-            async Task<UserPlays> GetUserPlaysAsync(string userName, int? year, int? id, int? page = null)
+            async Task<UserPlays> GetPlaysAsync(int? page = null)
             {
                 var request = FlurlClient.Request("xmlapi2", "plays")
                     .SetQueryParams(new
@@ -147,12 +146,12 @@ namespace BoardGameGeek.Dungeon.Services
                 return await response.ResponseMessage.Content.ReadAsAsync<UserPlays>(XmlFormatterCollection);
             }
 
-            var userPlays = await GetUserPlaysAsync(userName, year, id);
+            var userPlays = await GetPlaysAsync();
             var totalPlays = userPlays.Total;
             var totalPages = (int)Math.Ceiling(totalPlays / 100d); // get total pages from first page
             for (var page = 1; page <= totalPages;)
             {
-                foreach (var play in userPlays.Plays)
+                foreach (var play in userPlays.Plays!)
                 {
                     var item = play.Items.Single();
                     yield return new Play
@@ -185,7 +184,7 @@ namespace BoardGameGeek.Dungeon.Services
                 }
                 if (page++ < totalPages)
                 {
-                    userPlays = await GetUserPlaysAsync(userName, year, id, page);
+                    userPlays = await GetPlaysAsync(page);
                 }
             }
         }
@@ -201,14 +200,17 @@ namespace BoardGameGeek.Dungeon.Services
 
         public async Task<IEnumerable<FlurlCookie>> LoginUserAsync(string userName, string password)
         {
-            var request = FlurlClient.Request("login");
+            var request = FlurlClient.Request("login", "api", "v1");
             var cookies = new CookieJar();
             var body = new
             {
-                username = userName,
-                password
+                credentials = new
+                {
+                    username = userName,
+                    password
+                }
             };
-            await RetryPolicy.ExecuteAsync(() => request.WithCookies(out cookies).PostUrlEncodedAsync(body));
+            await RetryPolicy.ExecuteAsync(() => request.WithCookies(out cookies).PostJsonAsync(body));
             Cookies = cookies.Remove(cookie => !cookie.Name.StartsWith("bgg", StringComparison.OrdinalIgnoreCase));
             return Cookies;
         }
@@ -244,11 +246,12 @@ namespace BoardGameGeek.Dungeon.Services
                 .Concat(Enumerable.Repeat(TimeSpan.FromMinutes(1), int.MaxValue));
         }
 
+        private ILogger Logger { get; }
         private IFlurlClient FlurlClient { get; }
-        private CookieJar Cookies { get; set; }
+        private CookieJar? Cookies { get; set; }
         private AsyncRetryPolicy<IFlurlResponse> RetryPolicy { get; }
 
-        private static readonly XmlMediaTypeFormatter XmlFormatter = new XmlMediaTypeFormatter { UseXmlSerializer = true };
-        private static readonly MediaTypeFormatterCollection XmlFormatterCollection = new MediaTypeFormatterCollection(new MediaTypeFormatter[] { XmlFormatter });
+        private static readonly XmlMediaTypeFormatter XmlFormatter = new() { UseXmlSerializer = true };
+        private static readonly MediaTypeFormatterCollection XmlFormatterCollection = new(new MediaTypeFormatter[] { XmlFormatter });
     }
 }

@@ -28,7 +28,7 @@ namespace BoardGameGeek.Dungeon.Extensions
         public static void WriteNullableTimeSpan(this Utf8JsonWriter writer, string propertyName, TimeSpan? value) => writer.WriteNull(propertyName, value)?.WriteTimeSpan(propertyName, value!.Value);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static Utf8JsonWriter WriteNull<T>(this Utf8JsonWriter writer, string propertyName, T? value) where T : struct
+        private static Utf8JsonWriter? WriteNull<T>(this Utf8JsonWriter writer, string propertyName, T? value) where T : struct
         {
             if (!value.HasValue)
             {

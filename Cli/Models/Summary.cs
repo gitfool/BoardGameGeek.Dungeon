@@ -2,7 +2,7 @@ using System;
 
 namespace BoardGameGeek.Dungeon.Models
 {
-    public class Summary
+    public sealed record Summary
     {
         public Summary()
         {

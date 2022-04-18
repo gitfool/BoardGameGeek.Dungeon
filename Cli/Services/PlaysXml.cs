@@ -3,124 +3,121 @@ using System.Diagnostics;
 using System.Linq;
 using System.Xml.Serialization;
 
-// ReSharper disable StringLiteralTypo
-// ReSharper disable UnusedMember.Global
-
 namespace BoardGameGeek.Dungeon.Services
 {
     [XmlRoot("plays")]
-    public class UserPlays
+    public sealed record UserPlays
     {
         [XmlAttribute("userid")]
-        public int UserId { get; set; }
+        public int UserId { get; init; }
 
         [XmlAttribute("username")]
-        public string UserName { get; set; }
+        public string UserName { get; init; } = null!;
 
         [XmlAttribute("total")]
-        public int Total { get; set; }
+        public int Total { get; init; }
 
         [XmlAttribute("page")]
-        public int Page { get; set; }
+        public int Page { get; init; }
 
         [XmlAttribute("termsofuse")]
-        public string TermsOfUse { get; set; }
+        public string TermsOfUse { get; init; } = null!;
 
         [XmlElement("play")]
-        public PlayItems[] Plays { get; set; }
+        public PlayItems[]? Plays { get; init; }
 
         public override string ToString() => $"UserName = {UserName}, Total = {Total}, Page = {Page}";
     }
 
-    public class PlayItems
+    public sealed record PlayItems
     {
         [XmlAttribute("id")]
-        public int Id { get; set; }
+        public int Id { get; init; }
 
         [XmlAttribute("date")]
-        public DateTime Date { get; set; }
+        public DateTime Date { get; init; }
 
         [XmlAttribute("quantity")]
-        public int Quantity { get; set; }
+        public int Quantity { get; init; }
 
         [XmlAttribute("length")]
-        public int Length { get; set; }
+        public int Length { get; init; }
 
         [XmlAttribute("incomplete")]
-        public bool Incomplete { get; set; }
+        public bool Incomplete { get; init; }
 
         [XmlAttribute("nowinstats")]
-        public bool NoWinStats { get; set; }
+        public bool NoWinStats { get; init; }
 
         [XmlAttribute("location")]
-        public string Location { get; set; }
+        public string? Location { get; init; }
 
         [XmlElement("comments")]
-        public string Comments { get; set; }
+        public string? Comments { get; init; }
 
         [XmlElement("item")]
-        public PlayItem[] Items { get; set; }
+        public PlayItem[] Items { get; init; } = null!;
 
         [XmlArray("players")]
         [XmlArrayItem("player", typeof(PlayPlayer))]
-        public PlayPlayer[] Players { get; set; }
+        public PlayPlayer[]? Players { get; init; }
 
         public override string ToString() => $"{Date:yyyy-MM-dd}: {Quantity}x {Items.Single().Name}";
     }
 
-    public class PlayItem
+    public sealed record PlayItem
     {
         [XmlAttribute("name")]
-        public string Name { get; set; }
+        public string Name { get; init; } = null!;
 
         [XmlAttribute("objecttype")]
-        public string ObjectType { get; set; }
+        public string ObjectType { get; init; } = null!;
 
         [XmlAttribute("objectid")]
-        public int ObjectId { get; set; }
+        public int ObjectId { get; init; }
 
         [XmlArray("subtypes")]
         [XmlArrayItem("subtype", typeof(PlayItemStringValue))]
-        public PlayItemStringValue[] Subtypes { get; set; }
+        public PlayItemStringValue[] Subtypes { get; init; } = null!;
 
         public override string ToString() => $"Name = {Name}";
     }
 
     [DebuggerDisplay("{" + nameof(Value) + "}")]
-    public class PlayItemStringValue
+    public sealed record PlayItemStringValue
     {
         [XmlAttribute("value")]
-        public string Value { get; set; }
+        public string Value { get; init; } = null!;
     }
 
-    public class PlayPlayer
+    public sealed record PlayPlayer
     {
         [XmlAttribute("username")]
-        public string UserName { get; set; }
+        public string? UserName { get; init; }
 
         [XmlAttribute("userid")]
-        public int UserId { get; set; }
+        public int UserId { get; init; }
 
         [XmlAttribute("name")]
-        public string Name { get; set; }
+        public string Name { get; init; } = null!;
 
         [XmlAttribute("startposition")]
-        public string StartPosition { get; set; }
+        public string? StartPosition { get; init; }
 
         [XmlAttribute("color")]
-        public string Color { get; set; }
+        public string? Color { get; init; }
 
         [XmlAttribute("score")]
-        public string Score { get; set; }
+        public string Score { get; init; } = null!;
 
         [XmlAttribute("new")]
-        public bool New { get; set; }
+        public bool New { get; init; }
 
         [XmlAttribute("rating")]
-        public string Rating { get; set; }
+        public double Rating { get; init; }
 
         [XmlAttribute("win")]
-        public bool Win { get; set; }
+        public bool Win { get; init; }
 
         public override string ToString() => $"Name = {Name}, Score = {Score}";
     }

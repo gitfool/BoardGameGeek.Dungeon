@@ -1,93 +1,90 @@
 using System.Text;
 using System.Xml.Serialization;
 
-// ReSharper disable StringLiteralTypo
-// ReSharper disable UnusedMember.Global
-
 namespace BoardGameGeek.Dungeon.Services
 {
     [XmlRoot("items")]
-    public class CollectionItems
+    public sealed record CollectionItems
     {
         [XmlAttribute("totalitems")]
-        public int TotalItems { get; set; }
+        public int TotalItems { get; init; }
 
         [XmlAttribute("termsofuse")]
-        public string TermsOfUse { get; set; }
+        public string TermsOfUse { get; init; } = null!;
 
         [XmlAttribute("pubdate")]
-        public string PubDate { get; set; }
+        public string PubDate { get; init; } = null!;
 
         [XmlElement("item")]
-        public CollectionItem[] Items { get; set; }
+        public CollectionItem[] Items { get; init; } = null!;
     }
 
-    public class CollectionItem
+    public sealed record CollectionItem
     {
         [XmlAttribute("objecttype")]
-        public string ObjectType { get; set; }
+        public string ObjectType { get; init; } = null!;
 
         [XmlAttribute("objectid")]
-        public int ObjectId { get; set; }
+        public int ObjectId { get; init; }
 
         [XmlAttribute("subtype")]
-        public string Subtype { get; set; }
+        public string Subtype { get; init; } = null!;
 
         [XmlElement("name")]
-        public string Name { get; set; }
+        public string Name { get; init; } = null!;
 
         [XmlElement("yearpublished")]
-        public int YearPublished { get; set; }
+        public int YearPublished { get; init; }
 
         [XmlElement("image")]
-        public string Image { get; set; }
+        public string Image { get; init; } = null!;
 
         [XmlElement("thumbnail")]
-        public string Thumbnail { get; set; }
+        public string Thumbnail { get; init; } = null!;
 
         [XmlElement("numplays")]
-        public int NumPlays { get; set; }
+        public int NumPlays { get; init; }
 
         [XmlElement("comment")]
-        public string Comments { get; set; }
+        public string? Comments { get; init; }
 
         [XmlElement("status")]
-        public CollectionItemStatus Status { get; set; }
+        public CollectionItemStatus Status { get; init; } = null!;
 
         public override string ToString() => $"Name = {Name}, NumPlays = {NumPlays}";
     }
 
-    public class CollectionItemStatus
+    public sealed record CollectionItemStatus
     {
         [XmlAttribute("own")]
-        public bool Own { get; set; }
+        public bool Own { get; init; }
 
         [XmlAttribute("prevowned")]
-        public bool PrevOwned { get; set; }
+        public bool PrevOwned { get; init; }
 
         [XmlAttribute("fortrade")]
-        public bool ForTrade { get; set; }
+        public bool ForTrade { get; init; }
 
         [XmlAttribute("want")]
-        public bool WantInTrade { get; set; }
+        public bool WantInTrade { get; init; }
 
         [XmlAttribute("wanttoplay")]
-        public bool WantToPlay { get; set; }
+        public bool WantToPlay { get; init; }
 
         [XmlAttribute("wanttobuy")]
-        public bool WantToBuy { get; set; }
+        public bool WantToBuy { get; init; }
 
         [XmlAttribute("wishlist")]
-        public bool WishList { get; set; }
+        public bool WishList { get; init; }
 
         [XmlAttribute("wishlistpriority")]
-        public int WishListPriority { get; set; }
+        public int WishListPriority { get; init; }
 
         [XmlAttribute("preordered")]
-        public bool Preordered { get; set; }
+        public bool Preordered { get; init; }
 
         [XmlAttribute("lastmodified")]
-        public string LastModified { get; set; }
+        public string LastModified { get; init; } = null!;
 
         public override string ToString()
         {

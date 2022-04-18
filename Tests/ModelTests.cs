@@ -1,15 +1,16 @@
 using BoardGameGeek.Dungeon.Models;
 using FluentAssertions;
 using Xunit;
-
-// ReSharper disable ConvertToConstant.Local
+using Xunit.Abstractions;
 
 namespace BoardGameGeek.Dungeon
 {
-    public class ModelTests
+    public sealed class ModelTests
     {
-        public class IsHighlightMatchMethod
+        public sealed class IsHighlightMatchMethod : TestBase
         {
+            public IsHighlightMatchMethod(ITestOutputHelper testOutput) : base(testOutput) { }
+
             [Theory]
             [InlineData(null)]
             [InlineData("")]
@@ -44,8 +45,10 @@ namespace BoardGameGeek.Dungeon
             }
         }
 
-        public class IsSessionMatchMethod
+        public sealed class IsSessionMatchMethod : TestBase
         {
+            public IsSessionMatchMethod(ITestOutputHelper testOutput) : base(testOutput) { }
+
             [Theory]
             [InlineData(null)]
             [InlineData("")]

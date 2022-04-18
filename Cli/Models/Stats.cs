@@ -1,6 +1,6 @@
 namespace BoardGameGeek.Dungeon.Models
 {
-    public class Stats
+    public sealed record Stats
     {
         public int Plays { get; set; }
         public int Sessions { get; set; }

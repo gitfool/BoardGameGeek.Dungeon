@@ -19,6 +19,7 @@ Build.SetParameters
     testCoverageReportTypes: new[] { "Cobertura", "HtmlInline_AzurePipelines_Dark", "TextSummary" },
 
     buildEmbedAllSources: true,
+    dockerBuildPull: true,
     dockerPushLatest: true,
     dockerPushSkipDuplicate: true,
 

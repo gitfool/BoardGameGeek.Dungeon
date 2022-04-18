@@ -3,27 +3,27 @@ using System.Text.RegularExpressions;
 
 namespace BoardGameGeek.Dungeon.Models
 {
-    public class Play
+    public sealed record Play
     {
         public int PlayId { get; set; }
-        public int GameId { get; set; }
-        public string GameName { get; set; }
+        public int GameId { get; init; }
+        public string? GameName { get; init; }
         public bool IsExpansion { get; set; }
         public int ParentGameId { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime Date { get; init; }
         public int Quantity { get; set; }
-        public int Length { get; set; }
-        public bool IsIncomplete { get; set; }
-        public bool IsSession { get; set; }
-        public bool NoWinStats { get; set; }
-        public string Location { get; set; }
-        public string Comments { get; set; }
-        public Player[] Players { get; set; }
+        public int Length { get; init; }
+        public bool IsIncomplete { get; init; }
+        public bool IsSession { get; init; }
+        public bool NoWinStats { get; init; }
+        public string? Location { get; init; }
+        public string? Comments { get; init; }
+        public Player[]? Players { get; init; }
 
         public override string ToString() => $"{Date:yyyy-MM-dd}: {Quantity}x {GameName ?? GameId.ToString()}";
 
-        internal static bool IsSessionMatch(string comments) => comments != null && SessionRegex.IsMatch(comments);
+        internal static bool IsSessionMatch(string? comments) => comments != null && SessionRegex.IsMatch(comments);
 
-        private static readonly Regex SessionRegex = new Regex(@"(?<=Session:?\s*)(\d+)\s*\/\s*(\d+|\?)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex SessionRegex = new(@"(?<=Session:?\s*)(\d+)\s*\/\s*(\d+|\?)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
     }
 }

@@ -1,8 +1,20 @@
 {
   "profiles": {
-    "Application": {
+    "Development": {
       "commandName": "Project",
-      "commandLineArgs": "get plays username"
+      "commandLineArgs": "get plays username",
+      "environmentVariables": {
+        "DOTNET_Environment": "Development",
+        "DOTNET_HostBuilder__ReloadConfigOnChange": "false"
+      }
+    },
+    "Production": {
+      "commandName": "Project",
+      "commandLineArgs": "get plays username",
+      "environmentVariables": {
+        "DOTNET_Environment": "Production",
+        "DOTNET_HostBuilder__ReloadConfigOnChange": "false"
+      }
     }
   }
 }

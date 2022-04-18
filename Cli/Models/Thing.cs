@@ -1,13 +1,13 @@
 namespace BoardGameGeek.Dungeon.Models
 {
-    public class Thing
+    public sealed record Thing
     {
-        public int Id { get; set; }
-        public string Type { get; set; }
-        public string Name { get; set; }
-        public string Image { get; set; }
-        public string Thumbnail { get; set; }
-        public ThingLink[] Links { get; set; }
+        public int Id { get; init; }
+        public string Type { get; init; } = null!;
+        public string Name { get; init; } = null!;
+        public string Image { get; init; } = null!;
+        public string Thumbnail { get; init; } = null!;
+        public ThingLink[] Links { get; init; } = null!;
 
         public override string ToString() => $"Type = {Type}, Name = {Name}";
     }

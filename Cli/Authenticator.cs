@@ -5,25 +5,25 @@ using System.Threading.Tasks;
 using BoardGameGeek.Dungeon.Converters;
 using BoardGameGeek.Dungeon.Services;
 using Flurl.Http;
-using Pocket;
-using static Pocket.Logger<BoardGameGeek.Dungeon.Authenticator>;
+using Microsoft.Extensions.Logging;
 
 namespace BoardGameGeek.Dungeon
 {
-    public class Authenticator
+    public sealed class Authenticator
     {
-        public Authenticator(IBggService bggService)
+        public Authenticator(ILogger<Authenticator> logger, IBggService bggService)
         {
+            Logger = logger;
             BggService = bggService;
         }
 
-        public async Task AuthenticateUser(string userName, string password)
+        public async Task AuthenticateUser(string userName, string? password)
         {
             var fileName = $"BGG-{userName}-Auth.json"; // auth cache
             var options = new JsonSerializerOptions { Converters = { new CookieConverter() }, WriteIndented = true };
             if (password != null)
             {
-                Log.Info("Authenticating user");
+                Logger.LogInformation("Authenticating user");
                 var cookies = await BggService.LoginUserAsync(userName, password);
                 var json = JsonSerializer.Serialize(cookies, options);
                 await File.WriteAllTextAsync(fileName, json);
@@ -31,11 +31,12 @@ namespace BoardGameGeek.Dungeon
             else
             {
                 var json = await File.ReadAllTextAsync(fileName);
-                var cookies = JsonSerializer.Deserialize<IEnumerable<FlurlCookie>>(json, options);
+                var cookies = JsonSerializer.Deserialize<IEnumerable<FlurlCookie>>(json, options)!;
                 BggService.LoginUser(cookies);
             }
         }
 
+        private ILogger Logger { get; }
         private IBggService BggService { get; }
     }
 }

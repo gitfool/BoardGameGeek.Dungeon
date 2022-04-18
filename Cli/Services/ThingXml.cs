@@ -2,103 +2,100 @@ using System.Diagnostics;
 using System.Linq;
 using System.Xml.Serialization;
 
-// ReSharper disable StringLiteralTypo
-// ReSharper disable UnusedMember.Global
-
 namespace BoardGameGeek.Dungeon.Services
 {
     [XmlRoot("items")]
-    public class ThingItems
+    public sealed record ThingItems
     {
         [XmlAttribute("termsofuse")]
-        public string TermsOfUse { get; set; }
+        public string TermsOfUse { get; init; } = null!;
 
         [XmlElement("item")]
-        public ThingItem[] Items { get; set; }
+        public ThingItem[] Items { get; init; } = null!;
     }
 
-    public class ThingItem
+    public sealed record ThingItem
     {
         [XmlAttribute("type")]
-        public string Type { get; set; }
+        public string Type { get; init; } = null!;
 
         [XmlAttribute("id")]
-        public int Id { get; set; }
+        public int Id { get; init; }
 
         [XmlElement("image")]
-        public string Image { get; set; }
+        public string Image { get; init; } = null!;
 
         [XmlElement("thumbnail")]
-        public string Thumbnail { get; set; }
+        public string Thumbnail { get; init; } = null!;
 
         [XmlElement("name")]
-        public ThingItemName[] Names { get; set; }
+        public ThingItemName[] Names { get; init; } = null!;
 
         [XmlElement("description")]
-        public string Description { get; set; }
+        public string Description { get; init; } = null!;
 
         [XmlElement("yearpublished")]
-        public ThingItemIntegerValue YearPublished { get; set; }
+        public ThingItemIntegerValue YearPublished { get; init; } = null!;
 
         [XmlElement("minplayers")]
-        public ThingItemIntegerValue MinPlayers { get; set; }
+        public ThingItemIntegerValue MinPlayers { get; init; } = null!;
 
         [XmlElement("maxplayers")]
-        public ThingItemIntegerValue MaxPlayers { get; set; }
+        public ThingItemIntegerValue MaxPlayers { get; init; } = null!;
 
         [XmlElement("playingtime")]
-        public ThingItemIntegerValue PlayingTime { get; set; }
+        public ThingItemIntegerValue PlayingTime { get; init; } = null!;
 
         [XmlElement("minplaytime")]
-        public ThingItemIntegerValue MinPlayTime { get; set; }
+        public ThingItemIntegerValue MinPlayTime { get; init; } = null!;
 
         [XmlElement("maxplaytime")]
-        public ThingItemIntegerValue MaxPlayTime { get; set; }
+        public ThingItemIntegerValue MaxPlayTime { get; init; } = null!;
 
         [XmlElement("minage")]
-        public ThingItemIntegerValue MinAge { get; set; }
+        public ThingItemIntegerValue MinAge { get; init; } = null!;
 
         [XmlElement("link")]
-        public ThingItemLink[] Links { get; set; }
+        public ThingItemLink[] Links { get; init; } = null!;
 
         public override string ToString() => $"Type = {Type}, Name = {Names.First().Value}";
     }
 
-    public class ThingItemName
+    public sealed record ThingItemName
     {
         [XmlAttribute("type")]
-        public string Type { get; set; }
+        public string Type { get; init; } = null!;
 
         [XmlAttribute("sortindex")]
-        public int SortIndex { get; set; }
+        public int SortIndex { get; init; }
 
         [XmlAttribute("value")]
-        public string Value { get; set; }
+        public string Value { get; init; } = null!;
 
         public override string ToString() => $"Type = {Type}, Value = {Value}";
     }
 
-    public class ThingItemLink
+    public sealed record ThingItemLink
     {
         [XmlAttribute("type")]
-        public string Type { get; set; }
+        public string Type { get; init; } = null!;
 
         [XmlAttribute("id")]
-        public int Id { get; set; }
+        public int Id { get; init; }
 
         [XmlAttribute("value")]
-        public string Value { get; set; }
+        public string Value { get; init; } = null!;
 
         [XmlAttribute("inbound")]
-        public bool Inbound { get; set; }
+        public bool Inbound { get; init; }
 
         public override string ToString() => $"Type = {Type}, Value = {Value}";
     }
 
     [DebuggerDisplay("{" + nameof(Value) + "}")]
-    public class ThingItemIntegerValue
+    public sealed record ThingItemIntegerValue
     {
         [XmlAttribute("value")]
-        public int Value { get; set; }
+        public int Value { get; init; }
     }
 }
