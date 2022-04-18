@@ -1,25 +1,43 @@
 using System;
-using Pocket;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Extensions.Logging;
 using Xunit.Abstractions;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace BoardGameGeek.Dungeon
 {
     public abstract class TestBase : IDisposable
     {
-        protected TestBase(ITestOutputHelper logger)
+        protected TestBase(ITestOutputHelper testOutput)
         {
-            Disposables = new CompositeDisposable
-            {
-                LogEvents.Subscribe(entry =>
-                {
-                    var (message, _) = entry.Evaluate();
-                    logger.WriteLine($"{entry.TimestampUtc.ToLocalTime():HH:mm:ss} {message}");
-                })
-            };
+            var logger = new LoggerConfiguration()
+                .MinimumLevel.Verbose()
+                .WriteTo.TestOutput(testOutput)
+                .CreateLogger();
+
+            LoggerFactory = new SerilogLoggerFactory(logger);
+            Logger = LoggerFactory.CreateLogger(GetType());
+            //Logger.LogTrace($">> {GetType().Name}");
         }
 
-        public void Dispose() => Disposables.Dispose();
+        ~TestBase()
+        {
+            Dispose(false);
+        }
 
-        internal CompositeDisposable Disposables { get; }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            //Logger.LogTrace($"<< {GetType().Name}");
+        }
+
+        protected ILoggerFactory LoggerFactory { get; }
+        protected ILogger Logger { get; }
     }
 }

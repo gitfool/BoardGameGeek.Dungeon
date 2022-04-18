@@ -1,0 +1,7 @@
+Serilog:
+  MinimumLevel:
+    Override:
+      Microsoft: Information
+      Microsoft.Hosting.Lifetime: Warning
+  Enrich:
+    - WithThreadId

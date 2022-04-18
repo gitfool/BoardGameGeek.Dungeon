@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
+    <PackageReference Include="YamlDotNet" Version="11.2.1" />
+  </ItemGroup>
+</Project>
