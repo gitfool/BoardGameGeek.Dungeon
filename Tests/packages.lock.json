@@ -964,10 +964,10 @@
       },
       "System.Interactive.Async": {
         "type": "Transitive",
-        "resolved": "5.1.0",
-        "contentHash": "PGAWrPUd4m0o3djNXpJWzp8RbzFtc5CfMZZsAhkAvrpkoCOO8ltfLdtxDX8RwY1hGGrSZASXCta3Hy5ZZQF4fg==",
+        "resolved": "6.0.1",
+        "contentHash": "f8H1O4ZWDQo344y5NQU76G4SIjWMuKDVXL9OM1dg6K5YZnLkc8iCdQDybBvMcC6ufk61jzXGVAX6UCDu0qDSjA==",
         "dependencies": {
-          "System.Linq.Async": "5.1.0"
+          "System.Linq.Async": "6.0.1"
         }
       },
       "System.IO": {
@@ -1057,8 +1057,8 @@
       },
       "System.Linq.Async": {
         "type": "Transitive",
-        "resolved": "5.1.0",
-        "contentHash": "TkDTElj3vvizUnhS4mj0oZW8kX6KOBcsUkj79w/q6IUI7nsW+bXmWZfixknClug/IA+8vTWcArXSjIxn9hIWxQ=="
+        "resolved": "6.0.1",
+        "contentHash": "0YhHcaroWpQ9UCot3Pizah7ryAzQhNvobLMSxeDIGmnXfkQn8u5owvpOH0K6EVB+z9L7u6Cc4W17Br/+jyttEQ=="
       },
       "System.Linq.Expressions": {
         "type": "Transitive",
@@ -1705,7 +1705,7 @@
           "Serilog.Sinks.Console": "4.0.1",
           "Spectre.Console": "0.44.0",
           "System.Interactive": "5.1.0",
-          "System.Interactive.Async": "5.1.0"
+          "System.Interactive.Async": "6.0.1"
         }
       },
       "library": {
