@@ -10,4 +10,3 @@ branches:
         contexts:
           - build
           - tests
-          - ci
