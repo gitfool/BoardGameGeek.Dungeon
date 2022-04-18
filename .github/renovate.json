@@ -3,5 +3,13 @@
   "extends": [
     "config:base",
     "local>gitfool/.github:renovate-default"
+  ],
+  "packageRules": [
+    {
+      "description": "Group reactive dependencies.",
+      "matchSourceUrlPrefixes": [ "https://github.com/dotnet/reactive/" ],
+      "groupName": "reactive dependencies",
+      "groupSlug": "reactive"
+    }
   ]
 }
