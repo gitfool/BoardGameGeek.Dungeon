@@ -1,17 +1,16 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 
-namespace BoardGameGeek.Dungeon
-{
-    public static class Program
-    {
-        public static Task<int> Main(string[] args) =>
-            CreateHostBuilder(args).RunCommandAsync(args);
+namespace BoardGameGeek.Dungeon;
 
-        private static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration(args)
-                .ConfigureServices()
-                .UseSerilog();
-    }
+public static class Program
+{
+    public static Task<int> Main(string[] args) =>
+        CreateHostBuilder(args).RunCommandAsync(args);
+
+    private static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration(args)
+            .ConfigureServices()
+            .UseSerilog();
 }

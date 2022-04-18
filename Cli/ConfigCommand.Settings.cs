@@ -1,15 +1,14 @@
 using System.ComponentModel;
 using Spectre.Console.Cli;
 
-namespace BoardGameGeek.Dungeon
+namespace BoardGameGeek.Dungeon;
+
+public sealed partial class ConfigCommand
 {
-    public sealed partial class ConfigCommand
+    public sealed class Settings : CommandSettings
     {
-        public sealed class Settings : CommandSettings
-        {
-            [CommandOption("--yaml")]
-            [Description("Yaml output")]
-            public bool Yaml { get; init; }
-        }
+        [CommandOption("--yaml")]
+        [Description("Yaml output")]
+        public bool Yaml { get; init; }
     }
 }

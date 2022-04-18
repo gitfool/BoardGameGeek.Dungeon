@@ -5,18 +5,17 @@ using System.Text.RegularExpressions;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.TypeInspectors;
 
-namespace BoardGameGeek.Dungeon
+namespace BoardGameGeek.Dungeon;
+
+public sealed class ConfigTypeInspector : TypeInspectorSkeleton
 {
-    public sealed class ConfigTypeInspector : TypeInspectorSkeleton
+    public ConfigTypeInspector(ITypeInspector inner)
     {
-        public ConfigTypeInspector(ITypeInspector inner)
-        {
-            Inner = inner;
-        }
-
-        public override IEnumerable<IPropertyDescriptor> GetProperties(Type type, object? container) =>
-            Inner.GetProperties(type, container).Where(property => !Regex.IsMatch(property.Name, @"Password|Secret|Token")); // ignore secrets
-
-        private ITypeInspector Inner { get; }
+        Inner = inner;
     }
+
+    public override IEnumerable<IPropertyDescriptor> GetProperties(Type type, object? container) =>
+        Inner.GetProperties(type, container).Where(property => !Regex.IsMatch(property.Name, @"Password|Secret|Token")); // ignore secrets
+
+    private ITypeInspector Inner { get; }
 }

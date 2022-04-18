@@ -1,8 +1,7 @@
 using FluentValidation;
 
-namespace BoardGameGeek.Dungeon
+namespace BoardGameGeek.Dungeon;
+
+public sealed class ConfigValidator : AbstractValidator<Config>
 {
-    public sealed class ConfigValidator : AbstractValidator<Config>
-    {
-    }
 }

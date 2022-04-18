@@ -1,8 +1,7 @@
-namespace BoardGameGeek.Dungeon
+namespace BoardGameGeek.Dungeon;
+
+public static class Constants
 {
-    public static class Constants
-    {
-        public const string AppName = "bgg-dungeon";
-        public const string ConfigKey = "Dungeon";
-    }
+    public const string AppName = "bgg-dungeon";
+    public const string ConfigKey = "Dungeon";
 }

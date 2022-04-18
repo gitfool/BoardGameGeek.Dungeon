@@ -1,13 +1,12 @@
 using FluentValidation.Resources;
 
-namespace BoardGameGeek.Dungeon
+namespace BoardGameGeek.Dungeon;
+
+public sealed class ValidationLanguageManager : LanguageManager
 {
-    public sealed class ValidationLanguageManager : LanguageManager
+    public ValidationLanguageManager()
     {
-        public ValidationLanguageManager()
-        {
-            Enabled = false; // disable localization
-            AddTranslation("en", "RegularExpressionValidator", "'{PropertyName}' must match regex '{RegularExpression}'.");
-        }
+        Enabled = false; // disable localization
+        AddTranslation("en", "RegularExpressionValidator", "'{PropertyName}' must match regex '{RegularExpression}'.");
     }
 }
