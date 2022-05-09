@@ -76,9 +76,9 @@
       },
       "xunit.runner.visualstudio": {
         "type": "Direct",
-        "requested": "[2.4.3, )",
-        "resolved": "2.4.3",
-        "contentHash": "kZZSmOmKA8OBlAJaquPXnJJLM9RwQ27H7BMVqfMLUcTi9xHinWGJiWksa3D4NEtz0wZ/nxd2mogObvBgJKCRhQ=="
+        "requested": "[2.4.5, )",
+        "resolved": "2.4.5",
+        "contentHash": "OwHamvBdUKgqsXfBzWiCW/O98BTx81UKzx2bieIOQI7CZFE5NEQZGi8PBQGIKawDW96xeRffiNf20SjfC0x9hw=="
       },
       "Castle.Core": {
         "type": "Transitive",
@@ -99,8 +99,8 @@
       },
       "FluentValidation": {
         "type": "Transitive",
-        "resolved": "11.0.0",
-        "contentHash": "cD0VaOQfVZGxp3UFBDET5KztMe1W0QUgk7vP/e1zus0ofALqab5/B5S319+XEFvhw0KEStS3yfCDGpvQM10C6A=="
+        "resolved": "11.0.1",
+        "contentHash": "fcL5zF/glDwskUtpL0IfBupVWTChxOOvVs+dAA7Gme5NjIeJBiFKWq3eZV1O+AigucnBTr8SWG7wRRn+PgFnTw=="
       },
       "Flurl": {
         "type": "Transitive",
@@ -1711,7 +1711,7 @@
       "library": {
         "type": "Project",
         "dependencies": {
-          "FluentValidation": "11.0.0",
+          "FluentValidation": "11.0.1",
           "YamlDotNet": "11.2.1"
         }
       }
