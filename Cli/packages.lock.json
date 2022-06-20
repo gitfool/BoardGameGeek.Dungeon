@@ -166,8 +166,8 @@
       },
       "FluentValidation": {
         "type": "Transitive",
-        "resolved": "11.0.2",
-        "contentHash": "ik/xogKqBmZWIURMXNEbugJlKka6iV9a4qckmKDp7sHSwIfgkZ/ewzCuAeUTkFdVZujfDW6mCLMjrrR6GG4xLQ=="
+        "resolved": "11.0.3",
+        "contentHash": "UZSn74ufuSpHBSRivPVe1IGhOYnbyzr1jpoWqK3CTcnpDxkADcwoUbrbKhEio3MZLxTv9yVlFT7uDkb/XotOiQ=="
       },
       "Microsoft.Build.Tasks.Git": {
         "type": "Transitive",
@@ -1408,7 +1408,7 @@
       "library": {
         "type": "Project",
         "dependencies": {
-          "FluentValidation": "11.0.2",
+          "FluentValidation": "11.0.3",
           "YamlDotNet": "11.2.1"
         }
       }
