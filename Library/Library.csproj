@@ -4,7 +4,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.0.2" />
+    <PackageReference Include="FluentValidation" Version="11.0.3" />
     <PackageReference Include="YamlDotNet" Version="11.2.1" />
   </ItemGroup>
 </Project>
