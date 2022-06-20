@@ -18,18 +18,12 @@ Build.SetParameters
     unitTestLoggers: new[] { "console;verbosity=detailed", "junit" },
 
     buildEmbedAllSources: true,
+    dockerBuildCache: true,
     dockerBuildPull: true,
     dockerPushLatest: true,
     dockerPushSkipDuplicate: true,
 
-    dockerImages: new[]
-    {
-        new DockerImage
-        {
-            Repository = "dockfool/boardgamegeek-dungeon",
-            Context = "Cli"
-        }
-    }
+    dockerImages: new[] { new DockerImage { Repository = "dockfool/boardgamegeek-dungeon", Context = "Cli" } }
 );
 
 Build.Run();
