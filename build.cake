@@ -19,6 +19,7 @@ Build.SetParameters
 
     buildEmbedAllSources: true,
     dockerBuildCache: true,
+    dockerBuildLoad: true,
     dockerBuildPull: true,
     dockerPushLatest: true,
     dockerPushSkipDuplicate: true,
