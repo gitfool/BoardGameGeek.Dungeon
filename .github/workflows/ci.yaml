@@ -51,6 +51,7 @@ jobs:
         if: always()
         uses: mikepenz/action-junit-report@v3.4.0
         with:
+          annotate_notice: false
           check_name: tests
           fail_on_failure: true
           require_tests: true
