@@ -715,6 +715,14 @@
           "System.Memory": "4.5.5"
         }
       },
+      "Spectre.Console.Cli": {
+        "type": "Transitive",
+        "resolved": "0.45.0",
+        "contentHash": "SZcYjwEmmYgmTDqOluWFYtURI9bgRtmx3tSdslHsMU9lKWkev3UHEkzDbOtu4XwY+hCn9NOjBRSDWNafa4fyCQ==",
+        "dependencies": {
+          "Spectre.Console": "0.45.0"
+        }
+      },
       "System.AppContext": {
         "type": "Transitive",
         "resolved": "4.3.0",
@@ -1706,7 +1714,7 @@
           "Serilog.Extensions.Hosting": "[5.0.1, )",
           "Serilog.Settings.Configuration": "[3.3.0, )",
           "Serilog.Sinks.Console": "[4.1.0, )",
-          "Spectre.Console": "[0.45.0, )",
+          "Spectre.Console.Cli": "[0.45.0, )",
           "System.Interactive": "[6.0.1, )",
           "System.Interactive.Async": "[6.0.1, )"
         }
