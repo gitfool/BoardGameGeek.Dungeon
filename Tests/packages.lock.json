@@ -34,12 +34,12 @@
       },
       "Microsoft.NET.Test.Sdk": {
         "type": "Direct",
-        "requested": "[17.3.0, )",
-        "resolved": "17.3.0",
-        "contentHash": "ch4JCT7AZdBzvCAKD36t6fDsl7NEzzunwW7MwXUG2uFPoWcMd8B8KYg5fiwxnpdXJHodJk6yIBdSwMpN3Ikt9w==",
+        "requested": "[17.3.1, )",
+        "resolved": "17.3.1",
+        "contentHash": "jH9W5uYannaJ3HhrPBkzSidf3WkqP6XI+Yke0ODYVuFWM6GLVtBAyNgXvU/uQXPBsHq4aysLTsrN1FvG2hlKoQ==",
         "dependencies": {
-          "Microsoft.CodeCoverage": "17.3.0",
-          "Microsoft.TestPlatform.TestHost": "17.3.0"
+          "Microsoft.CodeCoverage": "17.3.1",
+          "Microsoft.TestPlatform.TestHost": "17.3.1"
         }
       },
       "Microsoft.SourceLink.GitHub": {
@@ -133,8 +133,8 @@
       },
       "Microsoft.CodeCoverage": {
         "type": "Transitive",
-        "resolved": "17.3.0",
-        "contentHash": "/xxz+e29F2V5pePtInjbLffoqWVTm60KCX87vSj2laNboeWq65WFJ634fGtBcMZO3VEfOmh9/XcoWEfLlWWG+g=="
+        "resolved": "17.3.1",
+        "contentHash": "WqB7Ik4v8ku0Y9HZShqTStZdq8R1lyhsZr7IMp8zV/OcL5sHVYvlMnardQR+SDQc3dmbniCIl9mYxYM+V7x8MA=="
       },
       "Microsoft.Extensions.Configuration": {
         "type": "Transitive",
@@ -428,8 +428,8 @@
       },
       "Microsoft.TestPlatform.ObjectModel": {
         "type": "Transitive",
-        "resolved": "17.3.0",
-        "contentHash": "6NRzi6QbmWV49Psf8A9z1LTJU4nBrlJdCcDOUyD4Ttm1J2wvksu98GlV+52CkxtpgNsUjGr9Mv1Rbb1/dB06yQ==",
+        "resolved": "17.3.1",
+        "contentHash": "n1WSFCMiFt6KmD5JzV+Wye5Ntomez3YP2+d15bu5PS5Z1U0g+V7VBLdJIaJRnahz5BsXJDTnLYNVOUdntwjx6Q==",
         "dependencies": {
           "NuGet.Frameworks": "5.11.0",
           "System.Reflection.Metadata": "1.6.0"
@@ -437,10 +437,10 @@
       },
       "Microsoft.TestPlatform.TestHost": {
         "type": "Transitive",
-        "resolved": "17.3.0",
-        "contentHash": "uOJALDWtKXZkISKuNI7kOlRi/lk2CqXZtLkNS0Ei+RXqRUjUpCsjAPYSP+DJ/a4QwJ5cI9CVF52vtajnGOaEpw==",
+        "resolved": "17.3.1",
+        "contentHash": "co/GMz6rGxpzn2aJYTDDim61HvEk+SHBVtbXnu2RSrz20HxkaraEh0kltCsMkmLAX/6Hz5sa6NquLngBlURTow==",
         "dependencies": {
-          "Microsoft.TestPlatform.ObjectModel": "17.3.0",
+          "Microsoft.TestPlatform.ObjectModel": "17.3.1",
           "Newtonsoft.Json": "9.0.1"
         }
       },
@@ -701,16 +701,27 @@
       },
       "Serilog.Sinks.Console": {
         "type": "Transitive",
-        "resolved": "4.0.1",
-        "contentHash": "apLOvSJQLlIbKlbx+Y2UDHSP05kJsV7mou+fvJoRGs/iR+jC22r8cuFVMjjfVxz/AD4B2UCltFhE1naRLXwKNw==",
+        "resolved": "4.1.0",
+        "contentHash": "K6N5q+5fetjnJPvCmkWOpJ/V8IEIoMIB1s86OzBrbxwTyHxdx3pmz4H+8+O/Dc/ftUX12DM1aynx/dDowkwzqg==",
         "dependencies": {
           "Serilog": "2.10.0"
         }
       },
       "Spectre.Console": {
         "type": "Transitive",
-        "resolved": "0.44.0",
-        "contentHash": "QMpKtn5QV1j2nklqDwuRE/XwbDn5jxww+Mt5J6Jn3EeQIzaLcuLyUhCLh/mS8giN6uXbqOV1ep5HlUGxrV1ujQ=="
+        "resolved": "0.45.0",
+        "contentHash": "e//13o8/BCrWmwN26eJ4zCzD2iq7iUlqQd+nDI9nJUdnJ/rYAanYiNFZZ7YHwlv48IKuKtRYYP6/wPt1DG67ww==",
+        "dependencies": {
+          "System.Memory": "4.5.5"
+        }
+      },
+      "Spectre.Console.Cli": {
+        "type": "Transitive",
+        "resolved": "0.45.0",
+        "contentHash": "SZcYjwEmmYgmTDqOluWFYtURI9bgRtmx3tSdslHsMU9lKWkev3UHEkzDbOtu4XwY+hCn9NOjBRSDWNafa4fyCQ==",
+        "dependencies": {
+          "Spectre.Console": "0.45.0"
+        }
       },
       "System.AppContext": {
         "type": "Transitive",
@@ -1086,8 +1097,8 @@
       },
       "System.Memory": {
         "type": "Transitive",
-        "resolved": "4.5.4",
-        "contentHash": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw=="
+        "resolved": "4.5.5",
+        "contentHash": "XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw=="
       },
       "System.Net.Http": {
         "type": "Transitive",
@@ -1702,8 +1713,8 @@
           "Serilog.Enrichers.Thread": "[3.1.0, )",
           "Serilog.Extensions.Hosting": "[5.0.1, )",
           "Serilog.Settings.Configuration": "[3.3.0, )",
-          "Serilog.Sinks.Console": "[4.0.1, )",
-          "Spectre.Console": "[0.44.0, )",
+          "Serilog.Sinks.Console": "[4.1.0, )",
+          "Spectre.Console.Cli": "[0.45.0, )",
           "System.Interactive": "[6.0.1, )",
           "System.Interactive.Async": "[6.0.1, )"
         }
