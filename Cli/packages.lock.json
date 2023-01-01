@@ -4,9 +4,9 @@
     ".NETCoreApp,Version=v5.0": {
       "Flurl": {
         "type": "Direct",
-        "requested": "[3.0.6, )",
-        "resolved": "3.0.6",
-        "contentHash": "XMIlB/tJ4nTYF2+79xDsnnlgbXHpKyizKX2fffrECekI6pEsa9MSLzf5tPVMdLy4k4AcJPLs356Sa2Le5VRDCw=="
+        "requested": "[3.0.7, )",
+        "resolved": "3.0.7",
+        "contentHash": "W3zHc8m6/yqOAedHwpFQv5VT8t0W/jkS3AVlv1Tj520KDNjUa31at0zMc3XYJy8f9qdOmUcvSUarf6G2nK1ZIg=="
       },
       "Flurl.Http": {
         "type": "Direct",
@@ -1411,14 +1411,14 @@
       },
       "YamlDotNet": {
         "type": "Transitive",
-        "resolved": "12.0.2",
-        "contentHash": "IFj2oDZYJIv5sM8mqaj5edVrpgUyoXk/wCGqZQJrgys/0tBajajpjRSgFM+iA/9ILOfTsPYKtcDcwvqBnBcNIg=="
+        "resolved": "12.3.1",
+        "contentHash": "5AuPSmnxs77+u8oLEW9iF+DUOzkb+VVsJ1IUPYcRJCho0hkLWGO59ZZOr7Mto31oExP8Nm9Q+4BzVwU6sIDQWA=="
       },
       "library": {
         "type": "Project",
         "dependencies": {
           "FluentValidation": "[11.4.0, )",
-          "YamlDotNet": "[12.0.2, )"
+          "YamlDotNet": "[12.3.1, )"
         }
       }
     }
