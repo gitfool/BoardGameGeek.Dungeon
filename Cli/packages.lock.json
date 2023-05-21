@@ -81,13 +81,13 @@
       },
       "NetEscapades.Configuration.Yaml": {
         "type": "Direct",
-        "requested": "[2.2.0, )",
-        "resolved": "2.2.0",
-        "contentHash": "g++p0PrPIMgGmSpqJOsf0bifO1d7HiVj2rAuwQkFu4BhsPSimzPDAx3MKMBOU0jXEgVG1mWSlufoo1P+2Ls+mQ==",
+        "requested": "[3.1.0, )",
+        "resolved": "3.1.0",
+        "contentHash": "D5Pxt4hXABna5OwYQmAQukspW7LEoYgvfAqyw85gUF/gnH9pWHsZCLMXy2ewWoQ0PELZ1lOGFLDbDVeoCvtBgA==",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "2.0.0",
           "Microsoft.Extensions.Configuration.FileExtensions": "2.0.0",
-          "YamlDotNet": "11.2.1"
+          "YamlDotNet": "13.0.1"
         }
       },
       "Polly": {
