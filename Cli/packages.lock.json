@@ -31,13 +31,13 @@
       },
       "Microsoft.Extensions.Hosting": {
         "type": "Direct",
-        "requested": "[7.0.0, )",
-        "resolved": "7.0.0",
-        "contentHash": "4nFc8xCfK26G524ioreZvz/IeIKN/gY1LApoGpaIThKqBdTwauUo4ETCf12lQcoefijqe3Imnfvnk31IezFatg==",
+        "requested": "[7.0.1, )",
+        "resolved": "7.0.1",
+        "contentHash": "aoeMou6XSW84wiqd895OdaGyO9PfH6nohQJ0XBcshRDafbdIU6PQIVl8TpOCssPYq3ciRseP5064hbFyCR9J9w==",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
-          "Microsoft.Extensions.Configuration.Binder": "7.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "7.0.3",
           "Microsoft.Extensions.Configuration.CommandLine": "7.0.0",
           "Microsoft.Extensions.Configuration.EnvironmentVariables": "7.0.0",
           "Microsoft.Extensions.Configuration.FileExtensions": "7.0.0",
@@ -55,14 +55,15 @@
           "Microsoft.Extensions.Logging.Debug": "7.0.0",
           "Microsoft.Extensions.Logging.EventLog": "7.0.0",
           "Microsoft.Extensions.Logging.EventSource": "7.0.0",
-          "Microsoft.Extensions.Options": "7.0.0"
+          "Microsoft.Extensions.Options": "7.0.1",
+          "System.Diagnostics.DiagnosticSource": "7.0.1"
         }
       },
       "Microsoft.Extensions.Options": {
         "type": "Direct",
-        "requested": "[7.0.0, )",
-        "resolved": "7.0.0",
-        "contentHash": "lP1yBnTTU42cKpMozuafbvNtQ7QcBjr/CcK3bYOGEMH55Fjt+iecXjT6chR7vbgCMqy3PG3aNQSZgo/EuY/9qQ==",
+        "requested": "[7.0.1, )",
+        "resolved": "7.0.1",
+        "contentHash": "pZRDYdN1FpepOIfHU62QoBQ6zdAoTvnjxFfqAzEd9Jhb2dfhA5i6jeTdgGgcgTWFRC7oT0+3XrbQu4LjvgX1Nw==",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
           "Microsoft.Extensions.Primitives": "7.0.0"
@@ -145,11 +146,11 @@
       },
       "Spectre.Console.Cli": {
         "type": "Direct",
-        "requested": "[0.45.0, )",
-        "resolved": "0.45.0",
-        "contentHash": "SZcYjwEmmYgmTDqOluWFYtURI9bgRtmx3tSdslHsMU9lKWkev3UHEkzDbOtu4XwY+hCn9NOjBRSDWNafa4fyCQ==",
+        "requested": "[0.47.0, )",
+        "resolved": "0.47.0",
+        "contentHash": "S2cZCbve4fAgRtigNUNZbF+NLQJcAapSqSbbDYqLtqXJcIZ6tKiRTveYe05d+oLY2bAmP7sgnLdzVknGXruy2Q==",
         "dependencies": {
-          "Spectre.Console": "0.45.0"
+          "Spectre.Console": "0.47.0"
         }
       },
       "System.Interactive": {
@@ -169,8 +170,8 @@
       },
       "FluentValidation": {
         "type": "Transitive",
-        "resolved": "11.4.0",
-        "contentHash": "WZJyrNf4suiaI6avVG32W9kmBLC3+V5rDTcLeRJjeU4tDmTyDIOz1459DzCKppXs34YpZg9rCUzDY3M4XxG7Ug=="
+        "resolved": "11.5.2",
+        "contentHash": "kj/hW/iusp2zq1Vt1YPLgDj6UG0DhoJXGkLwjLwm3j7vUtRF8DVA5vHJfItG3BxDjLWJUR2pvw8fK7rnuysZNA=="
       },
       "Microsoft.Bcl.AsyncInterfaces": {
         "type": "Transitive",
@@ -201,8 +202,8 @@
       },
       "Microsoft.Extensions.Configuration.Binder": {
         "type": "Transitive",
-        "resolved": "7.0.0",
-        "contentHash": "tgU4u7bZsoS9MKVRiotVMAwHtbREHr5/5zSEV+JPhg46+ox47Au84E3D2IacAaB0bk5ePNaNieTlPrfjbbRJkg==",
+        "resolved": "7.0.3",
+        "contentHash": "1eRFwJBrkkncTpvh6mivB8zg4uBVm6+Y6stEJERrVEqZZc8Hvf+N1iIgj2ySYDUQko4J1Gw1rLf1M8bG83F0eA==",
         "dependencies": {
           "Microsoft.Extensions.Configuration.Abstractions": "7.0.0"
         }
@@ -632,8 +633,8 @@
       },
       "Spectre.Console": {
         "type": "Transitive",
-        "resolved": "0.45.0",
-        "contentHash": "e//13o8/BCrWmwN26eJ4zCzD2iq7iUlqQd+nDI9nJUdnJ/rYAanYiNFZZ7YHwlv48IKuKtRYYP6/wPt1DG67ww==",
+        "resolved": "0.47.0",
+        "contentHash": "wz8mszcZr0cSOo8GyoG9e2DFW0SkMT8/n78Q/lIXX7EbCtHNXOoOKWpJ9Str+rCYtmQOGGyDutZzubrUHK/XkA==",
         "dependencies": {
           "System.Memory": "4.5.5"
         }
@@ -702,8 +703,8 @@
       },
       "System.Diagnostics.DiagnosticSource": {
         "type": "Transitive",
-        "resolved": "7.0.0",
-        "contentHash": "9W0ewWDuAyDqS2PigdTxk6jDKonfgscY/hP8hm7VpxYhNHZHKvZTdRckberlFk3VnCmr3xBUyMBut12Q+T2aOw==",
+        "resolved": "7.0.1",
+        "contentHash": "T9SLFxzDp0SreCffRDXSAS5G+lq6E8qP4knHS2IBjwCdx2KEvGnGZsq7gFpselYOda7l6gXsJMD93TQsFj/URA==",
         "dependencies": {
           "System.Memory": "4.5.5",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
@@ -1417,7 +1418,7 @@
       "library": {
         "type": "Project",
         "dependencies": {
-          "FluentValidation": "[11.4.0, )",
+          "FluentValidation": "[11.5.2, )",
           "YamlDotNet": "[12.3.1, )"
         }
       }
