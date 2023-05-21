@@ -5,6 +5,6 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.5.2" />
-    <PackageReference Include="YamlDotNet" Version="12.3.1" />
+    <PackageReference Include="YamlDotNet" Version="13.1.0" />
   </ItemGroup>
 </Project>
