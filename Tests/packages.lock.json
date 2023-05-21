@@ -470,12 +470,12 @@
       },
       "NetEscapades.Configuration.Yaml": {
         "type": "Transitive",
-        "resolved": "2.2.0",
-        "contentHash": "g++p0PrPIMgGmSpqJOsf0bifO1d7HiVj2rAuwQkFu4BhsPSimzPDAx3MKMBOU0jXEgVG1mWSlufoo1P+2Ls+mQ==",
+        "resolved": "3.1.0",
+        "contentHash": "D5Pxt4hXABna5OwYQmAQukspW7LEoYgvfAqyw85gUF/gnH9pWHsZCLMXy2ewWoQ0PELZ1lOGFLDbDVeoCvtBgA==",
         "dependencies": {
           "Microsoft.Extensions.Configuration": "2.0.0",
           "Microsoft.Extensions.Configuration.FileExtensions": "2.0.0",
-          "YamlDotNet": "11.2.1"
+          "YamlDotNet": "13.0.1"
         }
       },
       "NETStandard.Library": {
@@ -1710,7 +1710,7 @@
           "Microsoft.AspNet.WebApi.Client": "[5.2.9, )",
           "Microsoft.Extensions.Hosting": "[7.0.1, )",
           "Microsoft.Extensions.Options": "[7.0.1, )",
-          "NetEscapades.Configuration.Yaml": "[2.2.0, )",
+          "NetEscapades.Configuration.Yaml": "[3.1.0, )",
           "Polly": "[7.2.3, )",
           "Serilog": "[2.12.0, )",
           "Serilog.Enrichers.Thread": "[3.1.0, )",
