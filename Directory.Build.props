@@ -8,12 +8,12 @@
     <PackageTags>BoardGameGeek;BGG;Tools</PackageTags>
 
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- <CopyDebugSymbolFilesFromPackages>true</CopyDebugSymbolFilesFromPackages> -->
     <DebugType>embedded</DebugType>
     <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <LangVersion>preview</LangVersion>
-    <NoWarn>MSB3270;NU5105</NoWarn>
     <Nullable>enable</Nullable>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
