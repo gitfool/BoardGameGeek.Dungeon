@@ -86,8 +86,8 @@
       },
       "Flurl": {
         "type": "Transitive",
-        "resolved": "3.0.7",
-        "contentHash": "W3zHc8m6/yqOAedHwpFQv5VT8t0W/jkS3AVlv1Tj520KDNjUa31at0zMc3XYJy8f9qdOmUcvSUarf6G2nK1ZIg=="
+        "resolved": "4.0.0",
+        "contentHash": "rpts69yYgvJqg6PPgqShBQEZ4aNzWQqWpWppcT0oDWxDCIsBqiod4pj6LQZdhk+1OozLFagemldMRACdHF3CsA=="
       },
       "Flurl.Http": {
         "type": "Transitive",
@@ -1542,7 +1542,7 @@
       "bgg-dungeon": {
         "type": "Project",
         "dependencies": {
-          "Flurl": "[3.0.7, )",
+          "Flurl": "[4.0.0, )",
           "Flurl.Http": "[3.2.4, )",
           "Library": "[1.0.0, )",
           "Microsoft.AspNet.WebApi.Client": "[6.0.0, )",
