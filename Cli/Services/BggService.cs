@@ -5,8 +5,8 @@ public interface IBggService
     IAsyncEnumerable<Thing> GetThingsAsync(IEnumerable<int> ids);
     IAsyncEnumerable<Collection> GetUserCollectionAsync(string userName);
     IAsyncEnumerable<Play> GetUserPlaysAsync(string userName, int? year = null, int? id = null);
-    void LoginUser(IEnumerable<FlurlCookie> cookies);
-    Task<IEnumerable<FlurlCookie>> LoginUserAsync(string userName, string password);
+    void LoginUser(CookieJar cookies);
+    Task<CookieJar> LoginUserAsync(string userName, string password);
     Task<Play> LogUserPlayAsync(Play play);
 }
 
@@ -14,6 +14,7 @@ public sealed class BggService : IBggService
 {
     public sealed record PlayResponse
     {
+        [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
         public int PlayId { get; set; }
         public int NumPlays { get; set; }
         public string? Html { get; set; }
@@ -24,9 +25,7 @@ public sealed class BggService : IBggService
     {
         Logger = logger;
         FlurlClient = new FlurlClient("https://boardgamegeek.com")
-        {
-            Settings = { BeforeCall = call => { Logger.LogDebug($"{call.Request.Verb} {call.Request.Url}"); } }
-        };
+            .BeforeCall(call => { Logger.LogDebug($"{call.Request.Verb} {call.Request.Url}"); });
         RetryPolicy = Policy.Handle<FlurlHttpException>(ex => ex.Call.HttpResponseMessage.StatusCode == HttpStatusCode.TooManyRequests)
             .OrResult<IFlurlResponse>(response => response.ResponseMessage.StatusCode == HttpStatusCode.Accepted)
             .WaitAndRetryAsync(EnumerateDelay(), (response, _) =>
@@ -176,16 +175,12 @@ public sealed class BggService : IBggService
         }
     }
 
-    public void LoginUser(IEnumerable<FlurlCookie> cookies)
+    public void LoginUser(CookieJar cookies)
     {
-        Cookies = new CookieJar();
-        foreach (var cookie in cookies)
-        {
-            Cookies.AddOrReplace(cookie);
-        }
+        Cookies = cookies;
     }
 
-    public async Task<IEnumerable<FlurlCookie>> LoginUserAsync(string userName, string password)
+    public async Task<CookieJar> LoginUserAsync(string userName, string password)
     {
         var request = FlurlClient.Request("login", "api", "v1");
         var cookies = new CookieJar();
