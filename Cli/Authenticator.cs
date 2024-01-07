@@ -10,19 +10,18 @@ public sealed class Authenticator
 
     public async Task AuthenticateUser(string userName, string? password)
     {
-        var fileName = $"BGG-{userName}-Auth.json"; // auth cache
-        var options = new JsonSerializerOptions { Converters = { new CookieConverter() }, WriteIndented = true };
+        var fileName = $"BGG-{userName}-Auth.txt"; // auth cache
         if (password != null)
         {
             Logger.LogInformation("Authenticating user");
             var cookies = await BggService.LoginUserAsync(userName, password);
-            var json = JsonSerializer.Serialize(cookies, options);
-            await File.WriteAllTextAsync(fileName, json);
+            await using var writer = File.CreateText(fileName);
+            cookies.WriteTo(writer);
         }
         else
         {
-            var json = await File.ReadAllTextAsync(fileName);
-            var cookies = JsonSerializer.Deserialize<IEnumerable<FlurlCookie>>(json, options)!;
+            var reader = File.OpenText(fileName);
+            var cookies = CookieJar.LoadFrom(reader);
             BggService.LoginUser(cookies);
         }
     }
