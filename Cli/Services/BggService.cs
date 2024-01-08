@@ -28,9 +28,12 @@ public sealed class BggService : IBggService
             .BeforeCall(call => { Logger.LogDebug($"{call.Request.Verb} {call.Request.Url}"); });
         ResiliencePipeline = new ResiliencePipelineBuilder<IFlurlResponse>().AddRetry(new RetryStrategyOptions<IFlurlResponse>
         {
-            ShouldHandle = new PredicateBuilder<IFlurlResponse>()
-                .Handle<FlurlHttpException>(ex => ex.Call.HttpResponseMessage.StatusCode == HttpStatusCode.TooManyRequests)
-                .HandleResult(response => response.ResponseMessage.StatusCode == HttpStatusCode.Accepted),
+            ShouldHandle = args => args.Outcome switch
+            {
+                { Exception: FlurlHttpException ex } when ex.Call.HttpResponseMessage.StatusCode == HttpStatusCode.TooManyRequests => PredicateResult.True(),
+                { Result.ResponseMessage.StatusCode: HttpStatusCode.Accepted } => PredicateResult.True(),
+                _ => PredicateResult.False()
+            },
             BackoffType = DelayBackoffType.Exponential,
             Delay = TimeSpan.FromSeconds(2),
             MaxDelay = TimeSpan.FromMinutes(1),
