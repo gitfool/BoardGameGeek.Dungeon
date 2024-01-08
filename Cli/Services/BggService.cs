@@ -26,19 +26,31 @@ public sealed class BggService : IBggService
         Logger = logger;
         FlurlClient = new FlurlClient("https://boardgamegeek.com")
             .BeforeCall(call => { Logger.LogDebug($"{call.Request.Verb} {call.Request.Url}"); });
-        RetryPolicy = Policy.Handle<FlurlHttpException>(ex => ex.Call.HttpResponseMessage.StatusCode == HttpStatusCode.TooManyRequests)
-            .OrResult<IFlurlResponse>(response => response.ResponseMessage.StatusCode == HttpStatusCode.Accepted)
-            .WaitAndRetryAsync(EnumerateDelay(), (response, _) =>
+        ResiliencePipeline = new ResiliencePipelineBuilder<IFlurlResponse>().AddRetry(new RetryStrategyOptions<IFlurlResponse>
+        {
+            ShouldHandle = args => args.Outcome switch
             {
-                if (response.Exception is FlurlHttpException ex) //TODO once throttled, introduce delay for all subsequent calls
+                { Exception: FlurlHttpException ex } when ex.Call.HttpResponseMessage.StatusCode == HttpStatusCode.TooManyRequests => PredicateResult.True(),
+                { Result.ResponseMessage.StatusCode: HttpStatusCode.Accepted } => PredicateResult.True(),
+                _ => PredicateResult.False()
+            },
+            BackoffType = DelayBackoffType.Exponential,
+            Delay = TimeSpan.FromSeconds(2),
+            MaxDelay = TimeSpan.FromMinutes(1),
+            MaxRetryAttempts = 16,
+            OnRetry = args =>
+            {
+                if (args.Outcome.Exception is FlurlHttpException ex)
                 {
                     Logger.LogWarning($"{ex.Call.HttpResponseMessage.StatusCode:D} {ex.Call.HttpResponseMessage.StatusCode}");
                 }
-                else
+                else if (args.Outcome.Result is { } response)
                 {
-                    Logger.LogWarning($"{response.Result.ResponseMessage.StatusCode:D} {response.Result.ResponseMessage.StatusCode}");
+                    Logger.LogWarning($"{response.ResponseMessage.StatusCode:D} {response.ResponseMessage.StatusCode}");
                 }
-            });
+                return default;
+            }
+        }).Build();
     }
 
     public async IAsyncEnumerable<Thing> GetThingsAsync(IEnumerable<int> ids)
@@ -50,7 +62,7 @@ public sealed class BggService : IBggService
                 {
                     id = string.Join(",", id)
                 });
-            var response = await RetryPolicy.ExecuteAsync(() => request.GetAsync());
+            var response = await ResiliencePipeline.ExecuteAsync(() => request.GetAsync());
             return await response.ResponseMessage.Content.ReadAsAsync<ThingItems>(XmlFormatterCollection);
         }
 
@@ -95,7 +107,7 @@ public sealed class BggService : IBggService
                     subtype = "boardgame",
                     minplays = 1
                 });
-            var response = await RetryPolicy.ExecuteAsync(() => request.GetAsync());
+            var response = await ResiliencePipeline.ExecuteAsync(() => request.GetAsync());
             return await response.ResponseMessage.Content.ReadAsAsync<CollectionItems>(XmlFormatterCollection);
         }
 
@@ -128,7 +140,7 @@ public sealed class BggService : IBggService
                     maxdate = year != null ? $"{year:D4}-12-31" : null,
                     page
                 });
-            var response = await RetryPolicy.ExecuteAsync(() => request.GetAsync());
+            var response = await ResiliencePipeline.ExecuteAsync(() => request.GetAsync());
             return await response.ResponseMessage.Content.ReadAsAsync<UserPlays>(XmlFormatterCollection);
         }
 
@@ -192,7 +204,7 @@ public sealed class BggService : IBggService
                 password
             }
         };
-        await RetryPolicy.ExecuteAsync(() => request.WithCookies(out cookies).PostJsonAsync(body));
+        await ResiliencePipeline.ExecuteAsync(() => request.WithCookies(out cookies).PostJsonAsync(body));
         Cookies = cookies.Remove(cookie => !cookie.Name.StartsWith("bgg", StringComparison.OrdinalIgnoreCase));
         return Cookies;
     }
@@ -217,21 +229,15 @@ public sealed class BggService : IBggService
             nowinstats = play.NoWinStats ? 1 : 0,
             comments = play.Comments?.Replace(@"\n", "\n")
         };
-        var response = await RetryPolicy.ExecuteAsync(() => request.PostUrlEncodedAsync(body)).ReceiveJson<PlayResponse>();
+        var response = await ResiliencePipeline.ExecuteAsync(() => request.PostUrlEncodedAsync(body)).AsTask().ReceiveJson<PlayResponse>();
         play.PlayId = response.PlayId;
         return play;
-    }
-
-    private static IEnumerable<TimeSpan> EnumerateDelay()
-    {
-        return Enumerable.Range(2, 5).Select(seconds => TimeSpan.FromSeconds(Math.Pow(2, seconds)))
-            .Concat(Enumerable.Repeat(TimeSpan.FromMinutes(1), int.MaxValue));
     }
 
     private ILogger Logger { get; }
     private IFlurlClient FlurlClient { get; }
     private CookieJar? Cookies { get; set; }
-    private AsyncRetryPolicy<IFlurlResponse> RetryPolicy { get; }
+    private ResiliencePipeline<IFlurlResponse> ResiliencePipeline { get; }
 
     private static readonly XmlMediaTypeFormatter XmlFormatter = new() { UseXmlSerializer = true };
     private static readonly MediaTypeFormatterCollection XmlFormatterCollection = new(new MediaTypeFormatter[] { XmlFormatter });
