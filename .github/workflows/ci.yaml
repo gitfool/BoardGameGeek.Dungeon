@@ -58,7 +58,7 @@ jobs:
           report_paths: "Artifacts/Tests/*/TestResults.xml"
 
       - name: Coverage report
-        uses: 5monkeys/cobertura-action@v13
+        uses: 5monkeys/cobertura-action@v14
         with:
           minimum_coverage: 80
           report_name: coverage
