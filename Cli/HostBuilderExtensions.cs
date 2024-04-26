@@ -10,8 +10,9 @@ public static class HostBuilderExtensions
             ((List<IConfigurationSource>)builder.Sources).RemoveAll(
                 source => source.GetType() == typeof(EnvironmentVariablesConfigurationSource) || source.GetType() == typeof(CommandLineConfigurationSource));
 
-            builder.AddYamlFile("config/_default.yaml", false, false) // global defaults
-                .AddYamlFile($"config/_{context.HostingEnvironment.EnvironmentName.ToLowerInvariant()}.yaml", true, false); // dotnet environment; development, production
+            var appRoot = Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)!;
+            builder.AddYamlFile(Path.Combine(appRoot, "config", "_default.yaml"), false, false) // global defaults
+                .AddYamlFile(Path.Combine(appRoot, "config", $"_{context.HostingEnvironment.EnvironmentName.ToLowerInvariant()}.yaml"), true, false); // dotnet environment; development, production
 
             builder.AddEnvironmentVariables() // env vars
                 .AddCommandLine(args); // cli

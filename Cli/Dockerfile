@@ -32,14 +32,12 @@ EOF
 # Install dungeon
 ENV DOTNET_HostBuilder__ReloadConfigOnChange=false
 
-WORKDIR /home/user/dungeon
-
-COPY --link --chown=1000:1000 bin/Release/publish .
+COPY --link --chown=1000:1000 bin/Release/publish /app
 
 RUN <<EOF
     set -ex
-    echo "alias d='cd ~/dungeon && dotnet bgg-dungeon.dll'" >> ~/.bash_aliases
-    find . -type f -regextype posix-egrep -iregex '.*\.(dll|json|yaml)$' -exec chmod -x {} \;
+    echo "alias d='dotnet /app/bgg-dungeon.dll'" >> ~/.bash_aliases
+    find /app -type f -regextype posix-egrep -iregex '.*\.(dll|json|yaml)$' -exec chmod -x {} \;
 EOF
 
-ENTRYPOINT [ "dotnet", "bgg-dungeon.dll" ]
+ENTRYPOINT [ "dotnet", "/app/bgg-dungeon.dll" ]
