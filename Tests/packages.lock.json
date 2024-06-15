@@ -464,15 +464,15 @@
       },
       "Serilog": {
         "type": "Transitive",
-        "resolved": "3.1.1",
-        "contentHash": "P6G4/4Kt9bT635bhuwdXlJ2SCqqn2nhh4gqFqQueCOr9bK/e7W9ll/IoX1Ter948cV2Z/5+5v8pAfJYUISY03A=="
+        "resolved": "4.0.0",
+        "contentHash": "2jDkUrSh5EofOp7Lx5Zgy0EB+7hXjjxE2ktTb1WVQmU00lDACR2TdROGKU0K1pDTBSJBN1PqgYpgOZF8mL7NJw=="
       },
       "Serilog.Enrichers.Thread": {
         "type": "Transitive",
-        "resolved": "3.1.0",
-        "contentHash": "85lWsGRJpRxvKT6j/H67no55SUBsBIvp556TKuBTGhjtoPeq+L7j/sDWbgAtvT0p7u7/phJyX6j35PQ4Vtqw0g==",
+        "resolved": "4.0.0",
+        "contentHash": "C7BK25a1rhUyr+Tp+1BYcVlBJq7M2VCHlIgnwoIUVJcicM9jYcvQK18+OeHiXw7uLPSjqWxJIp1EfaZ/RGmEwA==",
         "dependencies": {
-          "Serilog": "2.3.0"
+          "Serilog": "4.0.0"
         }
       },
       "Serilog.Extensions.Hosting": {
@@ -508,10 +508,10 @@
       },
       "Serilog.Sinks.Console": {
         "type": "Transitive",
-        "resolved": "5.0.1",
-        "contentHash": "6Jt8jl9y2ey8VV7nVEUAyjjyxjAQuvd5+qj4XYAT9CwcsvR70HHULGBeD+K2WCALFXf7CFsNQT4lON6qXcu2AA==",
+        "resolved": "6.0.0",
+        "contentHash": "fQGWqVMClCP2yEyTXPIinSr5c+CBGUvBybPxjAGcf7ctDhadFhrQw03Mv8rJ07/wR5PDfFjewf2LimvXCDzpbA==",
         "dependencies": {
-          "Serilog": "3.1.1"
+          "Serilog": "4.0.0"
         }
       },
       "Spectre.Console": {
@@ -655,11 +655,11 @@
           "Microsoft.Extensions.Options": "[8.0.2, )",
           "NetEscapades.Configuration.Yaml": "[3.1.0, )",
           "Polly": "[8.4.0, )",
-          "Serilog": "[3.1.1, )",
-          "Serilog.Enrichers.Thread": "[3.1.0, )",
+          "Serilog": "[4.0.0, )",
+          "Serilog.Enrichers.Thread": "[4.0.0, )",
           "Serilog.Extensions.Hosting": "[8.0.0, )",
           "Serilog.Settings.Configuration": "[8.0.1, )",
-          "Serilog.Sinks.Console": "[5.0.1, )",
+          "Serilog.Sinks.Console": "[6.0.0, )",
           "Spectre.Console.Cli": "[0.49.1, )",
           "System.Interactive": "[6.0.1, )",
           "System.Interactive.Async": "[6.0.1, )"
