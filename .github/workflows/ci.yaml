@@ -50,7 +50,7 @@ jobs:
 
       - name: Tests report
         if: always()
-        uses: mikepenz/action-junit-report@v4.2.2
+        uses: mikepenz/action-junit-report@v4.3.1
         with:
           check_name: tests
           fail_on_failure: true
