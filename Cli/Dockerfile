@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM mcr.microsoft.com/dotnet/runtime:8.0.7-jammy
+FROM mcr.microsoft.com/dotnet/runtime:8.0.8-jammy
 
 LABEL org.opencontainers.image.source=https://github.com/gitfool/BoardGameGeek.Dungeon
 
