@@ -82,11 +82,11 @@
       },
       "Polly": {
         "type": "Direct",
-        "requested": "[8.4.2, )",
-        "resolved": "8.4.2",
-        "contentHash": "/qfe/eoHQ9tJOGVmJ/y+fUvK5nHDrS0EZ/DguwYXGN8gnDwlUWdmPqUqoj0PJvg8awELac+9YL7W0GOd1vTORg==",
+        "requested": "[8.5.0, )",
+        "resolved": "8.5.0",
+        "contentHash": "GBNZPy7i7OpkaIruWPRJ0+AWzdGDQDnKY91b7Ic2aAch4lKhPjUc5KSffpH9krIWe0MoyghqaRxwRC0Uwz2PkA==",
         "dependencies": {
-          "Polly.Core": "8.4.2"
+          "Polly.Core": "8.5.0"
         }
       },
       "Serilog": {
@@ -163,8 +163,8 @@
       },
       "FluentValidation": {
         "type": "Transitive",
-        "resolved": "11.10.0",
-        "contentHash": "qsJGSJDdZ8qiG+lVJ70PZfJHcEdq8UQZ/tZDXoj78/iHKG6lVKtMJsD11zyyv/IPc7rwqGqnFoFLTNzpo3IPYg=="
+        "resolved": "11.11.0",
+        "contentHash": "cyIVdQBwSipxWG8MA3Rqox7iNbUNUTK5bfJi9tIdm4CAfH71Oo5ABLP4/QyrUwuakqpUEPGtE43BDddvEehuYw=="
       },
       "Microsoft.Bcl.AsyncInterfaces": {
         "type": "Transitive",
@@ -431,8 +431,8 @@
       },
       "Polly.Core": {
         "type": "Transitive",
-        "resolved": "8.4.2",
-        "contentHash": "BpE2I6HBYYA5tF0Vn4eoQOGYTYIK1BlF5EXVgkWGn3mqUUjbXAr13J6fZVbp7Q3epRR8yshacBMlsHMhpOiV3g=="
+        "resolved": "8.5.0",
+        "contentHash": "VYYMZNitZ85UEhwOKkTQI63WEMvzUqwQc74I2mm8h/DBVAMcBBxqYPni4DmuRtbCwngmuONuK2yBJfWNRKzI+A=="
       },
       "Serilog.Extensions.Logging": {
         "type": "Transitive",
@@ -473,14 +473,14 @@
       },
       "YamlDotNet": {
         "type": "Transitive",
-        "resolved": "16.2.0",
-        "contentHash": "iKVYog7JNiFOTr4gMHSjCqrGFD2NyABUHgSkRq9XR8A2+fsWepSWTpjHAOnKo1LVAHjy33o6I0u6lo5Ng0NtAw=="
+        "resolved": "16.2.1",
+        "contentHash": "im6zTVgesjcfTRfuMpnx51Rg2svWenp/3q5XBfcIzgj8PNIkkSD2xEl9HWcVi2SaJPP9XcXUdzed9gSDEuf1TA=="
       },
       "library": {
         "type": "Project",
         "dependencies": {
-          "FluentValidation": "[11.10.0, )",
-          "YamlDotNet": "[16.2.0, )"
+          "FluentValidation": "[11.11.0, )",
+          "YamlDotNet": "[16.2.1, )"
         }
       }
     }
