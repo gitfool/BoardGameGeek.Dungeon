@@ -55,22 +55,22 @@ public sealed class BggService : IBggService
 
     public async IAsyncEnumerable<Thing> GetThingsAsync(IEnumerable<int> ids)
     {
-        async ValueTask<ThingItems> GetThingAsync(IList<int> id)
+        async ValueTask<ThingItems> GetThingAsync(IList<int> id, CancellationToken cancellationToken)
         {
             var request = FlurlClient.Request("xmlapi2", "thing")
                 .SetQueryParams(new
                 {
                     id = string.Join(",", id)
                 });
-            var response = await ResiliencePipeline.ExecuteAsync(() => request.GetAsync());
-            return await response.ResponseMessage.Content.ReadAsAsync<ThingItems>(XmlFormatterCollection);
+            var response = await ResiliencePipeline.ExecuteAsync(ct => request.GetAsync(cancellationToken: ct), cancellationToken);
+            return await response.ResponseMessage.Content.ReadAsAsync<ThingItems>(XmlFormatterCollection, cancellationToken);
         }
 
         var thingCollections = ids.Distinct()
             .OrderBy(id => id)
             .Buffer(100)
             .ToAsyncEnumerable()
-            .SelectAwait(GetThingAsync);
+            .Select(GetThingAsync);
 
         await foreach (var thingCollection in thingCollections)
         {

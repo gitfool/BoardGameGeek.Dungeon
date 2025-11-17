@@ -527,19 +527,6 @@
         "resolved": "6.0.3",
         "contentHash": "Py3+rZbeYOsYun306S5Ys1IowDiU6z4ajGL3G4uslZ8iKUIyUdgwfbz3X+TQyKNjo6g+2bMQzpQd1r3yUTkQsw=="
       },
-      "System.Interactive.Async": {
-        "type": "Transitive",
-        "resolved": "6.0.3",
-        "contentHash": "OAcB2IdKXsU1xT1xPnpNh8/czT/+EbVcIkNgo92p39R2ScegChS6Sdgpdk9+IsJW4XOjkT+iCUgZvljC6dLgTA==",
-        "dependencies": {
-          "System.Linq.Async": "6.0.3"
-        }
-      },
-      "System.Linq.Async": {
-        "type": "Transitive",
-        "resolved": "6.0.3",
-        "contentHash": "hSHiq2m1ky7zUQgTp+/2h1K3lABIQ+GltRixoclHPg/Sc1vnfeS6g/Uy5moOVZKrZJdQiFPFZd6OobBp3tZcFg=="
-      },
       "System.Memory": {
         "type": "Transitive",
         "resolved": "4.5.5",
@@ -620,8 +607,7 @@
           "Serilog.Settings.Configuration": "[9.0.0, )",
           "Serilog.Sinks.Console": "[6.1.1, )",
           "Spectre.Console.Cli": "[0.51.1, )",
-          "System.Interactive": "[6.0.3, )",
-          "System.Interactive.Async": "[6.0.3, )"
+          "System.Interactive": "[6.0.3, )"
         }
       },
       "library": {

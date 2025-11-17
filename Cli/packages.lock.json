@@ -152,15 +152,6 @@
         "resolved": "6.0.3",
         "contentHash": "Py3+rZbeYOsYun306S5Ys1IowDiU6z4ajGL3G4uslZ8iKUIyUdgwfbz3X+TQyKNjo6g+2bMQzpQd1r3yUTkQsw=="
       },
-      "System.Interactive.Async": {
-        "type": "Direct",
-        "requested": "[6.0.3, )",
-        "resolved": "6.0.3",
-        "contentHash": "OAcB2IdKXsU1xT1xPnpNh8/czT/+EbVcIkNgo92p39R2ScegChS6Sdgpdk9+IsJW4XOjkT+iCUgZvljC6dLgTA==",
-        "dependencies": {
-          "System.Linq.Async": "6.0.3"
-        }
-      },
       "FluentValidation": {
         "type": "Transitive",
         "resolved": "12.0.0",
@@ -448,11 +439,6 @@
         "type": "Transitive",
         "resolved": "10.0.0",
         "contentHash": "uaFRda9NjtbJRkdx311eXlAA3n2em7223c1A8d1VWyl+4FL9vkG7y2lpPfBU9HYdj/9KgdRNdn1vFK8ZYCYT/A=="
-      },
-      "System.Linq.Async": {
-        "type": "Transitive",
-        "resolved": "6.0.3",
-        "contentHash": "hSHiq2m1ky7zUQgTp+/2h1K3lABIQ+GltRixoclHPg/Sc1vnfeS6g/Uy5moOVZKrZJdQiFPFZd6OobBp3tZcFg=="
       },
       "System.Memory": {
         "type": "Transitive",
