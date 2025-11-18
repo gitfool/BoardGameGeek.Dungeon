@@ -8,8 +8,7 @@ public abstract class CommandBase<TSettings> : Command<TSettings> where TSetting
         Logger = logger;
     }
 
-    // ReSharper disable once RedundantNullableFlowAttribute
-    public override int Execute([NotNull] CommandContext context, [NotNull] TSettings settings)
+    public override int Execute(CommandContext context, TSettings settings, CancellationToken cancellationToken)
     {
         try
         {
