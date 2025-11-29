@@ -543,8 +543,8 @@
       },
       "System.Interactive": {
         "type": "Transitive",
-        "resolved": "6.0.3",
-        "contentHash": "Py3+rZbeYOsYun306S5Ys1IowDiU6z4ajGL3G4uslZ8iKUIyUdgwfbz3X+TQyKNjo6g+2bMQzpQd1r3yUTkQsw=="
+        "resolved": "7.0.0",
+        "contentHash": "XEVxb2gKsXF9qkfvGo/yb6OMMEDc+GvB+bn+ricQ3K9gx+khYf8+ipzf1caNEkcFIjC/+iX30MWGtf+hhZLuQw=="
       },
       "xunit.abstractions": {
         "type": "Transitive",
@@ -608,7 +608,7 @@
           "Serilog.Settings.Configuration": "[9.0.0, )",
           "Serilog.Sinks.Console": "[6.1.1, )",
           "Spectre.Console.Cli": "[0.53.0, )",
-          "System.Interactive": "[6.0.3, )"
+          "System.Interactive": "[7.0.0, )"
         }
       },
       "library": {
