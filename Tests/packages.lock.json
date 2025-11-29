@@ -406,11 +406,6 @@
           "Newtonsoft.Json": "13.0.3"
         }
       },
-      "Namotion.Reflection": {
-        "type": "Transitive",
-        "resolved": "3.4.2",
-        "contentHash": "ZHrvPdAg7zV78iOTiH9ua+34rBfn4iH6Bjfo2bzUHOGD3KkjGUvqxBFy+v9p6qwV+GEeYWl4NOqXH8tVcZOMpw=="
-      },
       "NetEscapades.Configuration.Yaml": {
         "type": "Transitive",
         "resolved": "3.1.0",
@@ -434,41 +429,18 @@
           "Newtonsoft.Json": "12.0.1"
         }
       },
-      "NJsonSchema": {
-        "type": "Transitive",
-        "resolved": "11.4.0",
-        "contentHash": "0q6mr6eJk/D4jPFKyRwAPauedZK60yFE5rjA3+aqCdQm9kGE9J8xygRrLfk0Ms8wBviWbLlaZYzqAteG3b6Yag==",
-        "dependencies": {
-          "NJsonSchema.Annotations": "11.4.0",
-          "Namotion.Reflection": "3.4.2",
-          "Newtonsoft.Json": "13.0.3"
-        }
-      },
-      "NJsonSchema.Annotations": {
-        "type": "Transitive",
-        "resolved": "11.4.0",
-        "contentHash": "fKAGyIU9s18e9GAdNbEr2PmZdpBqb1RdAr2+EHHrdkSZNoYtwFcmN6syJaxYxeEFegoLbC3e+EU5eb7Tt1ph3Q=="
-      },
-      "OpenCli.Sources": {
-        "type": "Transitive",
-        "resolved": "0.5.0",
-        "contentHash": "5FgwoxpZy9Qy7MsKHb2hZBTWXEvg7JCPuNnaqsn2g0/X9oWQVThYQ1nND1xJrq8P1aw+Gh8sirV1HbefeqSalw==",
-        "dependencies": {
-          "NJsonSchema": "11.4.0"
-        }
-      },
       "Polly": {
         "type": "Transitive",
-        "resolved": "8.6.4",
-        "contentHash": "uuBsDoBw0oYrMe3uTWRjkT2sIkKh+ZZnnDrLb4Z+QANfeA4+7FJacx6E8CY5GAxXRoSgFrvUADEAQ7DPF6fGiw==",
+        "resolved": "8.6.5",
+        "contentHash": "VqtW2ZE/ALvQMAH1cQY3qZ2cF2OXa3oe/HKMdOv6Q02HCoEW0rsFNfcBONXlHBe1TnjWW1vdRxBEkPeq0/2FHA==",
         "dependencies": {
-          "Polly.Core": "8.6.4"
+          "Polly.Core": "8.6.5"
         }
       },
       "Polly.Core": {
         "type": "Transitive",
-        "resolved": "8.6.4",
-        "contentHash": "4AWqYnQ2TME0E+Mzovt1Uu+VyvpR84ymUldMcPw7Mbj799Phaag14CKrMtlJGx5jsvYP+S3oR1QmysgmXoD5cw=="
+        "resolved": "8.6.5",
+        "contentHash": "t+sUVrIwvo7UmsgHGgOG9F0GDZSRIm47u2ylH17Gvcv1q5hNEwgD5GoBlFyc0kh/pebmPyrAgvGsR/65ZBaXlg=="
       },
       "Serilog": {
         "type": "Transitive",
@@ -524,16 +496,15 @@
       },
       "Spectre.Console": {
         "type": "Transitive",
-        "resolved": "0.53.0",
-        "contentHash": "m2iv8Egfywp7FaNLKCmCFHbSf36D4ctzZKvlAK9NXMyGLh6L+CnrZWK8o+LOYsoAS1jtoHn0W1BT0W8vuq/FUw=="
+        "resolved": "0.53.1",
+        "contentHash": "wNLoytZpc7brgH3V9ZmrRyQqplOQUnNkEu1qSjRnEa0KOGvWAxgdEG6jmFTfyXKzO7p1pTLBHYH+AgxsWi69Cg=="
       },
       "Spectre.Console.Cli": {
         "type": "Transitive",
-        "resolved": "0.53.0",
-        "contentHash": "9m26DC9IGMjA+qjlEtO2BsukmbymNvrXUtu5sh3sc2uCKHdawqVMwcnmiKO/bKKG0pHIzI1O/H2Qr/m2uh+rQw==",
+        "resolved": "0.53.1",
+        "contentHash": "y//7ZZ0shhvgXzoJXJzMaLGA4dPem8qCbkyv9khfE8NQDlH4hPVsHOHYoz6uzAwiTX9Yd7OnX3wNOX/wRfPUOg==",
         "dependencies": {
-          "OpenCli.Sources": "0.5.0",
-          "Spectre.Console": "0.53.0"
+          "Spectre.Console": "0.53.1"
         }
       },
       "System.Diagnostics.EventLog": {
@@ -601,13 +572,13 @@
           "Microsoft.Extensions.Hosting": "[10.0.0, )",
           "Microsoft.Extensions.Options": "[10.0.0, )",
           "NetEscapades.Configuration.Yaml": "[3.1.0, )",
-          "Polly": "[8.6.4, )",
+          "Polly": "[8.6.5, )",
           "Serilog": "[4.3.0, )",
           "Serilog.Enrichers.Thread": "[4.0.0, )",
           "Serilog.Extensions.Hosting": "[9.0.0, )",
           "Serilog.Settings.Configuration": "[9.0.0, )",
           "Serilog.Sinks.Console": "[6.1.1, )",
-          "Spectre.Console.Cli": "[0.53.0, )",
+          "Spectre.Console.Cli": "[0.53.1, )",
           "System.Interactive": "[7.0.0, )"
         }
       },
